@@ -1,3 +1,7 @@
+.tekst{
+  z-index: 10;
+}
+
 .App {
   text-align: center;
 }

@@ -7,16 +7,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p  className='tekst'>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <h1>
+          Project C of zo iets, Toch? of niet??
+        </h1>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://minecraft.net"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Minecraft
         </a>
       </header>
     </div>
