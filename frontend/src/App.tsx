@@ -1,28 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { routes } from "./routes";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p  className='Frontlayer'>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <h1>
-          Project C of zo iets, Toch? of niet??
-        </h1>
-        <a
-          className="App-link"
-          href="https://minecraft.net"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Minecraft
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          {routes.map(({ path, component }, key) => (
+            <Route path={path} key={key} element={component} />
+          ))}
+        </Routes>
+      </Router>
+    </>
   );
 }
 
