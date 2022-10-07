@@ -1,38 +1,59 @@
-import React from 'react';
+import React, { useState} from 'react';
+import '../Login.css';
 import '../App.css';
 
 export function Login() {
   const root = document.getElementsByTagName("html")[0];
-  const toggleDarkMode = () => {
-    root.setAttribute("class", "dark");
-    localStorage.theme = "dark";
+
+  const toggleMode = () => {
+    if (localStorage.theme === "light"){
+      root.setAttribute("class", "dark");
+      localStorage.theme = "dark";
+    }
+    else {
+      root.removeAttribute("class");
+      localStorage.theme = "light";
+    }
   }
-  const toggleLightMode = () => {
-    root.removeAttribute("class");
-    localStorage.theme = "light";
-  }
+
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p  className='Frontlayer'>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <h1 className='bg-white '>
-          Login enzo
-        </h1>
-        <a
-          className="text-pink-400 dark:text-orange-500 "
-          href="https://minecraft.net"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Minecraft
-        </a>
-      
-        <div className='bg-white dark:bg-green-800 py-9 px-16 dark:py-2 dark:px-36 '></div>
-      </header>
-      <button onClick={toggleLightMode}>light</button>
-      <button onClick={toggleDarkMode}>dark</button>
+    <div className="container bg-white dark:bg-slate-800">
+
+      <img className="logo" src="viscon-logo.png" draggable="false" alt=''/>
+
+      <form
+        className='login-form bg-slate-300 dark:bg-slate-700'
+        onSubmit={e => {
+          e.preventDefault()
+          console.log({ email, password})
+        }}
+      >
+        <input
+          className='bg-slate-200 dark:bg-slate-600'
+          type='text'
+          placeholder='email'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <input
+          className='bg-slate-200 dark:bg-slate-600'
+          type='password'
+          placeholder='password'
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+
+        <button>Sign In</button>
+
+      </form>
+      <button className='py-0 text-cyan-800 dark:text-cyan-400'>Forgot password?</button>
+
+      <footer className="login-footer bg-slate-500 dark:bg-slate-900">
+        <img className="icon" src="theme-icon.png" draggable="false" onClick={toggleMode} alt='' />
+      </footer>
     </div>
   );
 }
