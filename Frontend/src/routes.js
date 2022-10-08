@@ -1,5 +1,5 @@
-import { Homepage } from './pages/Homepage';
-import { Login } from './pages/Login';
+import { Homepage } from './Pages/Homepage/Homepage';
+import { Login } from './Pages/Login/Login';
 
 export const routes = [
     { path: '/', name: 'homepage', component: <Homepage />},
