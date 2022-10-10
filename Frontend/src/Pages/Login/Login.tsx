@@ -13,9 +13,9 @@ export function Login() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <body className="homepage-body">
       < Navbar />
-      <div className="container bg-white dark:bg-slate-800">
+      <div className="login-container bg-white dark:bg-slate-800">
         
         <img className="logo" src="viscon-group-logo.png" draggable="false" alt=''/>
 
@@ -49,6 +49,6 @@ export function Login() {
 
       </div>
       < Footer />
-    </>
+    </body>
   );
 }

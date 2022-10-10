@@ -1,17 +1,22 @@
 .footer {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
 
-    width: 100%;
-    height: 3rem;
+    position: sticky;
+    top: 0;
+
+    width: 100vw;
+    height: 4.5vh;
 }
 
 .footer-text {
-    margin-bottom: -2rem;
+    margin-bottom: -2.25vh;
 }
 
 .icon {
-    height: 3rem;
+    height: 4.5vh;
+    width: 4.5vh;
+    left: 0;
     cursor: pointer;
 
     -webkit-user-drag: none;

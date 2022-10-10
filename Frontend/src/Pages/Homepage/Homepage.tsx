@@ -16,13 +16,11 @@ export function Homepage() {
   return (
     <>
       < Navbar />
-      <div className="container bg-white dark:bg-slate-800">
-        <header>
-          <img src="viscon-group-logo.png" className="App-logo" alt="logo" />
-          <button className='start-text bg-slate-300 dark:bg-slate-700' onClick={handleClick}>
-            <p className="text-cyan-800 dark:text-cyan-400">Log In</p>
-          </button>
-        </header>
+      <div className="homepage-container bg-white dark:bg-slate-800">
+        <img src="viscon-group-logo.png" className="App-logo" alt="logo" />
+        <button className='start-text bg-slate-300 dark:bg-slate-700' onClick={handleClick}>
+          <p className="text-cyan-800 dark:text-cyan-400">Log In</p>
+        </button>
       </div>
       < Footer />
     </>

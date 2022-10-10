@@ -17,8 +17,8 @@ export function Footer() {
   
   return (
     <>
-      <p className="footer-text text-center text-black dark:text-slate-400">Viscon Group</p>
       <footer className="footer bg-slate-500 dark:bg-slate-900">
+        
         <img className="icon" src="theme-icon.png" draggable="false" onClick={toggleMode} alt='' />
       </footer>
     </>
