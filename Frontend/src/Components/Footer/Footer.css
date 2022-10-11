@@ -16,7 +16,7 @@
 .icon {
     height: 4.5vh;
     width: 4.5vh;
-    left: 0;
+    left: 1vw;
     cursor: pointer;
 
     -webkit-user-drag: none;
