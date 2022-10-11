@@ -9,30 +9,38 @@ export function Machines() {
     <body>
       < Navbar />
       <div className='filler-space bg-white dark:bg-slate-800' />
-      <div className='list bg-white dark:bg-slate-700'>
-        <div className='item'>
-        <a href="#">Machine 1</a>
-          <p>Problem 1</p>
-          <p>Problem 2</p>
-          <p>Problem 3</p>
+      <div className='list bg-white dark:bg-slate-600'>
+        <div className='item bg-white dark:bg-slate-500'>
+          <p>Machine 1</p>
+          <p className='problem'>Problem 1</p>
+          <p className='problem'>Problem 2</p>
+          <p className='problem'>Problem 3</p>
+          <br></br>
+          <a href="#">Problem not Resolved</a>
         </div>
-        <div className='item'>
-        <a href="#">Machine 2</a>
-          <p>Problem 1</p>
-          <p>Problem 2</p>
-          <p>Problem 3</p>
+        <div className='item bg-white dark:bg-slate-500'>
+          <p>Machine 2</p>
+          <p className='problem'>Problem 1</p>
+          <p className='problem'>Problem 2</p>
+          <p className='problem'>Problem 3</p>
+          <br></br>
+          <a href="#">Problem not Resolved</a>
         </div>
-        <div className='item'>
-          <a href="#">Machine 3</a>
-          <p>Problem 1</p>
-          <p>Problem 2</p>
-          <p>Problem 3</p>
+        <div className='item bg-white dark:bg-slate-500'>
+          <p>Machine 3</p>
+          <p className='problem'>Problem 1</p>
+          <p className='problem'>Problem 2</p>
+          <p className='problem'>Problem 3</p>
+          <br></br>
+          <a href="#">Problem not Resolved</a>
         </div>
-        <div className='item'>
-        <a href="#">Machine 4</a>
-          <p>Problem 1</p>
-          <p>Problem 2</p>
-          <p>Problem 3</p>
+        <div className='item bg-white dark:bg-slate-500'>
+          <p>Machine 4</p>
+          <p className='problem'>Problem 1</p>
+          <p className='problem'>Problem 2</p>
+          <p className='problem'>Problem 3</p>
+          <br></br>
+          <a href="#">Problem not Resolved</a>
         </div>
       </div>
       < Footer />
