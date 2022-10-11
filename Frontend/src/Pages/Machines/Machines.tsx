@@ -7,34 +7,35 @@ import{ Footer } from '../../Components/Footer/Footer'
 export function Machines() {
   return (
     <body>
-      <Navbar/>
-    <div className='list bg-white dark:bg-slate-800'>
-      <div className='item'>
-      <a href="#">Machine 1</a>
-        <p>Problem 1</p>
-        <p>Problem 2</p>
-        <p>Problem 3</p>
+      < Navbar />
+      <div className='filler-space bg-white dark:bg-slate-800' />
+      <div className='list bg-white dark:bg-slate-700'>
+        <div className='item'>
+        <a href="#">Machine 1</a>
+          <p>Problem 1</p>
+          <p>Problem 2</p>
+          <p>Problem 3</p>
+        </div>
+        <div className='item'>
+        <a href="#">Machine 2</a>
+          <p>Problem 1</p>
+          <p>Problem 2</p>
+          <p>Problem 3</p>
+        </div>
+        <div className='item'>
+          <a href="#">Machine 3</a>
+          <p>Problem 1</p>
+          <p>Problem 2</p>
+          <p>Problem 3</p>
+        </div>
+        <div className='item'>
+        <a href="#">Machine 4</a>
+          <p>Problem 1</p>
+          <p>Problem 2</p>
+          <p>Problem 3</p>
+        </div>
       </div>
-      <div className='item'>
-      <a href="#">Machine 2</a>
-        <p>Problem 1</p>
-        <p>Problem 2</p>
-        <p>Problem 3</p>
-      </div>
-      <div className='item'>
-        <a href="#">Machine 3</a>
-        <p>Problem 1</p>
-        <p>Problem 2</p>
-        <p>Problem 3</p>
-      </div>
-      <div className='item'>
-      <a href="#">Machine 4</a>
-        <p>Problem 1</p>
-        <p>Problem 2</p>
-        <p>Problem 3</p>
-      </div>
-    </div>
-    <Footer></Footer>
+      < Footer />
     </body>
   );
 }
