@@ -6,7 +6,7 @@
     top: 0;
 
     width: 100vw;
-    height: 4.5vh;
+    height: 5vh;
 }
 
 .footer-text {
@@ -14,10 +14,11 @@
 }
 
 .icon {
-    height: 4.5vh;
-    width: 4.5vh;
+    height: 5vh;
+    width: 5vh;
     left: 1vw;
     cursor: pointer;
+    padding: 0.5vh;
 
     -webkit-user-drag: none;
     user-select: none;
