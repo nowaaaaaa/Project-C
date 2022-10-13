@@ -9,7 +9,7 @@ export function Machines() {
     <body>
       < Navbar />
       <div className='filler-space bg-white dark:bg-slate-800' />
-      <div className='list bg-white dark:bg-slate-600'>
+      <div className='list bg-vBlue dark:bg-slate-600'>
         <div className='item bg-white dark:bg-slate-500'>
           <p>Machine 1</p>
           <p className='problem'>Problem 1</p>
