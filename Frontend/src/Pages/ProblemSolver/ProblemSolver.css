@@ -1,0 +1,32 @@
+.filler-space {
+    width: 100vw;
+    height: 91vh;
+  }
+
+.centerbox {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    flex-direction:column;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.61);
+}
+
+.input1 {
+    resize:none;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 2rem;
+    width: 50%;
+    text-align: left;
+}
+

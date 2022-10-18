@@ -3,7 +3,7 @@
   height: 91vh;
 }
 
-.list{
+.centerBox{
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -21,56 +21,50 @@
   box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.61);
 }
 
-.item{
+.machine {
+  border: 1px solid black;
+  border-radius: 15px;
   padding: 1rem;
-  border: 1px solid black;
-  border-radius: 10px;
-  text-align: center;
-  margin: .3rem;
-  transition: .5s;
+  margin: .5rem;
+}
+
+.accordionLabel {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  background-color: white;
-  
+  width: 100%;
+  height: 100%;
 }
 
-.item:hover{
-  transition: .5s;
-}
-
-a{
-  text-decoration: none;
-  color: black;
-  padding: .3rem 2rem;
-  display: none;
-}
-
-.item .problem {
-  display: none;
-  transition: .5s;
-  margin: .4rem;
-}
-
-.item:hover a{
-  display:inline;
-  background-color: red;
-  border: 1px solid black;
-  border-radius: 50px;
-  margin: 2rem;
-}
-
-.item:hover .problem{
+.checkbox:checked ~ .accText {
   display:flex;
   border: 1px solid black;
   border-radius: 5px;
-  width: 100%;
-  align-self: center;
-  text-align: center;
+  padding: .2rem;
+  margin: .7rem;
 }
 
-br {
+.checkbox:checked ~ .accResolve {
+  display: inline;
+  border-radius: 40px;
+  padding: .3rem .8rem;
+  margin-top: .5rem;
+}
+
+.checkbox {
   display: none;
 }
 
-.item:hover br {
-  display: inline;
+.accText {
+  display: none;
+}
+
+.accResolve {
+  display: none;
+}
+
+.machHolder {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
 }
