@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Lora';
+  src: url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Noto+Sans:wght@300&display=swap');
+}
+
 .filler-space {
   width: 100vw;
   height: 91vh;

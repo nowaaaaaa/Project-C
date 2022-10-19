@@ -22,10 +22,10 @@
 }
 
 .input1 {
-    resize:none;
+    resize: unset;
     border: 1px solid black;
     border-radius: 10px;
-    height: 2rem;
+    height: 10rem;
     width: 50%;
     text-align: left;
 }
