@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         lora: "'Lora', serif",
+        roboto: "'RobotoCondensed', serif"
       },
       colors: {
         vBlue:'#009fe3',
