@@ -26,15 +26,17 @@ export function Navbar() {
     setSideOpen(!sideOpen)
   }
 
+  const buttonStyling = `fill-black dark:fill-white`;
+
   return (
     <>
       {sideOpen && <Sidebar toggleSide={toggleSide} toggleMode={toggleMode}/>}
       <div className="navbar bg-slate-500 dark:bg-slate-900">
         <a href="/" className="navbar-link">
-        <img className="h-32 mt-6" src="viscon-group-logo.png" draggable="false" alt=''/>
+        <img className="h-16" src="viscon_logo_only.png" draggable="false" alt=''/>
         </a>
         <div className="navbar-bars" onClick={toggleSide}>
-          <FaBars/>
+          <FaBars className=""/>
         </div>
         <div className="navbar-menu text-black dark:text-cyan-400">
           <a href="/machines" className="navbar-link">

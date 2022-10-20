@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+}
 
 .login-container {
     display: flex;
