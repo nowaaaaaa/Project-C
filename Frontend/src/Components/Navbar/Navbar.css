@@ -1,6 +1,6 @@
 .navbar {
     height: 10vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem calc((100vw - 1000px) / 2);
@@ -37,6 +37,7 @@
     padding: 10px 22px;
     border: none;
     outline: none;
+    white-space: nowrap;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     text-decoration: none;
