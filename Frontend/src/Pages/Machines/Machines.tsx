@@ -13,7 +13,7 @@ export function Machines() {
           <h1>Your Machines</h1>
           <div className='machine bg-vBlue dark:bg-orange-700'>
             <input type="radio" name='machacc' id='mach1' className='checkbox'/>
-            <label htmlFor="mach1" className='accordionLabel font-'>Machine 1</label>
+            <label htmlFor="mach1" className='accordionLabel font-lora'>Machine 1</label>
             <p className='accText bg-white dark:bg-orange-600'>Problem 1</p>
             <p className='accText bg-white dark:bg-orange-600'>Problem 2</p>
             <p className='accText bg-white dark:bg-orange-600'>Problem 3</p>
