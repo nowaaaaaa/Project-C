@@ -18,6 +18,8 @@ export function Machines() {
             <p className='accText bg-white dark:bg-orange-600'>Problem 2</p>
             <p className='accText bg-white dark:bg-orange-600'>Problem 3</p>
             <a href="problemsolver" className='accResolve bg-red-800 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <br className='accBr' />
+            <br className='accBr' />
           </div>
           <div className='machine bg-vBlue dark:bg-orange-700'>
             <input type="radio" name='machacc' id='mach2' className='checkbox'/>
@@ -26,6 +28,8 @@ export function Machines() {
             <p className='accText bg-white dark:bg-orange-600'>Problem 2</p>
             <p className='accText bg-white dark:bg-orange-600'>Problem 3</p>
             <a href="problemsolver" className='accResolve bg-red-800 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <br className='accBr' />
+            <br className='accBr' />
           </div>
           <div className='machine bg-vBlue dark:bg-orange-700'>
             <input type="radio" name='machacc' id='mach3' className='checkbox'/>
@@ -34,6 +38,8 @@ export function Machines() {
             <p className='accText bg-white dark:bg-orange-600'>Problem 2</p>
             <p className='accText bg-white dark:bg-orange-600'>Problem 3</p>
             <a href="/problemsolver" className='accResolve bg-red-800 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <br className='accBr' />
+            <br className='accBr' />
           </div>
         </div>
       < Footer />
