@@ -56,6 +56,8 @@
   padding: .3rem .8rem;
   margin-top: .5rem;
   margin-bottom: 5rem;
+  text-align: center;
+  justify-content: center;
 }
 
 .checkbox:checked ~ .accBr {
@@ -73,6 +75,7 @@
 
 .accResolve {
   display: none;
+  text-align: center;
 }
 
 .accBr {
