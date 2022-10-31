@@ -12,7 +12,12 @@ module.exports = {
       },
       colors: {
         vBlue:'#009fe3',
+        vLogoBlue:'#03ACEE'
       },
+      backgroundImage: {
+        'lightLogo': "url('./public/viscon-group-logo-light.png'",
+        'darkLogo': "url('./public/viscon-group-logo-dark.png'"
+      }
     },
   },
   plugins: [],

@@ -11,16 +11,6 @@ export function UserpageButtons(user: string) {
     buttons.push(['View Tickets', tickets])
   }
   const root = document.getElementsByTagName("html")[0];
-  const toggleMode = () => {
-    if (localStorage.theme === "light") {
-      root.setAttribute("class", "dark");
-      localStorage.theme = "dark";
-    }
-    else {
-      root.removeAttribute("class");
-      localStorage.theme = "light";
-    }
-  }
 
   return (
     <>
