@@ -13,31 +13,31 @@ export function Machines() {
           <h1>Your Machines</h1>
           <div className='machine bg-vBlue'>
             <input type="radio" name='machacc' id='mach1' className='checkbox'/>
-            <label htmlFor="mach1" className='accordionLabel font-lora'>Machine 1</label>
+            <label htmlFor="mach1" className='accordionLabel'>Machine 1</label>
             <p className='accText bg-white dark:bg-sky-400'>Problem 1</p>
-            <p className='accText bg-white'>Problem 2</p>
-            <p className='accText bg-white'>Problem 3</p>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 2</p>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 3</p>
             <a href="problemsolver" className='accResolve bg-red-700 hover:bg-rose-800'> Problem Not Resolved?</a>
             <br className='accBr' />
             <br className='accBr' />
           </div>
-          <div className='machine bg-vBlue dark:bg-orange-700'>
+          <div className='machine bg-vBlue'>
             <input type="radio" name='machacc' id='mach2' className='checkbox'/>
             <label htmlFor="mach2" className='accordionLabel'>Machine 2</label>
-            <p className='accText bg-white dark:bg-orange-600'>Problem 1</p>
-            <p className='accText bg-white dark:bg-orange-600'>Problem 2</p>
-            <p className='accText bg-white dark:bg-orange-600'>Problem 3</p>
-            <a href="problemsolver" className='accResolve bg-red-800 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 1</p>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 2</p>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 3</p>
+            <a href="problemsolver" className='accResolve bg-red-700 hover:bg-rose-800'> Problem Not Resolved?</a>
             <br className='accBr' />
             <br className='accBr' />
           </div>
-          <div className='machine bg-vBlue dark:bg-orange-700'>
+          <div className='machine bg-vBlue'>
             <input type="radio" name='machacc' id='mach3' className='checkbox'/>
             <label htmlFor="mach3" className='accordionLabel'>Machine 3</label>
-            <p className='accText bg-white dark:bg-orange-600'>Problem 1</p>
-            <p className='accText bg-white dark:bg-orange-600'>Problem 2</p>
-            <p className='accText bg-white dark:bg-orange-600'>Problem 3</p>
-            <a href="/problemsolver" className='accResolve bg-red-800 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 1</p>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 2</p>
+            <p className='accText bg-white dark:bg-sky-400'>Problem 3</p>
+            <a href="problemsolver" className='accResolve bg-red-700 hover:bg-rose-800'> Problem Not Resolved?</a>
             <br className='accBr' />
             <br className='accBr' />
           </div>
