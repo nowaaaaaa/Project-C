@@ -31,14 +31,14 @@ export function Navbar() {
   return (
     <>
       {sideOpen && <Sidebar toggleSide={toggleSide} toggleMode={toggleMode}/>}
-      <div className="navbar bg-slate-500 dark:bg-slate-900">
+      <div className="navbar bg-slate-300 dark:bg-slate-900">
         <a href="/" className="navbar-link">
         <img className="h-16" src="viscon_logo_only.png" draggable="false" alt=''/>
         </a>
         <div className="navbar-bars" onClick={toggleSide}>
           <FaBars className=""/>
         </div>
-        <div className="navbar-menu text-black dark:text-cyan-400">
+        <div className="navbar-menu text-cyan-800 dark:text-cyan-400">
           <a href="/machines" className="navbar-link">
             Machines
           </a>

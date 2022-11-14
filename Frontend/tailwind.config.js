@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         vBlue:'#009fe3',
+        vBlueHover: '#0281B7',
         vLogoBlue:'#03ACEE'
       }
       // ,
