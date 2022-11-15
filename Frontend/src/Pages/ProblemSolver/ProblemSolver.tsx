@@ -11,13 +11,20 @@ export function ProblemSolver() {
       <div className='filler-space bg-white dark:bg-slate-800'>
         <div className='centerbox bg-white dark:bg-slate-600'>
           <div>
-            <textarea className='input1 bg-gray-100 dark:bg-sky-900' placeholder='Describe your problem'/>
+            <p>Describe the problem with the selected machine:</p>
+            <textarea className='input1 bg-gray-200 dark:bg-sky-900' placeholder=''/>
             <br />
-            <textarea className='input1 bg-gray-100 dark:bg-sky-900' placeholder='Describe what is supposed to happen'/>
+            <p>Describe what the machine is supposed to do:</p>
+            <textarea className='input1 bg-gray-200 dark:bg-sky-900' placeholder=''/>
             <br />
-            <label htmlFor="machineOn dark:accent-slate-600">Is your machine on?</label>
+            <label htmlFor="machineOn" className='checkLabel'>Is your machine on?</label>
+            <input type="checkbox" className='machineOn' />
             <br />
-            <input type="checkbox" className='machineOn dark:accent-slate-600' />
+            <label htmlFor="notStuck" className='checkLabel'>Is nothing stuck in the machine?</label>
+            <input type="checkbox" className='notStuck' />
+            <br />
+            <br />
+            <a href="login" className='send bg-vBlue hover:bg-sky-600 active:bg-sky-500'>Send report</a>
           </div>
         </div>
       </div>
