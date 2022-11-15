@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Navbar.css';
 
-import { FaBars } from 'react-icons/fa';
+import { HiOutlineMenu } from 'react-icons/hi';
 
 //Component
 import { Sidebar } from '../../Components/Sidebar/Sidebar'
@@ -36,19 +36,19 @@ export function Navbar() {
         <img className="h-16" src="viscon_logo_only.png" draggable="false" alt=''/>
         </a>
         <div className="navbar-bars" onClick={toggleSide}>
-          <FaBars className=""/>
+          <HiOutlineMenu className="stroke-black dark:stroke-cyan-400"/>
         </div>
         <div className="navbar-menu text-cyan-800 dark:text-cyan-400">
-          <a href="/machines" className="navbar-link">
+          <a href="/machines" className="navbar-link text-black dark:text-white">
             Machines
           </a>
-          <a href="/machines" className="navbar-link">
+          <a href="/machines" className="navbar-link text-black dark:text-white">
             Machines
           </a>
-          <a href="/machines" className="navbar-link">
+          <a href="/machines" className="navbar-link text-black dark:text-white">
             Machines
           </a>
-          <a href="/machines" className="navbar-link">
+          <a href="/machines" className="navbar-link text-black dark:text-white">
             Machines
           </a>
         </div>
