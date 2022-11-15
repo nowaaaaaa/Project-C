@@ -1,7 +1,8 @@
-.filler-space {
+.bg {
     width: 100vw;
     height: 90vh;
-  }
+    align-items: center;
+}
 
 .centerbox {
     display: flex;
@@ -21,33 +22,25 @@
     box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
-.input1 {
-    resize: unset;
+.reports {
+    border-radius: 20px;
     border: 1px solid black;
-    border-radius: 10px;
-    height: 15rem;
-    width: 90%;
+    padding: 5px;
+    text-align: left;
+    margin-bottom: 3vh;
+}
+
+.done {
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
     text-align: left;
 }
 
-.checkLabel {
-    margin: 20px;
-}
-
-.send {
+.doing {
+    border-radius: 20px;
+    border: 1px solid black;
     padding: 5px;
-    padding-right: 20px;
-    padding-left: 20px;
-    border-radius: 25px;
-    font-size: 20px;
+    text-align: left;
+    margin-bottom: 3vh;
 }
-
-@media (max-width: 768px) {
-    .centerbox{
-      width: 90vw;
-      height: 70vh;
-    }
-    .input1 {
-        height: 20vh;
-    }
-  }

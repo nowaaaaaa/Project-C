@@ -5,7 +5,7 @@ export function UserpageButtons(user: string) {
   let buttons: [string, () => void][] = [];
   const navigate = useNavigate();
   const employees = () => navigate('../login');
-  const tickets = () => navigate('../machines');
+  const tickets = () => navigate('../visconPage');
   if (user === 'Client') {
     buttons.push(['Manage Employees', employees]);
     buttons.push(['View Tickets', tickets])
