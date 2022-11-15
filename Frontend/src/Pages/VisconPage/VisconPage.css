@@ -1,0 +1,46 @@
+.bg {
+    width: 100vw;
+    height: 90vh;
+    align-items: center;
+}
+
+.centerbox {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    flex-direction:column;
+    width: 60vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.reports {
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+    margin-bottom: 3vh;
+}
+
+.done {
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+.doing {
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+    margin-bottom: 3vh;
+}
