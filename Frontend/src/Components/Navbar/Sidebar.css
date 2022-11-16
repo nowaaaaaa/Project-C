@@ -15,6 +15,7 @@
   transition: 0.3s ease-in-out;
   opacity: 90%;
   top: -100vh;
+  border-radius: 28px;
 }
 
 .sidebar-icon {
@@ -51,7 +52,6 @@
   text-decoration: none;
   list-style: none;
   transition: 0.2 ease-in-out;
-  cursor: pointer;
 }
 
 .sidebar-link:hover {

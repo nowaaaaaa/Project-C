@@ -1,9 +1,9 @@
 import { Homepage } from './Pages/Homepage/Homepage';
 import { Login } from './Pages/Login/Login';
-import {Machines} from './Pages/Machines/Machines';
-import {ProblemSolver} from './Pages/ProblemSolver/ProblemSolver';
+import { Machines } from './Pages/Machines/Machines';
+import { ProblemSolver } from './Pages/ProblemSolver/ProblemSolver';
 import { Userpage } from './Pages/Userpage/Userpage';
-import {VisconPage} from './Pages/VisconPage/VisconPage';
+import { VisconPage } from './Pages/VisconPage/VisconPage';
 
 export const routes = [
     { path: '/', name: 'homepage', component: <Homepage />},
