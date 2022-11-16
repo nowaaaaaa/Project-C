@@ -44,3 +44,34 @@
     text-align: left;
     margin-bottom: 3vh;
 }
+
+.report {
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    left: 5%;
+    position: relative;
+    width: 94%;
+    padding-bottom: 5px;
+}
+
+.drop {
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+.reporterName {
+    border-bottom: 1px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+.reportText {
+    padding-left: 10px;
+}
