@@ -15,7 +15,6 @@
   transition: 0.3s ease-in-out;
   opacity: 90%;
   top: -100vh;
-  border-radius: 28px;
 }
 
 .sidebar-icon {
