@@ -20,11 +20,10 @@ export function Login() {
       < Navbar />
       <div className="login-container bg-white dark:bg-slate-800">
         <div className="logo">
-        <img className="block dark:hidden" src="viscon-group-logo-light.png" draggable="false" alt=''/>
-        <img className="dark:block hidden" src="viscon-group-logo-dark.png" draggable="false" alt=''/>
-        {/*<div className="logo bg-[url('viscon-group-logo-light.png')] dark:bg-darkLogo"></div>*/}
+        <img className="block dark:hidden" src="viscon-group-logo-light.png" draggable="false" alt='Viscon Group logo'/>
+        <img className="dark:block hidden" src="viscon-group-logo-dark.png" draggable="false" alt='Viscon Group logo'/>
         </div>
-        {/* <h1 className="text-6xl mb-10 text-cyan-800 dark:text-cyan-400">Service Application</h1> */}
+        <h1 className="text-6xl mb-10 text-cyan-800 dark:text-cyan-400">Service Application</h1>
         <form
           className='login-form bg-slate-300 dark:bg-slate-700'
           onSubmit={e => {
