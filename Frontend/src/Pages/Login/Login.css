@@ -4,7 +4,7 @@
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     width: 100vw;
-    height: 90vh;
+    height: calc(100vh - 70px);
 }
 
 .login-form {
@@ -19,5 +19,6 @@
 
 .logo {
     margin-top: 4%;
-    width: 24rem;
+    width: 80vw;
+    max-width: 600px;
 }

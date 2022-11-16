@@ -5,7 +5,7 @@
 
 .filler-space {
   width: 100vw;
-  height: 90vh;
+  height: calc(100vh - 70px);
 }
 
 .centerBox{

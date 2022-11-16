@@ -1,6 +1,6 @@
 .bg {
     width: 100vw;
-    height: 90vh;
+    height: calc(100vh - 70px);
     align-items: center;
 }
 
