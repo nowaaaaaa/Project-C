@@ -15,6 +15,7 @@
 .login-form input,
 .login-form button {
     padding: 1rem 2rem;
+    outline: none;
 }
 
 .logo {
