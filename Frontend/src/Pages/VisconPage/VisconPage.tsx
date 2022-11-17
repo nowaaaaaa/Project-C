@@ -1,7 +1,5 @@
 import React from 'react';
 import './VisconPage.css';
-import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd'
-import './VisconPage'
 
 import { Navbar } from '../../Components/Navbar/Navbar'
 
