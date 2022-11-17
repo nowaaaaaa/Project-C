@@ -24,29 +24,29 @@ export function VisconPage() {
   return (
     <body>
         <Navbar/>
-        <div className='bg bg-white dark:bg-slate-800'>
-              <div className='list'>
-              <p className='dark:text-cyan-400'>Pending</p>
-              <ul className='reports bg-gray-200 dark:bg-sky-800 rounded-t-lg'>
+        <div className='bg bg-white dark:bg-slate-800 pt-[5vh]'>
+              <div className='reports bg-slate-300 dark:bg-slate-600'>
+              <p className='dark:text-cyan-400 text-center'>Pending</p>
+              <ul className=''>
                   <li id='origin'>
-                    <div className='bg-sky-400 rounded-3xl pb-2'>
-                      <p className='reporterName font-lora rounded-t-3xl bg-vBlue text-center border-b border-black '>Boer Harm</p>
+                    <div className='bg-slate-300 dark:bg-slate-600 rounded-xl pb-2'>
+                      <p className='reporterName font-lora rounded-t-xl bg-slate-300 dark:bg-slate-600 text-center border-b border-black '>Boer Harm</p>
                       <p className='reportText pl-2'>My machine broke after loading tomatoes</p>
                       <p className='reportText pl-2'>It should be moving the tomatoes</p>
                       <p className='reportText pl-2'>06 12345678</p>
-                      <p className='text-center'><a onClick={moveItem} className='pointer bg-vBlue px-4 rounded-3xl'>{text}</a></p>
+                      <p className='text-center'><a onClick={moveItem} className='pointer bg-slate-400 dark:bg-slate-700 px-4 rounded-3xl'>{text}</a></p>
                     </div>
                   </li>
                 </ul>
               </div>
-              <div className='list'>
-                <p className='dark:text-cyan-400'>Active</p>
-                <ul className='reports bg-gray-200 dark:bg-sky-800 rounded-t-lg py-2' id='target'>
+              <div className='reports bg-slate-300 dark:bg-slate-600'>
+                <p className='dark:text-cyan-400 text-center'>Active</p>
+                <ul className='' id='target'>
                 </ul>
               </div>
-              <div className='list'>
-                <p className='dark:text-cyan-400'>Closed</p>
-                <ul className='reports bg-gray-200 dark:bg-sky-800 rounded-t-lg' id='last'>
+              <div className='reports bg-slate-300 dark:bg-slate-600'>
+              <p className='dark:text-cyan-400 text-center'>Closed</p>
+                <ul className='' id='last'>
                   <li></li>
                 </ul>
               </div>

@@ -7,8 +7,6 @@
 }
 
 .reports {
-    border-radius: 20px;
-    border: 1px solid black;
     padding: 5px;
     text-align: left;
     margin-bottom: 3vh;
@@ -16,6 +14,7 @@
     padding-bottom: 1.5vh;
     max-width: 700px;
     margin: auto;
+    margin-top: 5vh;
 }
 
 .done {
