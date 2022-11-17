@@ -2,24 +2,8 @@
     width: 100vw;
     height: calc(100vh - 70px);
     align-items: center;
-}
-
-.centerbox {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    flex-direction:column;
-    width: 60vw;
-    border: 1px solid black;
-    border-radius: 10px;
     text-align: center;
-    margin: 0;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.15);
+    vertical-align: center;
 }
 
 .reports {
@@ -30,6 +14,8 @@
     margin-bottom: 3vh;
     padding-top: 1.5vh;
     padding-bottom: 1.5vh;
+    max-width: 700px;
+    margin: auto;
 }
 
 .done {
@@ -38,3 +24,21 @@
     padding: 5px;
     text-align: left;
 }
+
+.pointer {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pointer:hover {
+    background-color: #00000033;
+    transition: .3s;
+}
+
+@media (max-width: 768px) {
+    .centerbox{
+      width: 90vw;
+      height: 55vh;
+      background-color: black;
+    }
+  }

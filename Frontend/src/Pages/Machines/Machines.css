@@ -14,7 +14,6 @@
   padding: 1rem;
   flex-direction:column;
   width: 80vw;
-  border: 1px solid black;
   border-radius: 10px;
   text-align: center;
   margin: 0;
@@ -23,8 +22,6 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.15);
-  
 }
 
 .machine {

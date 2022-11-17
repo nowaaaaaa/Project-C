@@ -9,8 +9,8 @@ export function Machines() {
     <body>
       < Navbar />
       <div className='filler-space bg-white dark:bg-slate-800' />
-        <div className='centerBox bg-white dark:bg-slate-700'>
-          <h1>Your Machines</h1>
+        <div className='centerBox'>
+          <h1 className='text-cyan-400'>Your Machines</h1>
           <div className='machine bg-vBlue'>
             <input type="radio" name='machacc' id='mach1' className='checkbox'/>
             <label htmlFor="mach1" className='accordionLabel'>Machine 1</label>
