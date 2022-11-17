@@ -10,12 +10,12 @@
 
 .input1 {
     resize: unset;
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 17vh;
+    height: 15rem;
     width: 90%;
     text-align: left;
     max-width: 1100px;
+    outline: none;
+    margin-top: 1vh;
 }
 
 .checkLabel {
