@@ -1,24 +1,11 @@
 .filler-space {
     width: 100vw;
     height: calc(100vh - 70px);
-  }
-
-.centerbox {
     display: flex;
     justify-content: center;
     padding: 1rem;
     flex-direction:column;
-    width: 60vw;
-    border: 1px solid black;
-    border-radius: 10px;
     text-align: center;
-    margin: 0;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
 .input1 {
@@ -28,18 +15,11 @@
     height: 17vh;
     width: 90%;
     text-align: left;
+    max-width: 1100px;
 }
 
 .checkLabel {
     margin: 20px;
-}
-
-.send {
-    padding: 5px;
-    padding-right: 20px;
-    padding-left: 20px;
-    border-radius: 25px;
-    font-size: 20px;
 }
 
 @media (max-width: 768px) {
