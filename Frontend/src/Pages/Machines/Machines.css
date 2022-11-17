@@ -26,6 +26,7 @@
 
 .machine {
   margin: .5rem;
+  padding-left: 1%;
 }
 
 .accordionLabel {
@@ -64,6 +65,7 @@
 
 .accText {
   display: none;
+  list-style-type: disc;
 }
 
 .accResolve {
