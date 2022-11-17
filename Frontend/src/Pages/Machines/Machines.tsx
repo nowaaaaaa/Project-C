@@ -8,36 +8,42 @@ export function Machines() {
   return (
     <body>
       < Navbar />
-      <div className='filler-space bg-white dark:bg-slate-800' />
-        <div className='centerBox'>
-          <h1 className='text-cyan-400'>Your Machines</h1>
-          <div className='machine bg-vBlue'>
-            <input type="radio" name='machacc' id='mach1' className='checkbox'/>
+      <div className='filler-space bg-white dark:bg-slate-800 ' />
+        <div className='centerBox '>
+          <h1 className='text-slate-800 dark:text-cyan-400 text-2xl'>Your Machines</h1>
+          <div className='machine bg-slate-300 dark:slate-500 text-slate-800 dark:text-cyan-800'>
+            <input type="checkbox" name='machacc' id='mach1' className='checkbox'/>
             <label htmlFor="mach1" className='accordionLabel'>Machine 1</label>
-            <p className='accText bg-sky-400'>Problem 1</p>
-            <p className='accText bg-sky-400'>Problem 2</p>
-            <p className='accText bg-sky-400'>Problem 3</p>
-            <a href="problemsolver" className='accResolve bg-red-700 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <ul className='accText text-left flex-col gap-4'>
+              <li>Problem 1</li>
+              <li>Problem 2</li>
+              <li>Problem 3</li>
+            </ul>
+            <a href="problemsolver" className='accResolve bg-red-600 hover:bg-rose-800 text-gray-200 rounded-xl'> Problem still not resolved?</a>
             <br className='accBr' />
             <br className='accBr' />
           </div>
-          <div className='machine bg-vBlue'>
-            <input type="radio" name='machacc' id='mach2' className='checkbox'/>
+          <div className='machine bg-slate-300 dark:slate-500 text-slate-800 dark:text-cyan-800'>
+            <input type="checkbox" name='machacc' id='mach2' className='checkbox'/>
             <label htmlFor="mach2" className='accordionLabel'>Machine 2</label>
-            <p className='accText bg-sky-400'>Problem 1</p>
-            <p className='accText bg-sky-400'>Problem 2</p>
-            <p className='accText bg-sky-400'>Problem 3</p>
-            <a href="problemsolver" className='accResolve bg-red-700 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <ul className='accText text-left flex-col gap-4'>
+              <li>Problem 1</li>
+              <li>Problem 2</li>
+              <li>Problem 3</li>
+            </ul>
+            <a href="problemsolver" className='accResolve bg-red-600 hover:bg-rose-800 text-gray-200 rounded-xl'> Problem still not resolved?</a>
             <br className='accBr' />
             <br className='accBr' />
           </div>
-          <div className='machine bg-vBlue'>
-            <input type="radio" name='machacc' id='mach3' className='checkbox'/>
+          <div className='machine bg-slate-300 dark:slate-500 text-slate-800 dark:text-cyan-800'>
+            <input type="checkbox" name='machacc' id='mach3' className='checkbox'/>
             <label htmlFor="mach3" className='accordionLabel'>Machine 3</label>
-            <p className='accText bg-sky-400'>Problem 1</p>
-            <p className='accText bg-sky-400'>Problem 2</p>
-            <p className='accText bg-sky-400'>Problem 3</p>
-            <a href="problemsolver" className='accResolve bg-red-700 hover:bg-rose-800'> Problem Not Resolved?</a>
+            <ul className='accText text-left flex-col gap-4'>
+              <li>Problem 1</li>
+              <li>Problem 2</li>
+              <li>Problem 3</li>
+            </ul>
+            <a href="problemsolver" className='accResolve bg-red-600 hover:bg-rose-800 text-gray-200 rounded-xl'> Problem still not resolved?</a>
             <br className='accBr' />
             <br className='accBr' />
           </div>
