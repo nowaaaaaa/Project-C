@@ -1,9 +1,9 @@
 import React from 'react';
 import './VisconPage.css';
-import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd'
-import './VisconPage'
 
 import { Navbar } from '../../Components/Navbar/Navbar'
+
+
 
 function moveItem() {
   const
@@ -25,33 +25,31 @@ export function VisconPage() {
     <body>
         <Navbar/>
         <div className='bg bg-white dark:bg-slate-800'>
-            <div className='centerbox bg-white dark:bg-slate-600'>
               <div className='list'>
-              <p>Pending</p>
+              <p className='dark:text-cyan-400'>Pending</p>
               <ul className='reports bg-gray-200 dark:bg-sky-800 rounded-t-lg'>
                   <li id='origin'>
-                    <div className='bg-sky-400 rounded-3xl'>
+                    <div className='bg-sky-400 rounded-3xl pb-2'>
                       <p className='reporterName font-lora rounded-t-3xl bg-vBlue text-center border-b border-black '>Boer Harm</p>
                       <p className='reportText pl-2'>My machine broke after loading tomatoes</p>
                       <p className='reportText pl-2'>It should be moving the tomatoes</p>
                       <p className='reportText pl-2'>06 12345678</p>
-                      <p className='text-center'><a onClick={moveItem} className='bg-vBlue px-4 rounded-3xl'>Claim</a></p>
+                      <p className='text-center'><a onClick={moveItem} className='pointer bg-vBlue px-4 rounded-3xl'>Claim</a></p>
                     </div>
                   </li>
                 </ul>
               </div>
               <div className='list'>
-                <p>Active</p>
+                <p className='dark:text-cyan-400'>Active</p>
                 <ul className='reports bg-gray-200 dark:bg-sky-800 rounded-t-lg py-2' id='target'>
                 </ul>
               </div>
               <div className='list'>
-                <p>Closed</p>
+                <p className='dark:text-cyan-400'>Closed</p>
                 <ul className='reports bg-gray-200 dark:bg-sky-800 rounded-t-lg' id='last'>
                   <li></li>
                 </ul>
               </div>
-            </div>
         </div>
     </body>
   );
