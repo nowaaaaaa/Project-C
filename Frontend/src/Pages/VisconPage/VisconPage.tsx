@@ -3,7 +3,7 @@ import './VisconPage.css';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
 
-
+let text = "Claim";
 
 function moveItem() {
   const
@@ -34,7 +34,7 @@ export function VisconPage() {
                       <p className='reportText pl-2'>My machine broke after loading tomatoes</p>
                       <p className='reportText pl-2'>It should be moving the tomatoes</p>
                       <p className='reportText pl-2'>06 12345678</p>
-                      <p className='text-center'><a onClick={moveItem} className='pointer bg-vBlue px-4 rounded-3xl'>Claim</a></p>
+                      <p className='text-center'><a onClick={moveItem} className='pointer bg-vBlue px-4 rounded-3xl'>{text}</a></p>
                     </div>
                   </li>
                 </ul>
