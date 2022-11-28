@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export function UserpageButtons(user: string) {
   let buttons: [string, () => void, string][] = [];
   const navigate = useNavigate();
-  const employees = () => navigate('../login');
+  const employees = () => navigate('../userCreation');
   const tickets = () => navigate('../visconPage');
   if (user === 'Client') {
     buttons.push(['Manage Employees', employees, 'You have no new notifications.']);

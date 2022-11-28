@@ -35,7 +35,7 @@ export function Machines() {
             <br className='accBr' />
             <br className='accBr' />
           </div>
-          <div className='machine bg-slate-200 transition-all ease-in-out duration-[2000ms] hover:bg-slate-300 dark:slate-500 text-slate-700 dark:text-cyan-800'>
+          <div className='machine bg-slate-200 transition-all ease-in-out duration-200 hover:bg-slate-300 dark:slate-500 text-slate-700 dark:text-cyan-800'>
             <input type="checkbox" name='machacc' id='mach3' className='checkbox'/>
             <label htmlFor="mach3" className='accordionLabel'>Machine 3</label>
             <ul className='accText text-left flex-col gap-4'>

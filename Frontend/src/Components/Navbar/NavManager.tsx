@@ -13,6 +13,7 @@ ref.set('/userpage', 'werknemer')
 ref.set('/problemSolver', 'werknemer')
 ref.set('/visconPage', 'viscon werknemer')
 ref.set('/visconpage', 'viscon werknemer')
+ref.set('/userCreation', 'viscon werknemer')
 
 export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
   location = useLocation().pathname;
