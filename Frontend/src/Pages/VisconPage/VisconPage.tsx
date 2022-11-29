@@ -2,6 +2,7 @@ import React from 'react';
 import './VisconPage.css';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
+import { report } from 'process';
 
 let text = "Claim";
 
@@ -18,6 +19,21 @@ function moveItem() {
     if (ol) {
       last?.append(ol);
     }
+};
+
+function rep(reporter: string, problem: string, should:string, tried:string, phone:string) {
+  return(
+    <li id="origin">
+      <div>
+        <p className='reporterName font-lora bg-slate-300 dark:bg-slate-700 text-center'>{reporter}</p>
+        <p className='reportText pl-2'>{problem}</p>
+        <p className='reportText pl-2'>{should}</p>
+        <p className='reportText pl-2'>{tried}</p>
+        <p className='reportText pl-2'>{phone}</p>
+        <p className='text-center pb-2 mb-3 border-b border-black'><a onClick={moveItem} className='pointer bg-slate-400 dark:bg-slate-700 px-4 rounded-3xl'>{text}</a></p>
+      </div>
+    </li>
+  )
 }
 
 export function VisconPage() {
@@ -28,15 +44,9 @@ export function VisconPage() {
               <div className='reports bg-slate-300 dark:bg-slate-600'>
               <p className='dark:text-cyan-400 text-center'>Pending</p>
               <ul className=''>
-                  <li id='origin'>
-                    <div className='bg-slate-300 dark:bg-slate-600 rounded-xl pb-2'>
-                      <p className='reporterName font-lora rounded-t-xl bg-slate-300 dark:bg-slate-600 text-center border-b border-black '>Boer Harm</p>
-                      <p className='reportText pl-2'>My machine broke after loading tomatoes</p>
-                      <p className='reportText pl-2'>It should be moving the tomatoes</p>
-                      <p className='reportText pl-2'>06 12345678</p>
-                      <p className='text-center'><a onClick={moveItem} className='pointer bg-slate-400 dark:bg-slate-700 px-4 rounded-3xl'>{text}</a></p>
-                    </div>
-                  </li>
+                    {rep("Harry", "My machine broke while trying to load my apples", "It should have moved the apples to the shuttle", "I tried to move the basket", "06 12345678")}
+                    {rep("Peter", "My machine broke while trying to load my eggs", "It should have moved the eggs to the shuttle", "I tried to move the basket", "06 87654321")}
+                    {rep("Harm", "My machine broke while trying to load my tomatoes", "It should have moved the tomatoes to the shuttle", "I tried to move the basket", "06 0192837")}
                 </ul>
               </div>
               <div className='reports bg-slate-300 dark:bg-slate-600'>
