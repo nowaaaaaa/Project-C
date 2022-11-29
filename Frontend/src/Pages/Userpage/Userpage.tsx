@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import{ UserpageButtons } from './UserpageButtons';
 import './Userpage.css';
 import '../../App.css';
 
 //Component
 import { Navbar } from '../../Components/Navbar/Navbar'
 import{ Footer } from '../../Components/Footer/Footer'
+import{ UserpageButtons } from '../../Components/Userpage/UserpageButtons';
 
 export function Userpage() {
   const navigate = useNavigate();
