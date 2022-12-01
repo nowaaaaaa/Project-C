@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios, { AxiosResponse } from 'axios';
 import { Route, Link, Routes, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import './Sidebar.css';
+
+import { info } from '../../BackendManager/endpoints';
 
 var location:string = "";
 
@@ -18,6 +21,13 @@ ref.set('/userCreation', 'viscon werknemer')
 export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
   location = useLocation().pathname;
   const user = ref.get(location);
+  
+  useEffect(() => {
+    axios.get(info)
+      .then((response: AxiosResponse<any>) => {
+        console.log(response.data);
+      })
+  }, [])
   
   // no user selected
   if (user === 'all') {
