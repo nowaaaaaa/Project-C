@@ -5,7 +5,7 @@ export function LanguageSwitch() {
 
   const toggleLanguage = () => {
     if (localStorage.lang === "en") {
-      localStorage.lang = "nl";
+      localStorage.lang = "pl";
     }
     else {
       localStorage.lang = "en";
@@ -14,7 +14,7 @@ export function LanguageSwitch() {
   }
   
   return (
-      <button className='bg-black dark:bg-white h-12 w-12 text-white dark:text-black' onClick={toggleLanguage}>
+      <button className='h-12 w-12 text-white dark:text-black' onClick={toggleLanguage}>
         {localStorage.lang}
       </button>
   );

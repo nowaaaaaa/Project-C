@@ -1,12 +1,24 @@
 import React, {useState} from 'react';
 import langPack from './Languagepacks.json';
 
-interface IDictionary {
+interface Dictionary {
     [index:string]: string;
 }
-let lang_nl: IDictionary = langPack.nl;
+interface LanguageMap {
+    [index:string]: Dictionary;
+}
 
+var names = Object.getOwnPropertyNames(langPack);
+var values = Object.values(langPack);
+let langMap:LanguageMap = {};
+for (let i = 0; i < names.length; i++) {    
+    langMap[names[i]] = values[i];
+}
 export function Translate(str: string) {
-    if (localStorage.lang === "nl" && lang_nl[str] !== undefined) return lang_nl[str];
-    return str;
+    let res: string = str;
+    if (names.find(el => el === localStorage.lang) !== undefined) {
+        res = langMap[localStorage.lang][str];
+        if (res === undefined) return str;
+    }
+    return res;
 }

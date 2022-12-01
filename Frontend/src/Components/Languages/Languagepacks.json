@@ -4,10 +4,23 @@
         "Log Out" : "Uitloggen",
         "Home" : "Thuis",
         "Issues" : "Problemen",
-        "Problem Solver" : "Probleemoplosser"
+        "Problem Solver" : "Probleemoplosser",
+        "Sign In" : "Inloggen",
+        "Welcome, " : "Welkom, ",
+        "from " : "van "
     },
     "de": {
-        "Log in" : "Anmelden",
-        "Log out" : "Abmelden"
+        "Log In" : "Anmelden",
+        "Log Out" : "Abmelden"
+    },
+    "pl": {
+        "Log In" : "Zaloguj się",
+        "Log Out" : "Wyloguj się",
+        "Home" : "Dom",
+        "Issues" : "Problemy",
+        "Problem Solver" : "Rozwiązowanie problemów",
+        "Sign In" : "Zaloguj się",
+        "Welcome, " : "Witaj, ",
+        "from " : "z "
     }
 }
