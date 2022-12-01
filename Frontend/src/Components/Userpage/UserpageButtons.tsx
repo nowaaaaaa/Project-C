@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Translate } from '../../Components/Languages/Translator';
 
 export function UserpageButtons(user: string) {
   let buttons: [string, () => void, string, string][] = [];
@@ -7,8 +8,8 @@ export function UserpageButtons(user: string) {
   const employees = () => navigate('../userCreation');
   const tickets = () => navigate('../visconPage');
   if (user === 'Client') {
-    buttons.push(['Manage Employees', employees, 'You have no new notifications.', 'https://www.thebalancemoney.com/thmb/1eNZeoFI_ON4BpTQXdHMihOtMQ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Employees-3117af3d30fa438bb6dd3ad4141a8b4c.jpg']);
-    buttons.push(['View Tickets', tickets, 'Your company has issued 3 new tickets.', 'https://ictzaak.nl/wp-content/uploads/2019/06/Helpdesk-ICTzaak-Blogpage.png'])
+    buttons.push([`${Translate('Manage Employees')}`, employees, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, 'https://www.thebalancemoney.com/thmb/1eNZeoFI_ON4BpTQXdHMihOtMQ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Employees-3117af3d30fa438bb6dd3ad4141a8b4c.jpg']);
+    buttons.push([`${Translate('View Tickets')}`, tickets, `${Translate('Your company has issued')} 3 ${Translate('new tickets')}.`, 'https://ictzaak.nl/wp-content/uploads/2019/06/Helpdesk-ICTzaak-Blogpage.png'])
   }
   const root = document.getElementsByTagName("html")[0];
 
