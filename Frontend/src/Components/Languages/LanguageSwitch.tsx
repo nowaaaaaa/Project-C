@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-
 //Component
-
 export function LanguageSwitch() {
   const root = document.getElementsByTagName("html")[0];
 
@@ -14,7 +12,7 @@ export function LanguageSwitch() {
     }
     window.location.reload()
   }
-
+  
   return (
       <button className='bg-black dark:bg-white h-12 w-12 text-white dark:text-black' onClick={toggleLanguage}>
         {localStorage.lang}

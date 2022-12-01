@@ -1,0 +1,13 @@
+{
+    "nl": {
+        "Log In" : "Inloggen",
+        "Log Out" : "Uitloggen",
+        "Home" : "Thuis",
+        "Issues" : "Problemen",
+        "Problem Solver" : "Probleemoplosser"
+    },
+    "de": {
+        "Log in" : "Anmelden",
+        "Log out" : "Abmelden"
+    }
+}
