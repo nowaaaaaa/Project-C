@@ -19,7 +19,7 @@ export function LanguageSwitch() {
       </button>
       <div className="absolute z-10 hidden bg-grey-200 group-hover:block">
           
-          <div className="px-2 pt-2 pb-4 bg-white bg-gray-200 shadow-lg">
+          <div className="px-2 pt-2 pb-4 bg-slate-200 dark:bg-slate-600 shadow-lg">
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <li>
               <button className='' onClick={() => toggleLanguage("en")}>EN</button>
@@ -33,11 +33,9 @@ export function LanguageSwitch() {
               <li>
               <button className='' onClick={() => toggleLanguage("de")}>DE</button>
               </li>
-              {/*
               <li>
               <button className='' onClick={() => toggleLanguage("cn")}>CN</button>
               </li>
-*/}
             </ul>
           </div>
       </div>
