@@ -14,7 +14,7 @@ export function UserCreation() {
       < Navbar />
       <div className='usercreation-container bg-white dark:bg-slate-800 grid place-items-center'> 
         <div className="md:text-6xl text-2xl text-cyan-800 dark:text-cyan-400 text-center font-helvetica" >Create a new user</div> 
-        <div className='grid md:grid-cols-2 place-items-center max-w-[800px] w-[80vw] '>
+        <div className='grid md:grid-cols-2 place-items-center max-w-[800px] w-[80vw]'>
           <div className='text-cyan-800 dark:text-cyan-400'>Email
           <textarea className='bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 mb-[2vh] md:w-[20vw] resize-none outline-0'  placeholder=''/></div>
           <div className='text-cyan-800 dark:text-cyan-400'>Email

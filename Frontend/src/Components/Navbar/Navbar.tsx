@@ -7,6 +7,7 @@ import { HiOutlineX } from 'react-icons/hi'
 
 //Component
 import { Sidebar } from '../../Components/Sidebar/Sidebar'
+import { LanguageSwitch } from '../../Components/Languages/LanguageSwitch'
 import { NavbarContent } from './NavManager'
 
 export function Navbar() {
@@ -65,6 +66,7 @@ export function Navbar() {
           <HiOutlineMenu className="stroke-black dark:stroke-cyan-400"/>
         </div>
         <NavbarContent bar={'n'} toggleMode={toggleMode}/>
+        <LanguageSwitch></LanguageSwitch>
       </div>
     </>
   );
