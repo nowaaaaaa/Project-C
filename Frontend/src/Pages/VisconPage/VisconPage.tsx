@@ -3,6 +3,7 @@ import './VisconPage.css';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { report } from 'process';
+import { Translate } from '../../Components/Languages/Translator';
 
 let text = "Claim";
 
@@ -61,7 +62,7 @@ export function VisconPage() {
         <Navbar/>
         <div className='bg bg-white dark:bg-slate-800 pt-[5vh]'>
             <div className='reports bg-slate-300 dark:bg-slate-600'>
-              <p className='dark:text-cyan-400 text-center'>Pending</p>
+              <p className='dark:text-cyan-400 text-center'>{Translate("Pending")}</p>
               <ul className=''>
                 {tickets.map((ticket, index) => 
                   <TicketComponent ticket={ticket} key={index} originalList={tickets} setOriginalList={setTickets} nextList={activeTickets} setNextList={setActiveTickets} />
@@ -69,7 +70,7 @@ export function VisconPage() {
                 </ul>
               </div>
               <div className='reports bg-slate-300 dark:bg-slate-600'>
-                <p className='dark:text-cyan-400 text-center'>Active</p>
+                <p className='dark:text-cyan-400 text-center'>{Translate("Active")}</p>
                 <ul className='' id='target'>
                   {activeTickets.map((ticket, index) => 
                     <TicketComponent ticket={ticket} key={index} originalList={activeTickets} setOriginalList={setActiveTickets} nextList={closedTickets} setNextList={setClosedTickets} />
@@ -77,7 +78,7 @@ export function VisconPage() {
                 </ul>
               </div>
               <div className='reports bg-slate-300 dark:bg-slate-600'>
-              <p className='dark:text-cyan-400 text-center'>Closed</p>
+              <p className='dark:text-cyan-400 text-center'>{Translate("Closed")}</p>
                 <ul className='' id='last'>
                   {closedTickets.map((ticket, index) =>
                     <TicketComponent ticket={ticket} key={index} originalList={closedTickets} setOriginalList={setClosedTickets} nextList={[]} setNextList={() => {}} />

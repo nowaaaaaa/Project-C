@@ -2,10 +2,11 @@ import './Machines.css';
 import React from 'react';
 import { MakeMachine, Machine, problem } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
+import { Translate } from '../../Components/Languages/Translator';
 
 const problem1: problem = {
-  problem: "The shuttle is stuck",
-  solution: "Move items on the shuttle cable"
+  problem: Translate("The shuttle is stuck."),
+  solution: Translate("Move items on the shuttle cable.")
 }
 
 const machinenumber1: Machine = {

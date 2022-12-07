@@ -13,6 +13,7 @@ var values = Object.values(langPack);
 let langMap:LanguageMap = {};
 for (let i = 0; i < names.length; i++) {    
     langMap[names[i]] = values[i];
+    console.log('hello');
 }
 export function Translate(str: string) {
     let res: string = str;

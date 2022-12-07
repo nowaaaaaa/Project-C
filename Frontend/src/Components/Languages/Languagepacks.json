@@ -15,7 +15,18 @@
         "new notifications" : "nieuwe meldingen",
         "Your company has issued" : "Uw bedrijf heeft",
         "new tickets" : "nieuwe tickets verzonden",
-        "Do you have a problem to report?" : "Wilt u een probleem melden?"
+        "Do you have a problem to report?" : "Wilt u een probleem melden?",
+        "Describe the problem with the selected machine" : "Beschrijf het probleem met de geselecteerde machine",
+        "Describe what the machine is supposed to do" : "Beschrijf wat de machine zou moeten doen",
+        "Is your machine on" : "Is uw machine aan",
+        "Is nothing stuck in the machine" : "Zit er niks vast in de machine",
+        "Send report" : "Verstuur ticket",
+        "Pending" : "Openstaand",
+        "Active" : "Geclaimd",
+        "Closed" : "Opgelost",
+        "Still not resolved" : "Nog niet opgelost",
+        "Move items on the shuttle cable." : "Verplaats items op de shuttle kabel.",
+        "The shuttle is stuck." : "De shuttle is vastgelopen."
     },
     "de": {
         "Log In" : "Anmelden",
