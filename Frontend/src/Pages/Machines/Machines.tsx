@@ -1,6 +1,5 @@
 import './Machines.css';
-import React from 'react';
-import { MakeMachine, Machine, problem } from './MakeMachine'
+import { Machine, problem, listMachines } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 
@@ -15,19 +14,16 @@ const machinenumber1: Machine = {
   problems: [problem1, problem1, problem1, problem1, problem1, problem1, problem1]
 }
 
-const pro = [problem1, problem1];
+//var machinesList: Machine[] = (Database shit) => in export function {listMachines(machinesList)}
+
+const machTestList: Machine[] = [machinenumber1, machinenumber1, machinenumber1, machinenumber1, machinenumber1];
 
 export function Machines() {
   return (
     <>
       < Navbar />
       <div className='a min-h-screen h-max bg-white dark:bg-slate-800'>
-        <MakeMachine type="Shuttle" name="Shuttle F6" problems={pro}/>
-        <MakeMachine type="Shuttle" name="Shuttle F6" problems={pro}/>
-        <MakeMachine type="Shuttle" name="Shuttle F6" problems={pro}/>
-        <MakeMachine type="Shuttle" name="Shuttle F6" problems={pro}/>
-        <MakeMachine type="Shuttle" name="Shuttle F6" problems={pro}/>
-        <MakeMachine type="Shuttle" name="Shuttle F6" problems={pro}/>
+        {listMachines(machTestList)}
       </div>
     </>
   );

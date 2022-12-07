@@ -18,7 +18,7 @@ export function MakeMachine(mach: Machine) {
   const solver = () => {navigate('/problemSolver')};
   const [isActive, setIsActive] = useState(false);
   return (
-    <div className='py-5'>
+    <div className='py-3.5'>
       <div className='bg-slate-300 dark:bg-slate-600 dark:text-cyan-400 mx-auto w-full md:w-3/5'>
         <h1 className='header text-xl text-center bg-slate-400 dark:bg-slate-700 cursor-pointer hover:bg-slate-500 dark:hover:bg-sky-900 ease-in-out duration-150 select-none' onClick={() => setIsActive(!isActive)}>{mach.name}</h1>
         {isActive && <>{mach.problems.map((problem) => 
@@ -33,5 +33,17 @@ export function MakeMachine(mach: Machine) {
         </>}
       </div>
     </div>
+  )
+}
+
+export function listMachines(machines: Machine[]) {
+  return (
+    <>
+    {machines.map((mach) => 
+      <>
+        <MakeMachine name={mach.name} type={mach.type} problems={mach.problems}/>
+      </>
+        )}
+    </>
   )
 }
