@@ -6,46 +6,61 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-class MyContext : DbContext { 
-    public DbSet<User> users { get; set; }
-    public DbSet<Company> companies { get; set; }
-    public DbSet<Machine> machines { get; set; }
+namespace Backend.EF {
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-        optionsBuilder.UseNpgsql("User ID = postgres; Password = admin; Host = localhost; port = 5432; Database = Viscon; Pooling = true");
+    class User {
+        [Key]
+        public Guid id { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public Company company { get; set; }
+        public string role { get; set; }
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        modelBuilder.HasDefaultSchema("EF");
+    class Company {
+        [Key]
+        public Guid id { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
     }
 
-}
+    class MachineType {
+        [Key]
+        public Guid id { get; set; }
+        public string name { get; set; }
+    }
 
-class User {
-    public string name;
-}
+    class Machine {
+        [Key]
+        public Guid id { get; set; }
+        public string name { get; set; }
+        public MachineType type { get; set; }
+        public Company company { get; set; }
+    }
 
-class Facilty { 
-    [Key]
-    public int facid { get; set; }
-    [Required, Column(TypeName = "varchar(200)")]
-    public string name { get; set; }
-    
-    public decimal membercost { get; set; }
-    public decimal guestcost { get; set; }
-    public decimal initialoutlay { get; set; }
-    public decimal monthlymaintenance { get; set; }
-}
+    class AckProblem {
+        [Key]
+        public Guid id { get; set; }
+        public MachineType type { get; set; }
+    }
 
-class Booking { 
-    [Key]
-    public int bookid { get; set; }
-    [ForeignKey ("facid")]
-    public Facilty? facilty { get; set; }
-    public int facid { get; set; }
-    [ForeignKey ("memid")]
-    public Member? member { get; set; }
-    public int memid { get; set; }
-    public DateTime starttime { get; set; }
-    public int slots { get; set; }
+    class Ticket {
+        [Key]
+        public Guid id { get; set; }
+        public User submitter { get; set; }
+        public User? handler { get; set; }
+        public DateTime submitDate { get; set; }
+        public bool solved { get; set; }
+        public DateTime? solveDate { get; set; }
+    }
+
+    class TicketDetails {
+        [Key]
+        public Guid id { get; set; }
+        public Ticket ticket { get; set; }
+        public string problem { get; set; }
+        public string expected { get; set; }
+        public string solution { get; set; }
+    }
 }
