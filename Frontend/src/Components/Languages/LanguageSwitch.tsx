@@ -30,10 +30,9 @@ export function LanguageSwitch() {
               <li>
               <button className='' onClick={() => toggleLanguage("de")}>DE</button>
               </li>
-              {/*<li>
+              <li>
               <button className='' onClick={() => toggleLanguage("cn")}>CN</button>
               </li>
-  */}
             </ul>
           </div>
       </div>

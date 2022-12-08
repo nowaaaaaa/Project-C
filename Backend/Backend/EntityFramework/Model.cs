@@ -1,10 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 class MyContext : DbContext { 
     public DbSet<User> users { get; set; }
-    public DbSet<company> companies { get; set; }
+    public DbSet<Company> companies { get; set; }
     public DbSet<Machine> machines { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
@@ -16,7 +20,6 @@ class MyContext : DbContext {
     }
 
 }
-//https://pgexercises.com/gettingstarted.html
 
 class User {
     public string name;

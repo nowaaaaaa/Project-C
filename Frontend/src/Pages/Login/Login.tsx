@@ -25,7 +25,7 @@ export function Login() {
         </div>
         {/* <h1 className="text-6xl mb-10 text-cyan-800 dark:text-cyan-400">Service Application</h1> */}
         <form
-          className='login-form bg-slate-300 dark:bg-slate-700'
+          className='login-form bg-slate-300 dark:bg-slate-600'
           onSubmit={e => {
             e.preventDefault()
             navigate("/");
@@ -33,21 +33,21 @@ export function Login() {
           }}
         >
           <input
-            className='bg-slate-200 dark:bg-slate-600 dark:text-slate-300'
+            className='dark:placeholder:text-slate-400 bg-slate-200 dark:bg-slate-500 dark:text-slate-300'
             type='text'
             placeholder='Email'
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
           <input
-            className='bg-slate-200 dark:bg-slate-600 dark:text-slate-300'
+            className='dark:placeholder:text-slate-400 bg-slate-200 dark:bg-slate-500 dark:text-slate-300'
             type='password'
             placeholder='Password'
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
 
-          <button className='text-cyan-800 dark:text-cyan-400' onClick={Userpage}>Sign In</button>
+          <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700' onClick={Userpage}>Sign In</button>
 
         </form>
         <button className='py-1 text-cyan-800 dark:text-cyan-400'>Forgot password?</button>
