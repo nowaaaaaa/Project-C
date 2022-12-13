@@ -45,7 +45,38 @@ const tickClosed: Ticket = {
 
 const tickarr: Ticket[] = [tickOpen, tickActive, tickClosed, tickActive, tickClosed, tickOpen, tickOpen]
 
+type TicketProps = {
+  ticket: Ticket
+  originalList: Ticket[]
+  setOriginalList: (list: Ticket[]) => void
+  nextList: Ticket[]
+  setNextList: (list: Ticket[]) => void
+}
 
+const TicketComponent : React.FC<TicketProps> = (props) => {
+  return <li id="origin">
+      <div>
+        <p className='reporterName font-lora bg-slate-300 dark:bg-slate-700 text-center'>{props.ticket.reporter}</p>
+        <p className='reportText pl-2'>{props.ticket.problem}</p>
+        <p className='reportText pl-2'>{props.ticket.should}</p>
+        <p className='reportText pl-2'>{props.ticket.tried}</p>
+        <p className='reportText pl-2'>{props.ticket.phone}</p>
+        <p className='text-center pb-2 mb-3 border-b border-black'>
+          <a 
+            onClick={() => {
+              props.setNextList([...props.nextList, props.ticket])
+              props.setOriginalList(props.originalList.filter((t) => t !== props.ticket))
+            }}
+            className='pointer bg-slate-400 dark:bg-slate-700 px-4 rounded-3xl'
+          >
+            {text}
+          </a>
+        </p>
+      </div>
+    </li>
+}
+
+<TicketComponent ticket={ticket} key={index} originalList={tickets} setOriginalList={setTickets} nextList={activeTickets} setNextList={setActiveTickets} />
 
 const activeList: Ticket[] = returnList(tickarr, "ACTIVE");
 const closedList: Ticket[] = returnList(tickarr, "CLOSED");
@@ -72,7 +103,7 @@ function returnList(tick: Ticket[], listName: "OPEN" | "ACTIVE" | "CLOSED") {
   return tickList;
 }
 
-function TicketComponent(ticks: Ticket[], listName: string) {
+function Ticketmapker(ticks: Ticket[], listName: string) {
   return (
     <div>
       <h1>{listName}</h1>
