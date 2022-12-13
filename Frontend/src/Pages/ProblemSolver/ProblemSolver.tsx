@@ -15,10 +15,10 @@ export function ProblemSolver() {
       <div className='filler-space bg-white dark:bg-slate-800'>
           <div className='text-cyan-800 dark:text-cyan-400'>
             <p className='self-left'>{Translate('Describe the problem with the selected machine')}:</p>
-            <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 mb-[2vh] border-vBlue focus:border'  placeholder=''/>
+            <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 mb-[2vh] focus:border-vBlue border-slate-300 border'  placeholder=''/>
             <br />
             <p>{Translate('Describe what the machine is supposed to do')}:</p>
-            <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 md:mb-3 border-vBlue focus:border' placeholder=''/>
+            <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 md:mb-3 focus:border-vBlue border-slate-300 border' placeholder=''/>
             <br />
             <label htmlFor="machineOn" className='checkLabel'>{Translate("Is your machine on")}?</label>
             <input type="checkbox" className='machineOn' />
