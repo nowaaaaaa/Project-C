@@ -25,6 +25,7 @@ namespace Backend.EF {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.HasDefaultSchema("EF");
+            modelBuilder.Entity<Machine>().HasOne(m => m.company).WithMany(c => c.machines).HasForeignKey(m => m.companyId);
         }
     }
 }

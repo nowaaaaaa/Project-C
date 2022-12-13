@@ -23,6 +23,7 @@ namespace Backend.EF {
         public Guid id { get; set; }
         public string name { get; set; }
         public string address { get; set; }
+        public List<Machine> machines { get; set; } 
     }
 
     class MachineType {
@@ -37,12 +38,15 @@ namespace Backend.EF {
         public string name { get; set; }
         public MachineType type { get; set; }
         public Company company { get; set; }
+        public Guid companyId { get; set; }
     }
 
     class AckProblem {
         [Key]
         public Guid id { get; set; }
         public MachineType type { get; set; }
+        public string problem { get; set; }
+        public string solution { get; set; }
     }
 
     class Ticket {
@@ -61,6 +65,6 @@ namespace Backend.EF {
         public Ticket ticket { get; set; }
         public string problem { get; set; }
         public string expected { get; set; }
-        public string solution { get; set; }
+        public string? solution { get; set; }
     }
 }
