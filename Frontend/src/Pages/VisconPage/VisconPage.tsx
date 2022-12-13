@@ -1,91 +1,57 @@
 import React, { useState } from 'react';
-import './VisconPage.css';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
-import { report } from 'process';
-import { Translate } from '../../Components/Languages/Translator';
+import { Ticket, TicketList } from './makeLists';
 
-let text = "Claim";
-
-type Ticket = {
-  reporter: string
-  problem: string
-  should: string
-  tried: string
-  phone: string 
-  // state: "OPEN" | "ACTIVE" | "CLOSED"
-}
-
-type TicketProps = {
-  ticket: Ticket
-  originalList: Ticket[]
-  setOriginalList: (list: Ticket[]) => void
-  nextList: Ticket[]
-  setNextList: (list: Ticket[]) => void
-}
-
-const TicketComponent : React.FC<TicketProps> = (props) => {
-  return <li id="origin">
-      <div>
-        <p className='reporterName font-lora bg-slate-300 dark:bg-slate-700 text-center'>{props.ticket.reporter}</p>
-        <p className='reportText pl-2'>{props.ticket.problem}</p>
-        <p className='reportText pl-2'>{props.ticket.should}</p>
-        <p className='reportText pl-2'>{props.ticket.tried}</p>
-        <p className='reportText pl-2'>{props.ticket.phone}</p>
-        <p className='text-center pb-2 mb-3 border-b border-black'>
-          <a 
-            onClick={() => {
-              props.setNextList([...props.nextList, props.ticket])
-              props.setOriginalList(props.originalList.filter((t) => t !== props.ticket))
-            }}
-            className='pointer bg-slate-400 dark:bg-slate-700 px-4 rounded-3xl'
-          >
-            {text}
-          </a>
-        </p>
-      </div>
-    </li>
-}
+var fullList: Ticket[] = [
+  { reporter: "1", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "OPEN"},
+  { reporter: "2", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321", state: "OPEN"},
+  { reporter: "3", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837", state: "OPEN"},
+  { reporter: "4", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "ACTIVE"},
+  { reporter: "5", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321", state: "ACTIVE"},
+  { reporter: "6", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837", state: "ACTIVE"},
+  { reporter: "7", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "CLOSED"},
+  { reporter: "8", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321", state: "CLOSED"},
+  { reporter: "9", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837", state: "CLOSED"},
+  { reporter: "10", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "ACTIVE"},
+]
 
 export function VisconPage() {
-  const [tickets, setTickets] = useState<Array<Ticket>>([
-    { reporter: "Harry", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678"},
-    { reporter: "Peter", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321"},
-    { reporter: "Harm", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837"}
-  ])
 
+  const [tickets, setTickets] = useState<Array<Ticket>>([])
   const [activeTickets, setActiveTickets] = useState<Array<Ticket>>([])
   const [closedTickets, setClosedTickets] = useState<Array<Ticket>>([])
 
+  if (tickets.length === 0 && activeTickets.length === 0 && closedTickets.length === 0) {
+    fullList.map((tick) => {
+      if (tick.state === "OPEN") {
+        tickets.push(tick)
+      } else if (tick.state === "ACTIVE") {
+        activeTickets.push(tick)
+      } else if (tick.state === "CLOSED") {
+        closedTickets.push(tick)
+      }
+      return <></>
+    }
+  )
+  }
+
   return (
     <div>
-        <Navbar/>
-        <div className='bg bg-white dark:bg-slate-800 pt-[5vh]'>
-            <div className='reports bg-slate-300 dark:bg-slate-600'>
-              <p className='dark:text-cyan-400 text-center'>{Translate("Pending")}</p>
-              <ul className=''>
-                {tickets.map((ticket, index) => 
-                  <TicketComponent ticket={ticket} key={index} originalList={tickets} setOriginalList={setTickets} nextList={activeTickets} setNextList={setActiveTickets} />
-                )}
-                </ul>
-              </div>
-              <div className='reports bg-slate-300 dark:bg-slate-600'>
-                <p className='dark:text-cyan-400 text-center'>{Translate("Active")}</p>
-                <ul className='' id='target'>
-                  {activeTickets.map((ticket, index) => 
-                    <TicketComponent ticket={ticket} key={index} originalList={activeTickets} setOriginalList={setActiveTickets} nextList={closedTickets} setNextList={setClosedTickets} />
-                  )}
-                </ul>
-              </div>
-              <div className='reports bg-slate-300 dark:bg-slate-600'>
-              <p className='dark:text-cyan-400 text-center'>{Translate("Closed")}</p>
-                <ul className='' id='last'>
-                  {closedTickets.map((ticket, index) =>
-                    <TicketComponent ticket={ticket} key={index} originalList={closedTickets} setOriginalList={setClosedTickets} nextList={[]} setNextList={() => {}} />
-                  )}
-                </ul>
-              </div>
-        </div>
+      <Navbar/>
+      <div className='a min-h-screen h-max bg-white dark:bg-slate-800'>
+        <div className='filler h-5 bg-white dark:bg-slate-800'></div>
+          <div className='bg-slate-300 dark:bg-slate-600 w-2/5 mx-auto my-9 py-3 px-2'>
+            <TicketList tickets={tickets} originalList={tickets} setOriginalList={setTickets} nextList={activeTickets} setNextList={setActiveTickets} />
+          </div>
+          <div className='bg-slate-300 dark:bg-slate-600 w-2/5 mx-auto my-9 py-3 px-2'>
+            <TicketList tickets={activeTickets} originalList={activeTickets} setOriginalList={setActiveTickets} nextList={closedTickets} setNextList={setClosedTickets} />
+          </div>
+          <div className='bg-slate-300 dark:bg-slate-600 w-2/5 mx-auto mt-9 py-3 px-2'>
+            <TicketList tickets={closedTickets} originalList={closedTickets} setOriginalList={setClosedTickets} nextList={activeTickets} setNextList={setActiveTickets} />
+          </div>
+          <div className='filler h-5 bg-white dark:bg-slate-800'></div>
+      </div>
     </div>
   );
 }
