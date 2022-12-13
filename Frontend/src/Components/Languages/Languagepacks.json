@@ -26,7 +26,8 @@
         "Closed" : "Opgelost",
         "Still not resolved" : "Nog niet opgelost",
         "Move items on the shuttle cable." : "Verplaats items op de shuttle kabel.",
-        "The shuttle is stuck." : "De shuttle is vastgelopen."
+        "The shuttle is stuck." : "De shuttle is vastgelopen.",
+        "Search for machines" : "Zoeken naar machines"
     },
     "de": {
         "Log In" : "Anmelden",
