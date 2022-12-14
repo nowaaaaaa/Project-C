@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
+import { Translate } from '../../Components/Languages/Translator';
 import { Ticket, TicketList } from './makeLists';
 
 var fullList: Ticket[] = [
@@ -41,14 +42,14 @@ export function VisconPage() {
       <Navbar/>
       <div className='a min-h-screen h-max bg-white dark:bg-slate-800'>
         <div className='filler h-5 bg-white dark:bg-slate-800'></div>
-          <div className='bg-slate-300 dark:bg-slate-600 w-2/5 mx-auto my-9 py-3 px-2'>
-            <TicketList tickets={tickets} originalList={tickets} setOriginalList={setTickets} nextList={activeTickets} setNextList={setActiveTickets} />
+          <div className='bg-slate-300 dark:bg-slate-600 w-full md:w-3/5 mx-auto my-9 py-3 px-2'>
+            <TicketList title={Translate("Pending")} tickets={tickets} originalList={tickets} setOriginalList={setTickets} nextList={activeTickets} setNextList={setActiveTickets}/>
           </div>
-          <div className='bg-slate-300 dark:bg-slate-600 w-2/5 mx-auto my-9 py-3 px-2'>
-            <TicketList tickets={activeTickets} originalList={activeTickets} setOriginalList={setActiveTickets} nextList={closedTickets} setNextList={setClosedTickets} />
+          <div className='bg-slate-300 dark:bg-slate-600 w-full md:w-3/5 mx-auto my-9 py-3 px-2'>
+            <TicketList title={Translate("Active")} tickets={activeTickets} originalList={activeTickets} setOriginalList={setActiveTickets} nextList={closedTickets} setNextList={setClosedTickets}/>
           </div>
-          <div className='bg-slate-300 dark:bg-slate-600 w-2/5 mx-auto mt-9 py-3 px-2'>
-            <TicketList tickets={closedTickets} originalList={closedTickets} setOriginalList={setClosedTickets} nextList={activeTickets} setNextList={setActiveTickets} />
+          <div className='bg-slate-300 dark:bg-slate-600 w-full md:w-3/5 mx-auto mt-9 py-3 px-2'>
+            <TicketList title={Translate("Closed")} tickets={closedTickets} originalList={closedTickets} setOriginalList={setClosedTickets} nextList={activeTickets} setNextList={setActiveTickets}/>
           </div>
           <div className='filler h-5 bg-white dark:bg-slate-800'></div>
       </div>

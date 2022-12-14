@@ -53,13 +53,13 @@ return <li id="origin">
 }
 
 //List of tickets that is used to display the tickets in a list. Also has the accordion built in the classname div
-export const TicketList : React.FC<{tickets: Ticket[], originalList: Ticket[], setOriginalList: (list: Ticket[]) => void, nextList: Ticket[], setNextList: (list: Ticket[]) => void}> = (props) => {
+export const TicketList : React.FC<{title: string, tickets: Ticket[], originalList: Ticket[], setOriginalList: (list: Ticket[]) => void, nextList: Ticket[], setNextList: (list: Ticket[]) => void}> = (props) => {
 const [isActive, setIsActive] = useState(false);
 return (
     <div className='dark:text-cyan-400'>
     <div className='cursor-pointer text-center select-none' onClick={() => setIsActive(!isActive)}>
-        <h1 className='inline-block text-center'>{title(props.tickets[0])}</h1>
-        <h1 className='inline-block text-end bg-red-500 rounded-xl px-2 ml-5'>{props.tickets.length}</h1>
+        <h1 className='inline-block text-center'>{props.title}</h1>
+        {!isActive && <h1 className='inline-block text-end bg-red-500 rounded-xl px-2 ml-5'>{props.tickets.length}</h1>}
     </div>
     {isActive && 
         <ul>
@@ -69,20 +69,6 @@ return (
     </div>
 )}
 
-//Used to determine the title of the list dependant on the state of the tickets in that list
-//Todo: Fix if the list is empty, doesnt display page if the list is empty
-function title(tick: Ticket) {
-    var title: string;
-    if (tick.state === "OPEN") {
-        title = "Open"
-    } else if (tick.state === "ACTIVE") {
-        title = "Active"
-    } else {
-        title = "Closed"
-    }
-    return title;
-}
-  
 //Used to change the state of a ticket after clicking the button
 function changeState(tick: Ticket) {
 if (tick.state === "OPEN") {
@@ -102,7 +88,7 @@ if (tick.state === "OPEN") {
 } else if (tick.state === "ACTIVE") {
     text = "Close"
 } else {
-    text = "Closed"
+    text = "Remove"
 }
 return text;
 }
