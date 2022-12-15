@@ -65,7 +65,7 @@ export function Login() {
           <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700'>Sign In</button>
 
         </form>
-        <button className='py-1 text-cyan-800 dark:text-cyan-400'>Forgot password?</button>
+        <button className='py-1 text-cyan-800 dark:text-cyan-400' type="submit">Forgot password?</button>
 
       </div>
       < Footer />
