@@ -12,13 +12,18 @@ export function ProblemSolver() {
   return (
     <body>
       <Navbar/>
-      <div className='filler-space bg-white dark:bg-slate-800'>
-          <div className='text-cyan-800 dark:text-cyan-400'>
+      <div className='bg-white dark:bg-slate-800 min-h-screen h-max justify-center text-center'>
+          <div className='text-cyan-800 dark:text-cyan-400 py-4'>
             <p className='self-left'>{Translate('Describe the problem with the selected machine')}:</p>
             <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 mb-[2vh] focus:border-vBlue border-slate-300 border'  placeholder=''/>
             <br />
             <p>{Translate('Describe what the machine is supposed to do')}:</p>
             <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 md:mb-3 focus:border-vBlue border-slate-300 border' placeholder=''/>
+            <br />
+            <p>{Translate('What have you tried to fix the problem')}:</p>
+            <textarea className='input1 bg-slate-200 dark:bg-slate-600 dark:text-slate-300 py-1 px-1.5 md:mb-3 focus:border-vBlue border-slate-300 border' placeholder=''/>
+            <br />
+            <input type="file" id='file' className=''/>
             <br />
             <label htmlFor="machineOn" className='checkLabel'>{Translate("Is your machine on")}?</label>
             <input type="checkbox" className='machineOn' />
