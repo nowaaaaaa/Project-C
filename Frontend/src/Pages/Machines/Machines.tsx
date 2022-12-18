@@ -60,8 +60,10 @@ export function Machines() {
 
   return (
     <>
+      <div className='bg-white dark:bg-slate-800 min-h-screen'>
       < Navbar />
-      <div className='grid grid-cols-1 place-content-start min-h-screen h-max bg-white dark:bg-slate-800'>
+        <div className='grid grid-cols-1 place-content-start h-max'>
+          {/* Search bar */}
           <form className='flex flex-row w-[800px] mt-6 mb-2 justify-self-center gap-x-4'>   
             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div className="relative grow">
@@ -69,7 +71,9 @@ export function Machines() {
             </div>
             <button type="submit" className="focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-3 py-1 hover:rounded-xl transition-all ease-in-out duration-200 bg-vBlue dark:bg-slate-500 text-lg text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600">Search</button>
           </form>
-        {listMachines(Search(keyword))}
+          {/* Search bar */}
+          {listMachines(Search(keyword))}
+        </div>
       </div>
     </>
   );

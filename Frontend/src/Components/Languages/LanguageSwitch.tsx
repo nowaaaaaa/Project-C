@@ -11,7 +11,7 @@ export function LanguageSwitch() {
   return (
     <>
       <div className="relative group">
-      <button className="text-cyan-800 dark:text-cyan-400 flex flex-row items-center w-full px-4 py-4 mt-2 font-bold text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 md:text-[18px] text-2xl">
+      <button className="text-cyan-800 dark:text-cyan-400 flex flex-row items-center px-4 py-4 mt-2 font-bold text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 md:text-[18px] text-2xl">
           <span>{localStorage.lang}</span>
       </button>
       <div className="absolute z-10 hidden bg-grey-200 group-hover:block">
@@ -30,9 +30,9 @@ export function LanguageSwitch() {
               <li>
               <button className='' onClick={() => toggleLanguage("de")}>DE</button>
               </li>
-              <li>
+              {/*<li>
               <button className='' onClick={() => toggleLanguage("cn")}>CN</button>
-              </li>
+  </li>*/}
             </ul>
           </div>
       </div>
