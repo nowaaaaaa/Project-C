@@ -1,5 +1,12 @@
 using Microsoft.OpenApi.Models;
-
+/*using Backend.EF;
+var db = new MyContext();
+if (db.companies.Count() == 0 && db.users.Count() == 0) {
+    db.companies.Add(new Company() { id = new Guid.NewGuid(), name = "Boer Harm BV", email = "admin", password = "admin", role = "customer"});
+    db.users.Add(new User() { id = new Guid.NewGuid(), name = "Harm de Boer", address = "Boerstaat 1", machines = new List<Machine>() });
+    saveChanges(db);
+}
+*/
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
