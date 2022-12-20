@@ -72,7 +72,7 @@ export function Machines() {
             <button type="submit" className="focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-3 py-1 hover:rounded-xl transition-all ease-in-out duration-200 bg-vBlue dark:bg-slate-500 text-lg text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600">Search</button>
           </form>
           {/* Search bar */}
-          {listMachines(Search(keyword))}
+            {listMachines(Search(keyword))}
         </div>
       </div>
     </>

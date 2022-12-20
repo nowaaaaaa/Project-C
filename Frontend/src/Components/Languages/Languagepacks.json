@@ -28,7 +28,10 @@
         "Still not resolved" : "Nog niet opgelost",
         "Move items on the shuttle cable." : "Verplaats items op de shuttle kabel.",
         "The shuttle is stuck." : "De shuttle is vastgelopen.",
-        "Search for machines" : "Zoeken naar machines"
+        "Search for machines" : "Zoeken naar machines",
+        "Report the problem" : "Het probleem melden",
+        "Software" : "Software",
+        "Other" : "Anders"
     },
     "de": {
         "Log In" : "Anmelden",
