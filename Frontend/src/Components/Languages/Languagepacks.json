@@ -31,7 +31,10 @@
         "Search for machines" : "Zoeken naar machines",
         "Report the problem" : "Het probleem melden",
         "Software" : "Software",
-        "Other" : "Anders"
+        "Other" : "Anders",
+        "Manage Companies" : "Bedrijven beheren",
+        "There are" : "Er zijn",
+        "unclaimed tickets" : "openstaande tickets"
     },
     "de": {
         "Log In" : "Anmelden",
