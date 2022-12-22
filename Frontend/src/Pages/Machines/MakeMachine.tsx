@@ -41,7 +41,7 @@ export function MakeMachine(mach: Machine) {
 export function listMachines(machines: Machine[]) {
   return (
     <>
-      <div className='max-h-[69vh] overflow-y-scroll'>
+      <div className='max-h-[69vh] overflow-y-scroll scrollbar scrollbar-thumb-slate-400'>
         {machines.map((mach) => 
         <>
           <MakeMachine name={mach.name} type={mach.type} problems={mach.problems}/>
