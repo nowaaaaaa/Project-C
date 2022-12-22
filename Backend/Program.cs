@@ -1,16 +1,17 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Backend.EF;
+using System;
 namespace Backend {
     class Program {
         static void Main(string[] args) {
-            var db = new MyContext();
+            MyContext db = new MyContext();
             if (db.companies.Count() == 0 && db.users.Count() == 0) {
-                db.companies.Add(new Company() { id = new Guid.NewGuid(), name = "Boer Harm BV", email = "admin", password = "admin", role = "customer"});
-                db.users.Add(new User() { id = new Guid.NewGuid(), name = "Harm de Boer", address = "Boerstaat 1", machines = new List<Machine>() });
-                saveChanges(db);
+                var temp = new Company() { id = Guid.NewGuid(), name = "Boer Harm BV", address = "Boerstaat 1", machines = new List<Machine>()};
+                db.companies.Add(temp);
+                db.users.Add(new User() { id = Guid.NewGuid(), name = "Harm de Boer", email = "admin", passwordHash = "admin", role = "customer" , company = temp, phone = "0612345678" });
+                db.SaveChanges();
             }
-            /*
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -57,7 +58,6 @@ namespace Backend {
             app.MapControllers();
 
             app.Run();
-            */
         }
     }
 }
