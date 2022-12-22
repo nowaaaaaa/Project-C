@@ -20,7 +20,7 @@ export function MakeMachine(mach: Machine) {
   return (
     <div className='py-1 '>
       <div className='bg-slate-200 dark:bg-slate-600 dark:text-cyan-400 mx-auto w-full md:w-3/5'>
-        <h1 className='header text-lg text-center bg-slate-400 dark:bg-slate-700 cursor-pointer hover:bg-slate-500 dark:hover:bg-sky-900 ease-in-out duration-150 select-none' onClick={() => setIsActive(!isActive)}>{mach.name}</h1>
+        <h1 className='header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none' onClick={() => setIsActive(!isActive)}>{mach.name}</h1>
         {isActive && <>{mach.problems.map((problem) => 
             <>
             <div className='border-b border-slate-700 ease-in-out duration-150'>
@@ -59,10 +59,9 @@ export function MakeOther() {
   const [isActive, setIsActive] = useState(false);
   const [isActive1, setIsActive1] = useState(false);
   return (
-    <>
-    <div className=''>
-      <div className='py-1'>
-        <div className='bg-slate-200 dark:bg-slate-600 dark:text-cyan-400 mx-auto w-full md:w-3/5'>
+    <div className='flex justify-self-center justify-evenly md:w-3/5 w-full gap-2'>
+      <div className='py-1 grow'>
+        <div className='bg-slate-200 dark:bg-slate-600 dark:text-cyan-400'>
           <h1 className='header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none' onClick={() => setIsActive(!isActive)}>{Translate("Other")}</h1>
           {isActive && <>{(() => 
               <>
@@ -74,8 +73,8 @@ export function MakeOther() {
           </>}
         </div>
       </div>
-      <div className='py-1'>
-        <div className='bg-slate-200 dark:bg-slate-600 dark:text-cyan-400 mx-auto w-full md:w-3/5'>
+      <div className='py-1 grow'>
+        <div className='bg-slate-200 dark:bg-slate-600 dark:text-cyan-400'>
           <h1 className='header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none' onClick={() => setIsActive1(!isActive1)}>{Translate("Software")}</h1>
           {isActive1 && <>{(() => 
               <>
@@ -83,11 +82,10 @@ export function MakeOther() {
               </div>
               </>
           )}
-          <div className='flex'><button onClick={solver} className='bg-red-800 self-auto mx-auto p-0.5 px-1.5 rounded-md hover:rounded-lg ease-in-out duration-150 text-white text-sm my-2'>{Translate("Report the problem")}</button></div>
+          <div className='flex'><button onClick={solver} className='bg-red-800 self-auto mx-auto p-0.5 px-1.5 hover:rounded-sm ease-in-out duration-150 text-white text-sm'>{Translate("Report the problem")}</button></div>
           </>}
         </div>
       </div>
     </div>
-    </>
   )
 }
