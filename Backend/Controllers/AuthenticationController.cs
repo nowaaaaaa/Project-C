@@ -6,8 +6,8 @@ namespace Backend.Controllers {
   public class AuthenticationController : ControllerBase {
 
     public class LoginInfo {
-      public string email { get; set; }
-      public string password { get; set; }
+      public string email { get; set; } = null!;
+      public string password { get; set; } = null!;
     }
 
     private readonly ILogger<WeatherForecastController> _logger;

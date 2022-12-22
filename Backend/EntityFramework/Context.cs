@@ -11,13 +11,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 //dotnet ef Database update
 namespace Backend.EF {
     class MyContext : DbContext { 
-        public DbSet<User> users { get; set; }
-        public DbSet<Company> companies { get; set; }
-        public DbSet<Machine> machines { get; set; }
-        public DbSet<MachineType> machineTypes { get; set; }
-        public DbSet<AckProblem> ackProblems { get; set; }
-        public DbSet<Ticket> tickets { get; set; }
-        public DbSet<TicketDetails> ticketDetails { get; set; }
+        public DbSet<User> users { get; set; } = null!;
+        public DbSet<Company> companies { get; set; } = null!;
+        public DbSet<Machine> machines { get; set; } = null!;
+        public DbSet<MachineType> machineTypes { get; set; } = null!;
+        public DbSet<AckProblem> ackProblems { get; set; } = null!;
+        public DbSet<Ticket> tickets { get; set; } = null!;
+        public DbSet<TicketDetails> ticketDetails { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseNpgsql("User ID = postgres; Password = admin; Host = localhost; port = 5432; Database = Viscon; Pooling = true");
