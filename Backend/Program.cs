@@ -6,12 +6,7 @@ namespace Backend {
     class Program {
         static void Main(string[] args) {
             MyContext db = new MyContext();
-            if (db.companies.Count() == 0 && db.users.Count() == 0) {
-                var temp = new Company() { id = Guid.NewGuid(), name = "Boer Harm BV", address = "Boerstaat 1", machines = new List<Machine>()};
-                db.companies.Add(temp);
-                db.users.Add(new User() { id = Guid.NewGuid(), name = "Harm de Boer", email = "admin", passwordHash = "admin", role = "customer" , company = temp, phone = "0612345678" });
-                db.SaveChanges();
-            }
+            
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

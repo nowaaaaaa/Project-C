@@ -34,7 +34,14 @@
         "Other" : "Anders",
         "Manage Companies" : "Bedrijven beheren",
         "There are" : "Er zijn",
-        "unclaimed tickets" : "openstaande tickets"
+        "unclaimed tickets" : "openstaande tickets",
+        "Prestacker" : "Voorstapelaar",
+        "Satellite shuttle" : "Satelliet shuttle",
+        "Transfer shuttle" : "Transfer shuttle",
+        "Elevator" : "Lift",
+        "Setup position" : "Opzetpositie",
+        "Chain track" : "Kettingbaan",
+        "Palletiser" : "Palletiseerder"
     },
     "de": {
         "Log In" : "Anmelden",
