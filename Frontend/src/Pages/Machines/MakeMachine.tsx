@@ -13,7 +13,7 @@ export type Machine = {
   name: string,
   type: string,
   typeID?: Guid,
-  company: string,
+  company?: string,
   companyID?: Guid,
 
   problems: problem[];

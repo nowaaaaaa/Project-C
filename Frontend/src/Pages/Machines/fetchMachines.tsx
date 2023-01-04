@@ -1,31 +1,23 @@
-import { Machine } from "./MakeMachine";
+// import axios from "axios";
+// import React from "react";
 
-const {Client} = require('pg');
+// const baseURL = "https://jsonplaceholder.typicode.com/posts";
 
-const client = new Client({
-    host: 'localhost',
-    port: 5432,
-    user: 'postgres',
-    password: '1',
-    database: 'postgres'
-});
+// export default function App() {
+//   const [post, setPost] = React.useState(null);
 
-client.connect();
-
-// function fetchMachines(list: Machine[]) {
-//     client.query('SELECT * FROM machines', (err: any, res: any) => {
-//         if (err) {
-//             console.log(err.stack);
-//         } else {
-//             for (let row of res.rows) {
-//                 list.push();
-//                 mach: Machine = {
-//                     name: row.name,
-//                     type: row.type,
-//                     problems: row.problems
-//                 }
-//                 list.push(mach);
-//             }
-//         }
+//   React.useEffect(() => {
+//     axios.get(baseURL).then((response) => {
+//       setPost(response.data);
 //     });
+//   }, []);
+
+//   if (!post) return null;
+
+//   return (
+//     <div>
+//       <h1>{post.title}</h1>
+//       <p>{post.body}</p>
+//     </div>
+//   );
 // }
