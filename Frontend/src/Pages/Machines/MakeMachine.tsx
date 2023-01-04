@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
+import {Guid} from 'guid-typescript';
 
 export type problem = {
   problem: string,
@@ -8,8 +9,13 @@ export type problem = {
 }
 
 export type Machine = {
-  type: string,
+  id?: Guid,
   name: string,
+  type: string,
+  typeID?: Guid,
+  company: string,
+  companyID?: Guid,
+
   problems: problem[];
 }
 
