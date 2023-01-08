@@ -1,8 +1,9 @@
 import './Machines.css';
-import { Machine, problem, listMachines } from './MakeMachine'
+import { Machine, problem, listMachines, MakeMachine } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { axios } from '../../Components/Axios/Axios';
 
 const problem1: problem = {
   problem: Translate("The shuttle is stuck."),
@@ -58,10 +59,26 @@ export function Machines() {
     setKeyword(event.currentTarget.value.toLowerCase());
   };
 
+  //https://www.youtube.com/watch?v=AirWT_XpEpM
+  
+  const [machines, setMachines] = useState([])
+  const noMachines = !machines || (machines && machines.length === 0);
+
+  const getMachines = async () => {
+    const response = await axios.get('/posts').catch((err) => console.log("Error: ", err));
+
+    if (response && response.data) {setMachines(response.data);}
+  }
+
+  useEffect(() => {
+    getMachines();
+  }, []);
+
   return (
     <>
       <div className='bg-white dark:bg-slate-800 min-h-screen'>
       < Navbar />
+        <>{!noMachines && machines.map((machine, idx) => {<h1 className='bg-white' key={idx}>Hi</h1>})}</>
         <div className='grid grid-cols-1 place-content-start h-max'>
           {/* Search bar */}
           <form className='flex flex-row w-[800px] mt-5 mb-2 justify-self-center gap-x-4'>   
