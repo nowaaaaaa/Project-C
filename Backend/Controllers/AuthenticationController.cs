@@ -21,6 +21,7 @@ namespace Backend.Controllers {
       public string name { get; set; } = string.Empty;
       public string password { get; set; } = string.Empty;
       public string phone { get; set; } = string.Empty;
+      public string companyName { get; set; } = string.Empty;
       public string role { get; set; } = string.Empty;
     }
 
@@ -84,7 +85,7 @@ namespace Backend.Controllers {
 
         using (var context = new MyContext()) {
 
-          var company = context.companies.FirstOrDefault();
+          var company = context.companies.Where(p => p.name == data.companyName).FirstOrDefault();
 
           var user = new User();
           user.id = Guid.NewGuid();
