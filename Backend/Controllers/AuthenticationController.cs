@@ -1,4 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Cryptography;
+using System.Security.Claims;
+
+using Backend.EF;
 
 namespace Backend.Controllers {
   [ApiController]
@@ -6,19 +12,24 @@ namespace Backend.Controllers {
   public class AuthenticationController : ControllerBase {
 
     public class LoginInfo {
-      public string email { get; set; } = null!;
-      public string password { get; set; } = null!;
+      public string email { get; set; } = string.Empty;
+      public string password { get; set; } = string.Empty;
     }
 
     public class SignupInfo {
-      public string email { get; set; }
-      public string username { get; set; }
-      public string password { get; set; }
+      public string email { get; set; } = string.Empty;
+      public string name { get; set; } = string.Empty;
+      public string password { get; set; } = string.Empty;
+      public string phone { get; set; } = string.Empty;
+      public string role { get; set; } = string.Empty;
     }
 
+    private readonly IConfiguration _configuration;
     private readonly ILogger<WeatherForecastController> _logger;
-    public AuthenticationController(ILogger<WeatherForecastController> logger)
+
+    public AuthenticationController(IConfiguration configuration, ILogger<WeatherForecastController> logger)
     {
+      _configuration = configuration;
       _logger = logger;
     }
 
@@ -28,12 +39,32 @@ namespace Backend.Controllers {
       try {
         System.Console.WriteLine(data.email);
 
-        return Ok("Thank you for traveling with fabiothomas intercomputer travel incorporated");
+        using (var context = new MyContext()) {
+          
+          var user = context.users.Where(p => p.email == data.email).FirstOrDefault();
+          //SEARCH FOR USER IN DB
+          // user = new UserDto();
+          // user.name = "john";
+          // user.email = "john@amogus.net";
+          // CreatePasswordHash("amogus4life", out byte[] tempHash, out byte[] tempSalt);
+          // user.passwordHash = tempHash;
+          // user.passwordSalt = tempSalt;
+          //log in user
+          if (user == null) {
+            return BadRequest("User nor found");
+          }
+
+          if(!VerifyPasswordHash(data.password, user.passwordHash, user.passwordSalt)) {
+            return BadRequest("Wrong password");
+          }
+
+          string token = CreateToken(user);
+          return Ok(token);
+        }
       }
       catch(Exception ex) {
         return BadRequest(ex.Message);
       }
-      return Ok("Not sure what happened...");
     }
 
     [HttpGet]
@@ -48,12 +79,33 @@ namespace Backend.Controllers {
       try {
         System.Console.WriteLine(data.email);
 
-        return Ok("Account now exists! wow!");
+        //creating password
+        CreatePasswordHash(data.password, out byte[] passwordHash, out byte[] passwordSalt);
+
+        using (var context = new MyContext()) {
+
+          var company = context.companies.FirstOrDefault();
+
+          var user = new User();
+          user.id = Guid.NewGuid();
+          user.name = data.name;
+          user.email = data.email;
+          user.phone = data.phone;
+          user.company = company;
+          user.companyId = company.id;
+          user.role = data.role;
+          user.passwordHash = passwordHash;
+          user.passwordSalt = passwordSalt;
+
+          context.users.Add(user);
+          context.SaveChanges();
+
+          return Ok(user);
+        }
       }
       catch(Exception ex) {
         return BadRequest(ex.Message);
       }
-      return Ok("Not sure what happened...");
     }
 
     [HttpPut]
@@ -72,7 +124,7 @@ namespace Backend.Controllers {
 
     [HttpPut]
     [Route("username")]
-    public IActionResult Password(string newusername) {
+    public IActionResult Username(string newusername) {
       try {
         System.Console.WriteLine(newusername);
 
@@ -82,6 +134,43 @@ namespace Backend.Controllers {
         return BadRequest(ex.Message);
       }
       return Ok("Not sure what happened...");
+    }
+
+    private string CreateToken(User user) {
+
+      List<Claim> claims = new List<Claim> {
+        new Claim(ClaimTypes.Name, user.name),
+        new Claim(ClaimTypes.Email, user.email),
+        new Claim(ClaimTypes.Role, user.role)
+      };
+
+      var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
+
+      var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+      var token = new JwtSecurityToken(
+        claims: claims,
+        expires: DateTime.Now.AddDays(1),
+        signingCredentials: creds
+      );
+
+      var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+      return jwt;
+    }
+
+    private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt){
+      using (var hmac = new HMACSHA512()) {
+        passwordSalt = hmac.Key;
+        passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+      }
+    }
+
+    private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt) {
+      using(var hmac = new HMACSHA512(passwordSalt)) {
+        var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+        return computedHash.SequenceEqual(passwordHash);
+      }
     }
   }
 }
