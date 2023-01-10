@@ -64,13 +64,15 @@ namespace Backend.Controllers {
         using (var context = new MyContext()) {
 
           var company = context.companies.Where(p => p.name == data.companyName).FirstOrDefault();
+          if (company == null) {
+            return BadRequest("Company not found");
+          }
 
           var user = new User();
           user.id = Guid.NewGuid();
           user.name = data.name;
           user.email = data.email;
           user.phone = data.phone;
-          user.company = company;
           user.companyId = company.id;
           user.role = data.role;
           user.passwordHash = passwordHash;
@@ -93,35 +95,39 @@ namespace Backend.Controllers {
       try {
         System.Console.WriteLine("Password change incoming");
 
-        //decrypt web token
-        var token = data.jwt;
-        var handler = new JwtSecurityTokenHandler();
-        var jwt = handler.ReadJwtToken(token);
-        var jwtToken = jwt as JwtSecurityToken;
+        // //decrypt web token
+        // var token = data.jwt;
+        // var handler = new JwtSecurityTokenHandler();
+        // var jwt = handler.ReadJwtToken(token);
+        // var jwtToken = jwt as JwtSecurityToken;
 
-        var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
+        // var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
 
-        //create password
-        CreatePasswordHash(data.newPassword, out byte[] passwordHash, out byte[] passwordSalt);
+        if (VerifyToken(data.jwt, out Guid id)) {
+          //create password
+          CreatePasswordHash(data.newPassword, out byte[] passwordHash, out byte[] passwordSalt);
 
-        using (var context = new MyContext()) {
+          using (var context = new MyContext()) {
 
-          var user = context.users.Where(p => p.email == email).FirstOrDefault();
-          if (user == null) {
-            return BadRequest("You don't exist in our systems...");
+            var user = context.users.Where(p => p.id == id).FirstOrDefault();
+            if (user == null) {
+              return BadRequest("You don't exist in our systems...");
+            }
+
+            user.passwordHash = passwordHash;
+            user.passwordSalt = passwordSalt; 
+            context.SaveChanges();
+
+            return Ok("Password updated!");
           }
-
-          user.passwordHash = passwordHash;
-          user.passwordSalt = passwordSalt; 
-          context.SaveChanges();
-
-          return Ok("Password updated!");
+        }
+        else {
+          return Unauthorized("Invalid token");
         }
       }
       catch(Exception ex) {
         return BadRequest(ex.Message);
       }
-      return Ok("Not sure what happened...");
     }
 
     [HttpPut]
@@ -130,38 +136,33 @@ namespace Backend.Controllers {
       try {
         System.Console.WriteLine($"Username change to {data.newUsername} incoming");
 
-        //decrypt web token
-        var token = data.jwt;
-        var handler = new JwtSecurityTokenHandler();
-        var jwt = handler.ReadJwtToken(token);
-        var jwtToken = jwt as JwtSecurityToken;
+        if (VerifyToken(data.jwt, out Guid id)) {
+          using (var context = new MyContext()) {
 
-        var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
+            var user = context.users.Where(p => p.id == id).FirstOrDefault();
+            if (user == null) {
+              return BadRequest("You don't exist in our systems...");
+            }
 
-        using (var context = new MyContext()) {
+            user.name = data.newUsername;
+            context.SaveChanges();
 
-          var user = context.users.Where(p => p.email == email).FirstOrDefault();
-          if (user == null) {
-            return BadRequest("You don't exist in our systems...");
+            return Ok($"Username updated to {data.newUsername}!");
           }
-
-          user.name = data.newUsername;
-          context.SaveChanges();
-
-          return Ok($"Username updated to {data.newUsername}!");
+        }
+        else {
+          return Unauthorized("Invalid token");
         }
       }
       catch(Exception ex) {
         return BadRequest(ex.Message);
       }
-      return Ok("Not sure what happened...");
     }
 
     private string CreateToken(User user) {
 
       List<Claim> claims = new List<Claim> {
-        new Claim(ClaimTypes.Name, user.name),
-        new Claim(ClaimTypes.Email, user.email),
+        new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
         new Claim(ClaimTypes.Role, user.role)
       };
 
@@ -178,6 +179,20 @@ namespace Backend.Controllers {
       var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
       return jwt;
+    }
+
+    private bool VerifyToken(string token, out Guid id) {
+      id = Guid.Empty;
+
+      var handler = new JwtSecurityTokenHandler();
+      var jwt = handler.ReadJwtToken(token);
+
+      if (jwt == null || jwt.ValidFrom > DateTime.UtcNow || jwt.ValidTo < DateTime.UtcNow) {
+        return false;
+      }
+
+      id = new Guid(jwt.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
+      return true;
     }
 
     private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt){
