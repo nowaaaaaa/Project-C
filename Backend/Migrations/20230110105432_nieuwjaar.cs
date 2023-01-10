@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations
 {
-    public partial class Viscondb3 : Migration
+    public partial class nieuwjaar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

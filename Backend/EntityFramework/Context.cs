@@ -30,7 +30,7 @@ namespace Backend.EF {
         }
 
         public MyContext() {
-            //this.FillDb();
+           // this.FillDb();
         }
 
         public void FillDb() {
@@ -48,6 +48,11 @@ namespace Backend.EF {
             foreach (var m in machineArray) {
                 this.machineTypes.Add(new MachineType() { id = Guid.NewGuid(), name = m[0], drawingNr = m[1] });
             }
+            this.ackProblems.Add(new AckProblem() { id = Guid.NewGuid(), MachineTypeId = this.machines.First().id, problem = "The product is on the machine incorrectly.", solution = "Check the photocells. You might need to place the product in the right spot manually." });
+            this.ackProblems.Add(new AckProblem() { id = Guid.NewGuid(), MachineTypeId = this.machines.First().id, problem = "There is satelite traffic on the machine.", solution = "Check the photocells. You might need to place the product in the right spot manually." });  
+            this.ackProblems.Add(new AckProblem() { id = Guid.NewGuid(), MachineTypeId = this.machines.First().id, problem = "No connection to the satelite.", solution = "Check if satelite is on. If the satelite is in the channel and it needs to be charged, charge it with charging the cable and manually place it back on the shuttle." });  
+            this.ackProblems.Add(new AckProblem() { id = Guid.NewGuid(), MachineTypeId = this.machines.First().id, problem = "It's not safe to move.", solution = "The pallet sticks out on the shuttle or another pallet is stuck on the shuttle lane. Turn the pallet to it's correct position." });  
+  
             var harmBV = new Company(){id = Guid.NewGuid(), name = "Boer Harm BV", address = "Boerstaat 1", machines = new List<Machine>()};
             var tempList = new List<Machine>();
             for (int i = 1; i <= 3; i++) tempList.Add(new Machine() { id = Guid.NewGuid(), name = "Shuttle " + i, type = this.machineTypes.First(), typeId = this.machineTypes.First().id, company = harmBV, companyId = harmBV.id });
@@ -62,7 +67,7 @@ namespace Backend.EF {
             harmBV.machines = tempList;
             this.machines.AddRange(tempList);
             this.companies.Add(harmBV);
-            this.companies.Add(new Company() { id = Guid.NewGuid(), name = "Viscon Group", address = "Mijlweg 18, 's-Gravendeel"});
+            this.companies.Add(new Company() { id = Guid.NewGuid(), name = "Viscon Group", address = "Mijlweg 18, 's-Gravendeel", machines = new List<Machine>()});
 
             CreatePasswordHash("harm", out byte[] passHash, out byte[] passSalt);
             this.users.Add(new User() { id = Guid.NewGuid(), name = "Harm de Boer", email = "deboer@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = "customer" , company = harmBV, companyId = harmBV.id, phone = "0612345678"});
@@ -71,7 +76,9 @@ namespace Backend.EF {
             CreatePasswordHash("gerard", out passHash, out passSalt);
             this.users.Add(new User() { id = Guid.NewGuid(), name = "Gerard Kowalski", email = "gkowalski@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = "untrained" , company = harmBV, companyId = harmBV.id, phone = "0048123456789"});
             CreatePasswordHash("jelle", out passHash, out passSalt);
-            this.users.Add(new User() { id = Guid.NewGuid(), name = "Viscon Group", email = "jelle@viscon.nl", passwordHash = passHash, passwordSalt = passSalt, role = "admin" , company = this.companies.Skip(1).First(), companyId = this.companies.Skip(1).First().id, phone = "0612345555"});
+            this.users.Add(new User() { id = Guid.NewGuid(), name = "Jelle Kerkstra", email = "j.kerkstra@viscon.nl", passwordHash = passHash, passwordSalt = passSalt, role = "admin" , company = this.companies.First(), companyId = this.companies.First().id, phone = "06129722597"});
+            CreatePasswordHash("patrick", out passHash, out passSalt);
+            this.users.Add(new User() { id = Guid.NewGuid(), name = "Patrick Sannes", email = "p.sannes@viscon.nl", passwordHash = passHash, passwordSalt = passSalt, role = "admin" , company = this.companies.First(), companyId = this.companies.First().id, phone = "0612345555"});
             this.SaveChanges();
         }
 

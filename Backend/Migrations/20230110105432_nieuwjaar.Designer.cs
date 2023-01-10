@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20230109135839_Viscondb4")]
-    partial class Viscondb4
+    [Migration("20230110105432_nieuwjaar")]
+    partial class nieuwjaar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

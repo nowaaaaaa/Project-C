@@ -16,6 +16,7 @@ namespace Backend.EF {
         public string phone { get; set; } = null!;
         public Company company { get; set; } = null!;
         public Guid companyId { get; set; }
+        //Admin, Client, Trained, Untrained
         public string role { get; set; } = null!;
         public byte[] passwordHash { get; set; } = null!;
         public byte[] passwordSalt { get; set; } = null!;

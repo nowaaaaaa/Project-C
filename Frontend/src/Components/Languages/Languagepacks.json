@@ -41,7 +41,15 @@
         "Elevator" : "Lift",
         "Setup position" : "Opzetpositie",
         "Chain track" : "Kettingbaan",
-        "Palletiser" : "Palletiseerder"
+        "Palletiser" : "Palletiseerder",
+        "The product is on the machine incorrectly." : "Het product zit verkeerd op machine.",
+        "Check the photocells. You might need to place the product in the right spot manually." : "Fotocellen controleren. Eventueel product handmatig op juiste positie plaatsen.",
+        "There is satelite traffic on the machine." : "Er is satellietverkeer op de machine.",
+        "No connection to the satelite." : "Geen verbinding met de satelliet.",
+        "Check if satelite is on. If the satelite is in the channel and it needs to be charged, charge it with charging the cable and manually place it back on the shuttle." : "Controleren of satelliet aan staat. Als deze in het kanaal staat een opgeladen moet worden, opladen met oplaadkabel en in handbediening terugzetten op de shuttle .",
+        "It's not safe to move." : "Het is niet veilig om te bewegen.",
+        "The pallet sticks out on the shuttle or another pallet is stuck on the shuttle lane. Turn the pallet to it's correct position." : "De pallet steekt uit op de shuttle of een andere pallet op een baan aan het shuttle pad. Draai de pallet handmatig op de juiste positie." 
+        
     },
     "de": {
         "Log In" : "Anmelden",
