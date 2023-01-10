@@ -11,20 +11,6 @@ namespace Backend.Controllers {
   [Route("[controller]")]
   public class AuthenticationController : ControllerBase {
 
-    public class LoginInfo {
-      public string email { get; set; } = string.Empty;
-      public string password { get; set; } = string.Empty;
-    }
-
-    public class SignupInfo {
-      public string email { get; set; } = string.Empty;
-      public string name { get; set; } = string.Empty;
-      public string password { get; set; } = string.Empty;
-      public string phone { get; set; } = string.Empty;
-      public string companyName { get; set; } = string.Empty;
-      public string role { get; set; } = string.Empty;
-    }
-
     private readonly IConfiguration _configuration;
     private readonly ILogger<WeatherForecastController> _logger;
 
@@ -36,21 +22,13 @@ namespace Backend.Controllers {
 
     [HttpPost]
     [Route("login")]
-    public IActionResult Login(LoginInfo data) {
+    public IActionResult Login(LoginDto data) {
       try {
-        System.Console.WriteLine(data.email);
+        System.Console.WriteLine(data.email + "is trying to log in");
 
         using (var context = new MyContext()) {
           
           var user = context.users.Where(p => p.email == data.email).FirstOrDefault();
-          //SEARCH FOR USER IN DB
-          // user = new UserDto();
-          // user.name = "john";
-          // user.email = "john@amogus.net";
-          // CreatePasswordHash("amogus4life", out byte[] tempHash, out byte[] tempSalt);
-          // user.passwordHash = tempHash;
-          // user.passwordSalt = tempSalt;
-          //log in user
           if (user == null) {
             return BadRequest("User nor found");
           }
@@ -76,7 +54,7 @@ namespace Backend.Controllers {
 
     [HttpPost]
     [Route("signup")]
-    public IActionResult Signup(SignupInfo data) {
+    public IActionResult Signup(SignupDto data) {
       try {
         System.Console.WriteLine(data.email);
 
@@ -111,11 +89,34 @@ namespace Backend.Controllers {
 
     [HttpPut]
     [Route("password")]
-    public IActionResult Password(string newpassword) {
+    public IActionResult Password(PasswordDto data) {
       try {
-        System.Console.WriteLine(newpassword);
+        System.Console.WriteLine("Password change incoming");
 
-        return Ok("Password updated!");
+        //decrypt web token
+        var token = data.jwt;
+        var handler = new JwtSecurityTokenHandler();
+        var jwt = handler.ReadJwtToken(token);
+        var jwtToken = jwt as JwtSecurityToken;
+
+        var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
+
+        //create password
+        CreatePasswordHash(data.newPassword, out byte[] passwordHash, out byte[] passwordSalt);
+
+        using (var context = new MyContext()) {
+
+          var user = context.users.Where(p => p.email == email).FirstOrDefault();
+          if (user == null) {
+            return BadRequest("You don't exist in our systems...");
+          }
+
+          user.passwordHash = passwordHash;
+          user.passwordSalt = passwordSalt; 
+          context.SaveChanges();
+
+          return Ok("Password updated!");
+        }
       }
       catch(Exception ex) {
         return BadRequest(ex.Message);
@@ -125,11 +126,30 @@ namespace Backend.Controllers {
 
     [HttpPut]
     [Route("username")]
-    public IActionResult Username(string newusername) {
+    public IActionResult Username(UsernameDto data) {
       try {
-        System.Console.WriteLine(newusername);
+        System.Console.WriteLine($"Username change to {data.newUsername} incoming");
 
-        return Ok("Username updated!");
+        //decrypt web token
+        var token = data.jwt;
+        var handler = new JwtSecurityTokenHandler();
+        var jwt = handler.ReadJwtToken(token);
+        var jwtToken = jwt as JwtSecurityToken;
+
+        var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
+
+        using (var context = new MyContext()) {
+
+          var user = context.users.Where(p => p.email == email).FirstOrDefault();
+          if (user == null) {
+            return BadRequest("You don't exist in our systems...");
+          }
+
+          user.name = data.newUsername;
+          context.SaveChanges();
+
+          return Ok($"Username updated to {data.newUsername}!");
+        }
       }
       catch(Exception ex) {
         return BadRequest(ex.Message);
