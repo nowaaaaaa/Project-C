@@ -4,68 +4,85 @@ import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
 import { axios } from '../../Components/Axios/Axios';
+import {Guid} from 'guid-typescript';
+
+//vvvvvvvvv==] Dummy Data [==vvvvvvvvv//
+
+const guid1: Guid = Guid.create();
+const guid2: Guid = Guid.create();
 
 const machType1 : MachineType = {
-  name: "Lift"
+  name: "Lift",
+  id: guid1
 }
 
 const machType2 : MachineType = {
-  name: "Shuttle"
+  name: "Shuttle",
+  id: guid2
 }
 
 const problem1: ackProblem = {
   problem: Translate("The shuttle is stuck."),
   solution: Translate("Move items on the shuttle cable."),
-  machType: machType1
+  machineTypeID: machType1.id
 }
 
 const problem2: ackProblem = {
   problem: Translate("The lift is stuck."),
   solution: Translate("Move items on the lift cable."),
-  machType: machType2
+  machineTypeID: machType2.id
 }
 
 const problem3: ackProblem = {
   problem: Translate("Lift cable is broken"),
   solution: Translate("Install new cable"),
-  machType: machType2
+  machineTypeID: machType2.id
 }
 
 const machinenumber1: Machine = {
-  type: machType1,
+  typeID: machType1.id,
   name: "Lift5A",
-  problems: []
+  problems: [],
+  type: machType1
 }
 const machinenumber2: Machine = {
-  type: machType1,
+  typeID: machType1.id,
   name: "Lift1",
-  problems: []
+  problems: [],
+  type: machType1
 }
 const machinenumber3: Machine = {
-  type: machType1,
+  typeID: machType1.id,
   name: "Shuttle1",
-  problems: []
+  problems: [],
+  type: machType1
 }
 const machinenumber4: Machine = {
-  type: machType2,
+  typeID: machType1.id,
   name: "Shuttle2",
-  problems: []
+  problems: [],
+  type: machType1
 }
 const machinenumber5: Machine = {
-  type: machType2,
+  typeID: machType2.id,
   name: "Band1A",
-  problems: []
+  problems: [],
+  type: machType2
 }
 const machinenumber6: Machine = {
-  type: machType1,
+  typeID: machType2.id,
   name: "Band1B",
-  problems: []
+  problems: [],
+  type: machType2
 }
+
 //var machinesList: Machine[] = (Database shit) => in export function {listMachines(machinesList)}
 
 const probs : ackProblem[] = [problem1, problem2, problem3];
 
 const machTestList: Machine[] = [machinenumber1, machinenumber2, machinenumber3, machinenumber4, machinenumber5, machinenumber6];
+
+//^^^^^^^^^^==] Dummy Data [==^^^^^^^^^^^//
 
 machTestList.forEach( (mach) => {
   takeProblems(mach, probs);
@@ -86,26 +103,10 @@ export function Machines() {
     setKeyword(event.currentTarget.value.toLowerCase());
   };
 
-  //https://www.youtube.com/watch?v=AirWT_XpEpM
-  
-  const [machines, setMachines] = useState([])
-  const noMachines = !machines || (machines && machines.length === 0);
-
-  const getMachines = async () => {
-    const response = await axios.get('/posts').catch((err) => console.log("Error: ", err));
-
-    if (response && response.data) {setMachines(response.data);}
-  }
-
-  useEffect(() => {
-    getMachines();
-  }, []);
-
   return (
     <>
       <div className='bg-white dark:bg-slate-800 min-h-screen'>
       < Navbar />
-        <>{!noMachines && machines.map((machine, idx) => {<h1 className='bg-white' key={idx}>Hi</h1>})}</>
         <div className='grid grid-cols-1 place-content-start h-max'>
           {/* Search bar */}
           <form className='flex flex-row w-[800px] mt-5 mb-2 justify-self-center gap-x-4'>   

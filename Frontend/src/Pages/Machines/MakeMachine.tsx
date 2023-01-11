@@ -3,31 +3,26 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import {Guid} from 'guid-typescript';
 
-export type problem = {
-  problem: string,
-  solution: string;
-}
-
 export type Machine = {
   id?: Guid,
   name: string,
   type: MachineType,
-  typeID?: Guid,
+  typeID: Guid,
   company?: string,
   companyID?: Guid,
   problems?: ackProblem[];
 }
 
 export type MachineType = {
-  id?: Guid,
+  id: Guid,
   name: string,
   drawingNr?: string;
 }
 
 export type ackProblem = {
   id?: Guid,
-  machType: MachineType,
-  machineTypeID?: Guid,
+  machType?: MachineType,
+  machineTypeID: Guid,
   problem: string,
   solution: string;
 }
@@ -36,7 +31,7 @@ export function takeProblems(mach: Machine, prob: ackProblem[]) {
   const needList : ackProblem[] = [];
 
   prob.forEach((problem) => {
-    if (problem.machType === mach.type) {
+    if (problem.machineTypeID === mach.typeID) {
       needList.push(problem);
     }
   });
@@ -75,7 +70,7 @@ export function listMachines(machines: Machine[]) {
       <div className='max-h-[69vh] overflow-y-scroll scrollbar scrollbar-thumb-slate-400'>
         {machines.map((mach) => 
         <>
-          <MakeMachine name={mach.name} type={mach.type} problems={mach.problems}/>
+          <MakeMachine name={mach.name} type={mach.type} problems={mach.problems} typeID={mach.typeID}/>
         </>
         )}
       </div>
