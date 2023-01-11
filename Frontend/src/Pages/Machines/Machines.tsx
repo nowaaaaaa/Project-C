@@ -1,54 +1,81 @@
 import './Machines.css';
-import { Machine, problem, listMachines, MakeMachine } from './MakeMachine'
+import { Machine, ackProblem, listMachines, MachineType, takeProblems } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
 import { axios } from '../../Components/Axios/Axios';
 
-const problem1: problem = {
+const machType1 : MachineType = {
+  name: "Lift"
+}
+
+const machType2 : MachineType = {
+  name: "Shuttle"
+}
+
+const problem1: ackProblem = {
   problem: Translate("The shuttle is stuck."),
-  solution: Translate("Move items on the shuttle cable.")
+  solution: Translate("Move items on the shuttle cable."),
+  machType: machType1
+}
+
+const problem2: ackProblem = {
+  problem: Translate("The lift is stuck."),
+  solution: Translate("Move items on the lift cable."),
+  machType: machType2
+}
+
+const problem3: ackProblem = {
+  problem: Translate("Lift cable is broken"),
+  solution: Translate("Install new cable"),
+  machType: machType2
 }
 
 const machinenumber1: Machine = {
-  type: "Lift",
+  type: machType1,
   name: "Lift5A",
-  problems: [problem1, problem1, problem1, problem1, problem1, problem1, problem1]
+  problems: []
 }
 const machinenumber2: Machine = {
-  type: "Lift",
+  type: machType1,
   name: "Lift1",
-  problems: [problem1]
+  problems: []
 }
 const machinenumber3: Machine = {
-  type: "Shuttle",
+  type: machType1,
   name: "Shuttle1",
-  problems: [problem1]
+  problems: []
 }
 const machinenumber4: Machine = {
-  type: "Shuttle",
+  type: machType2,
   name: "Shuttle2",
-  problems: [problem1]
+  problems: []
 }
 const machinenumber5: Machine = {
-  type: "Band",
+  type: machType2,
   name: "Band1A",
-  problems: [problem1]
+  problems: []
 }
 const machinenumber6: Machine = {
-  type: "Band",
+  type: machType1,
   name: "Band1B",
-  problems: [problem1]
+  problems: []
 }
 //var machinesList: Machine[] = (Database shit) => in export function {listMachines(machinesList)}
 
+const probs : ackProblem[] = [problem1, problem2, problem3];
+
 const machTestList: Machine[] = [machinenumber1, machinenumber2, machinenumber3, machinenumber4, machinenumber5, machinenumber6];
+
+machTestList.forEach( (mach) => {
+  takeProblems(mach, probs);
+})
 
 function Search (keyword: string) {
   if (keyword === "") return machTestList;
   let res: Machine[] = [];
   machTestList.forEach(m => {
-    if (m.name.toLowerCase().search(keyword) !== -1 || m.type.toLowerCase().search(keyword) !== -1) res.push(m);
+    if (m.name.toLowerCase().search(keyword) !== -1 || m.type.name.toLowerCase().search(keyword) !== -1) res.push(m);
   });
   return res;
 }
