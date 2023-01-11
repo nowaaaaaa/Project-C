@@ -14,7 +14,7 @@ namespace Backend {
     public string password { get; set; } = string.Empty;
     public string phone { get; set; } = string.Empty;
     public string companyName { get; set; } = string.Empty;
-    public string role { get; set; } = string.Empty;
+    public int role { get; set; } = 0;
   }
 
   public class PasswordDto {

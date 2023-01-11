@@ -17,9 +17,18 @@ namespace Backend.EF {
         public Company company { get; set; } = null!;
         public Guid companyId { get; set; }
         //Admin, Client, Trained, Untrained
-        public string role { get; set; } = null!;
+        public int role { get; set; } = 0;
         public byte[] passwordHash { get; set; } = null!;
         public byte[] passwordSalt { get; set; } = null!;
+    }
+
+    public enum RoleTypes : int{
+        NONE = 0,
+        ADMIN = 1,
+        CLIENT = 2,
+        TRAINED = 3,
+        UNTRAIMED = 4,
+        CUSTOMER = 5
     }
 
     class Company {
