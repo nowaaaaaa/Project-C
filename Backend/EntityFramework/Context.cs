@@ -72,11 +72,11 @@ namespace Backend.EF {
             this.companies.Add(new Company() { id = Guid.NewGuid(), name = "Viscon Group", address = "Mijlweg 18, 's-Gravendeel", machines = new List<Machine>()});
             this.SaveChanges();
             CreatePasswordHash("harm", out byte[] passHash, out byte[] passSalt);
-            this.users.Add(new User() { id = Guid.NewGuid(), name = "Harm de Boer", email = "deboer@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.CUSTOMER , company = harmBV, companyId = harmBV.id, phone = "0612345678"});
+            this.users.Add(new User() { id = Guid.NewGuid(), name = "Harm de Boer", email = "deboer@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.CLIENT , company = harmBV, companyId = harmBV.id, phone = "0612345678"});
             CreatePasswordHash("sjoerd", out passHash, out passSalt);
             this.users.Add(new User() { id = Guid.NewGuid(), name = "Sjoerd de Vries", email = "sdevries@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.TRAINED , company = harmBV, companyId = harmBV.id, phone = "0612345688"});
             CreatePasswordHash("gerard", out passHash, out passSalt);
-            this.users.Add(new User() { id = Guid.NewGuid(), name = "Gerard Kowalski", email = "gkowalski@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.UNTRAIMED , company = harmBV, companyId = harmBV.id, phone = "0048123456789"});
+            this.users.Add(new User() { id = Guid.NewGuid(), name = "Gerard Kowalski", email = "gkowalski@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.UNTRAINED , company = harmBV, companyId = harmBV.id, phone = "0048123456789"});
             CreatePasswordHash("jelle", out passHash, out passSalt);
             this.users.Add(new User() { id = Guid.NewGuid(), name = "Jelle Kerkstra", email = "j.kerkstra@viscon.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.ADMIN , company = this.companies.First(), companyId = this.companies.First().id, phone = "06129722597"});
             CreatePasswordHash("patrick", out passHash, out passSalt);

@@ -20,7 +20,7 @@ export function Userpage() {
         <button className='self-start hover:rounded-2xl transition-all ease-in-out duration-200 rounded-xl bg-vBlue dark:bg-slate-500 text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600 md:text-xl text-sm md:w-1/4 w-[65vw] md:h-[5vh] h-[4vh] md:mt-8 md:mb-12' onClick={problem}>
           {Translate("Do you have a problem to report?")}
         </button>
-        {UserpageButtons("Admin")} 
+        {UserpageButtons(1)} 
       </div>    
       < Footer />
     </body>
