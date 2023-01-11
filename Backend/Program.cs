@@ -7,7 +7,7 @@ namespace Backend {
     class Program {
         static void Main(string[] args) {
             MyContext db = new MyContext();
-            
+            db.FillDb();
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
