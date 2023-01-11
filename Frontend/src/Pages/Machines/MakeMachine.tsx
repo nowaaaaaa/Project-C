@@ -11,12 +11,37 @@ export type problem = {
 export type Machine = {
   id?: Guid,
   name: string,
-  type: string,
+  type: MachineType,
   typeID?: Guid,
   company?: string,
   companyID?: Guid,
+  problems?: ackProblem[];
+}
 
-  problems: problem[];
+export type MachineType = {
+  id?: Guid,
+  name: string,
+  drawingNr?: string;
+}
+
+export type ackProblem = {
+  id?: Guid,
+  machType: MachineType,
+  machineTypeID?: Guid,
+  problem: string,
+  solution: string;
+}
+
+export function takeProblems(mach: Machine, prob: ackProblem[]) {
+  const needList : ackProblem[] = [];
+
+  prob.forEach((problem) => {
+    if (problem.machType === mach.type) {
+      needList.push(problem);
+    }
+  });
+
+  mach.problems = needList;
 }
 
 export function MakeMachine(mach: Machine) {
@@ -27,7 +52,7 @@ export function MakeMachine(mach: Machine) {
     <div className='py-1 '>
       <div className='bg-slate-200 dark:bg-slate-600 dark:text-cyan-400 mx-auto w-full md:w-3/5'>
         <h1 className='header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none' onClick={() => setIsActive(!isActive)}>{mach.name}</h1>
-        {isActive && <>{mach.problems.map((problem) => 
+        {isActive && <>{mach.problems?.map((problem) => 
             <>
             <div className='border-b border-slate-700 ease-in-out duration-150'>
               <h2 className='text-left ml-4'>{problem.problem}</h2>

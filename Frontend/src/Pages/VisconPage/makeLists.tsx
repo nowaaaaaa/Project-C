@@ -52,7 +52,7 @@ return <li id="origin">
     </li>
 }
 
-//List of tickets that is used to display the tickets in a list. Also has the accordion built in the classname div
+//List of tickets that is used to display the tickets in a list. Also has an accordion to display tickets
 export const TicketList : React.FC<{title: string, tickets: Ticket[], originalList: Ticket[], setOriginalList: (list: Ticket[]) => void, nextList: Ticket[], setNextList: (list: Ticket[]) => void}> = (props) => {
 const [isActive, setIsActive] = useState(false);
 return (
