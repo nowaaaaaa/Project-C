@@ -48,8 +48,12 @@
         "No connection to the satelite." : "Geen verbinding met de satelliet.",
         "Check if satelite is on. If the satelite is in the channel and it needs to be charged, charge it with charging the cable and manually place it back on the shuttle." : "Controleren of satelliet aan staat. Als deze in het kanaal staat een opgeladen moet worden, opladen met oplaadkabel en in handbediening terugzetten op de shuttle .",
         "It's not safe to move." : "Het is niet veilig om te bewegen.",
-        "The pallet sticks out on the shuttle or another pallet is stuck on the shuttle lane. Turn the pallet to it's correct position." : "De pallet steekt uit op de shuttle of een andere pallet op een baan aan het shuttle pad. Draai de pallet handmatig op de juiste positie." 
-        
+        "The pallet sticks out on the shuttle or another pallet is stuck on the shuttle lane. Turn the pallet to it's correct position." : "De pallet steekt uit op de shuttle of een andere pallet op een baan aan het shuttle pad. Draai de pallet handmatig op de juiste positie.",
+        "Loading/unloading takes too long." : "Laden/lossen duurt te lang.",
+        "The pallet sticks out on the lift or another pallet is stuck on the lift shaft. Turn the pallet to it's correct position." : "De pallet steekt uit op de lift of een andere pallet langs de liftschacht. Draai de pallet handmatig op de juiste positie .",
+        "The pallet is most likely stuck. Make sure it's not, reset the track and the shuttle and execute recovery in VLC." : "Waarschijnlijk staat de pallet klem. Zorg dat deze weer goed staat, reset de baan en de shuttle en voer recovery uit in VLC.",
+        "The pallet is most likely stuck. Make sure it's not, reset the track and the VT and execute recovery in VLC." : "Waarschijnlijk staat de pallet klem. Zorg dat deze weer goed staat, reset de baan en de vt en voer recovery uit in VLC.",
+        "The pallet is most likely stuck. Make sure it's not, and reset the track." : "Waarschijnlijk staat de pallet klem. Zorg dat deze weer goed staat en reset de baan"
     },
     "de": {
         "Log In" : "Anmelden",

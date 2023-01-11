@@ -27,8 +27,7 @@ namespace Backend.EF {
         ADMIN = 1,
         CLIENT = 2,
         TRAINED = 3,
-        UNTRAIMED = 4,
-        CUSTOMER = 5
+        UNTRAINED = 4,
     }
 
     class Company {

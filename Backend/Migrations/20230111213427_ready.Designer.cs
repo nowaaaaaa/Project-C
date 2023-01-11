@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20230110105432_nieuwjaar")]
-    partial class nieuwjaar
+    [Migration("20230111213427_ready")]
+    partial class ready
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,9 +198,8 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("role")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("role")
+                        .HasColumnType("integer");
 
                     b.HasKey("id");
 
