@@ -1,7 +1,8 @@
+global using Backend.EF;
+global using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using Backend.EF;
 using System;
+
 namespace Backend {
     class Program {
         static void Main(string[] args) {
@@ -13,6 +14,7 @@ namespace Backend {
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

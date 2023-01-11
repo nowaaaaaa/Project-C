@@ -4,13 +4,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
 using System.Security.Claims;
 
+
 using Backend.EF;
 
 namespace Backend.Controllers {
   [ApiController]
   [Route("[controller]")]
   public class AuthenticationController : ControllerBase {
-
     private readonly IConfiguration _configuration;
     private readonly ILogger<WeatherForecastController> _logger;
 
@@ -22,13 +22,13 @@ namespace Backend.Controllers {
 
     [HttpPost]
     [Route("login")]
-    public IActionResult Login(LoginDto data) {
+    public async Task<IActionResult> Login(LoginDto data) {
       try {
         System.Console.WriteLine(data.email + "is trying to log in");
 
         using (var context = new MyContext()) {
           
-          var user = context.users.Where(p => p.email == data.email).FirstOrDefault();
+          var user = await context.users.Where(p => p.email == data.email).FirstOrDefaultAsync();
           if (user == null) {
             return BadRequest("User nor found");
           }
@@ -46,15 +46,9 @@ namespace Backend.Controllers {
       }
     }
 
-    [HttpGet]
-    [Route("logout")]
-    public IActionResult Logout() {
-      return Ok("Successfully logged out.");
-    }
-
     [HttpPost]
     [Route("signup")]
-    public IActionResult Signup(SignupDto data) {
+    public async Task<IActionResult> Signup(SignupDto data) {
       try {
         System.Console.WriteLine(data.email);
 
@@ -63,7 +57,7 @@ namespace Backend.Controllers {
 
         using (var context = new MyContext()) {
 
-          var company = context.companies.Where(p => p.name == data.companyName).FirstOrDefault();
+          var company = await context.companies.Where(p => p.name == data.companyName).FirstOrDefaultAsync();
           if (company == null) {
             return BadRequest("Company not found");
           }
@@ -91,17 +85,9 @@ namespace Backend.Controllers {
 
     [HttpPut]
     [Route("password")]
-    public IActionResult Password(PasswordDto data) {
+    public async Task<IActionResult> Password(PasswordDto data) {
       try {
         System.Console.WriteLine("Password change incoming");
-
-        // //decrypt web token
-        // var token = data.jwt;
-        // var handler = new JwtSecurityTokenHandler();
-        // var jwt = handler.ReadJwtToken(token);
-        // var jwtToken = jwt as JwtSecurityToken;
-
-        // var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
 
         if (VerifyToken(data.jwt, out Guid id)) {
           //create password
@@ -109,7 +95,7 @@ namespace Backend.Controllers {
 
           using (var context = new MyContext()) {
 
-            var user = context.users.Where(p => p.id == id).FirstOrDefault();
+            var user = await context.users.Where(p => p.id == id).FirstOrDefaultAsync();
             if (user == null) {
               return BadRequest("You don't exist in our systems...");
             }
@@ -132,14 +118,14 @@ namespace Backend.Controllers {
 
     [HttpPut]
     [Route("username")]
-    public IActionResult Username(UsernameDto data) {
+    public async Task<IActionResult> Username(UsernameDto data) {
       try {
         System.Console.WriteLine($"Username change to {data.newUsername} incoming");
 
         if (VerifyToken(data.jwt, out Guid id)) {
           using (var context = new MyContext()) {
 
-            var user = context.users.Where(p => p.id == id).FirstOrDefault();
+            var user = await context.users.Where(p => p.id == id).FirstOrDefaultAsync();
             if (user == null) {
               return BadRequest("You don't exist in our systems...");
             }
