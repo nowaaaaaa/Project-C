@@ -12,6 +12,9 @@ const axiosInstance = axios.create({
 type GetRoleDto = {
   jwt: string
 }
+type GetCompanyIdDto = {
+  companyId: string
+}
 type LoginDto = {
   email: string,
   password: string
@@ -28,4 +31,8 @@ export function LoginEP(data: LoginDto) {
 }
 export function GetRoleEP(data: GetRoleDto) {
   return axiosInstance.post('/Authentication/getrole', data);
+}
+
+export function GetCompanyIdEP(data: GetCompanyIdDto) {
+  return axiosInstance.post('/Company/getCompanyName', data);
 }

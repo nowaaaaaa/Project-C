@@ -33,11 +33,7 @@ export function Login() {
         //not logged in
         navigate("/")
       }
-      if (role === 1) {
-        //admin
-        navigate("/visconpage")
-      }
-      if (role === 2 || role === 3 || role === 4) {
+      if (role === 1 || role === 2 || role === 3 || role === 4) {
         //client
         navigate("/userpage")
       }

@@ -30,4 +30,8 @@ namespace Backend {
   public class GetRoleDto {
     public string jwt { get; set; } = string.Empty;
   }
+  
+  public class GetCompanyNameDto {
+    public string companyId { get; set; }
+  }
 }

@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { GetRoleEP } from '../../BackendManager/endpoints';
 
-var claimtypes = require('claimtypes');
-
 export function parseJwt (token: string) {
   var base64Url = token.split('.')[1];
   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -37,5 +35,11 @@ export function getEmail(data: string): string {
 export function getPhone(data: string): string {
   const token = parseJwt(data)
   const value = Object(token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone"]
+  return value;
+}
+
+export function getCompanyId(data: string): string {
+  const token = parseJwt(data)
+  const value = Object(token)["CompanyId"]
   return value;
 }

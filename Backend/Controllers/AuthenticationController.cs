@@ -152,7 +152,8 @@ namespace Backend.Controllers {
         new Claim(ClaimTypes.Name, user.name),
         new Claim(ClaimTypes.Email, user.email),
         new Claim(ClaimTypes.MobilePhone, user.phone),
-        new Claim(ClaimTypes.Role, user.role.ToString())
+        new Claim(ClaimTypes.Role, user.role.ToString()),
+        new Claim("CompanyId", user.companyId.ToString())
       };
 
       var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
