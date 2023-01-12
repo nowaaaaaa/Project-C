@@ -18,9 +18,6 @@ type LoginDto = {
 }
 
 // axios get endpoints
-export function GetRoleEP(data: GetRoleDto) {
-  return axiosInstance.post('/Authentication/getrole', data);
-}
 export function GetInfoEP() {
   return axios.get(mainURL + '/weatherforecast');
 }
@@ -28,4 +25,7 @@ export function GetInfoEP() {
 // axios post endpoints
 export function LoginEP(data: LoginDto) {
   return axiosInstance.post('/Authentication/login', data);
+}
+export function GetRoleEP(data: GetRoleDto) {
+  return axiosInstance.post('/Authentication/getrole', data);
 }
