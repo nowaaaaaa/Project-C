@@ -43,7 +43,6 @@ namespace Backend.EF {
 
             foreach (var m in machineArray) {
                 this.machineTypes.Add(new MachineType() { id = Guid.NewGuid(), name = m[0], drawingNr = m[1]});
-                Console.WriteLine(this.machineTypes.Count());
             }
             this.SaveChanges();
             this.ackProblems.Add(new AckProblem() { id = Guid.NewGuid(), MachineTypeId = this.machineTypes.First().id, problem = "The product is on the machine incorrectly.", solution = "Check the photocells. You might need to place the product in the right spot manually." });
