@@ -26,4 +26,8 @@ namespace Backend {
     public string jwt { get; set; } = string.Empty;
     public string newUsername { get; set; } = string.Empty;
   }
+
+  public class GetRoleDto {
+    public string jwt { get; set; } = string.Empty;
+  }
 }

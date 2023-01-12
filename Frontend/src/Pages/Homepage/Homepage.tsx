@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Homepage.css';
 import '../../App.css';
+import { getRole } from '../../Pages/Login/AccountManager';
 
 //Component
 import { Navbar } from '../../Components/Navbar/Navbar'
@@ -12,6 +13,24 @@ export function Homepage() {
   const handleClick = () => {
     navigate("/login");
   }
+  const role = getRole();
+
+  useEffect(() => {
+    if (role != null) {
+      if (role === 0) {
+        //not logged in
+        navigate("/login")
+      }
+      if (role === 1) {
+        //admin
+        navigate("/visconpage")
+      }
+      if (role === 2 || role === 3 || role === 4) {
+        //client
+        navigate("/userpage")
+      }
+    }
+  })
 
   return (
     <>

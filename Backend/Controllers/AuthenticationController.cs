@@ -47,6 +47,33 @@ namespace Backend.Controllers {
     }
 
     [HttpPost]
+    [Route("getrole")]
+    public async Task<IActionResult> GetRole(GetRoleDto data) {
+      try {
+        System.Console.WriteLine("Role requested");
+
+        if (VerifyToken(data.jwt, out Guid id)) {
+
+          using (var context = new MyContext()) {
+
+            var user = await context.users.Where(p => p.id == id).FirstOrDefaultAsync();
+            if (user == null) {
+              return BadRequest("You don't exist in our systems...");
+            }
+
+            return Ok(user.role.ToString());
+          }
+        }
+        else {
+          return Unauthorized("Invalid token");
+        }
+      }
+      catch(Exception ex) {
+        return BadRequest(ex.Message);
+      }
+    }
+
+    [HttpPost]
     [Route("signup")]
     public async Task<IActionResult> Signup(SignupDto data) {
       try {

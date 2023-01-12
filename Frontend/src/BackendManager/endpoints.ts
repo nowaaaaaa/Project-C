@@ -9,15 +9,23 @@ const axiosInstance = axios.create({
   }
 });
 
-type PostData = {
+type GetRoleDto = {
+  jwt: string
+}
+type LoginDto = {
   email: string,
   password: string
 }
 
 // axios get endpoints
-export const info = mainURL + '/weatherforecast';
+export function GetRoleEP(data: GetRoleDto) {
+  return axiosInstance.post('/Authentication/getrole', data);
+}
+export function GetInfoEP() {
+  return axios.get(mainURL + '/weatherforecast');
+}
 
 // axios post endpoints
-export function postData(data: PostData) {
-  return axiosInstance.post('/Authentication/login', data)
+export function LoginEP(data: LoginDto) {
+  return axiosInstance.post('/Authentication/login', data);
 }

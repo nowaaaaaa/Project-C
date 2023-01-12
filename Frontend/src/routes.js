@@ -7,8 +7,10 @@ import { VisconPage } from './Pages/VisconPage/VisconPage';
 import { UserCreation } from './Pages/UserCreation/UserCreation';
 
 export const routes = [
+    //global
     { path: '/', name: 'homepage', component: <Homepage />},
     { path: '/login', name: 'login', component: <Login />},
+    
     { path: '/machines', name:'machines', component: <Machines />},
     { path: '/userpage', name:'userpage', component: <Userpage />},
     { path: '/problemSolver', name:'problemSolver', component: <ProblemSolver />},

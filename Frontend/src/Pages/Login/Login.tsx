@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios, { AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import '../../App.css';
 
-import { postData } from '../../BackendManager/endpoints'
+import { LoginEP } from '../../BackendManager/endpoints'
+import { GetRoleEP } from '../../BackendManager/endpoints';
+import { getRole } from './AccountManager';
 
 //Component
 import { Navbar } from '../../Components/Navbar/Navbar'
@@ -18,19 +21,60 @@ export function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    postData({
+    LoginEP({
       email: email_,
       password: password_
-    })
-      .then(response => {
-        localStorage.setItem("token", response.data)
-        navigate("/")
-      })
-      .catch(error => {
+    }).then(response => {
+      localStorage.setItem("token", response.data)
+
+      var role = 0;
+      GetRoleEP({
+        jwt: response.data
+      }).then((response: AxiosResponse<any>) => {
+        role = parseInt(response.data);
+        console.log(role)
+
+        localStorage.setItem("role", role.toString())
+
+        if (role === 0) {
+          //not logged in
+          navigate("/")
+        }
+        if (role === 1) {
+          //admin
+          navigate("/visconpage")
+        }
+        if (role === 2 || role === 3 || role === 4) {
+          //client
+          navigate("/userpage")
+        }
+      }).catch(error => {
         console.error(error)
       })
-
+    }).catch(error => {
+      console.error(error)
+    })
   }
+
+  // const token = localStorage.getItem("token");
+  // const role = getRole();
+  // useEffect(() => {
+  //   if (role != null) {
+  //     if (token != null) {
+  //       //not logged in
+  //       navigate("/")
+  //     }
+  //     if (role === 1) {
+  //       //admin
+  //       navigate("/visconpage")
+  //     }
+  //     if (role === 2 || role === 3 || role === 4) {
+  //       //client
+  //       navigate("/userpage")
+  //     }
+  //   }
+  // })
+
   // const Userpage = () => {
   //   navigate("/userpage");
   // }
