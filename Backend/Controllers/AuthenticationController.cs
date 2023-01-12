@@ -24,7 +24,7 @@ namespace Backend.Controllers {
     [Route("login")]
     public async Task<IActionResult> Login(LoginDto data) {
       try {
-        System.Console.WriteLine(data.email + "is trying to log in");
+        System.Console.WriteLine(data.email + "is trying to log in.");
 
         using (var context = new MyContext()) {
           
