@@ -33,7 +33,7 @@ export function Login() {
       }).then((response: AxiosResponse<any>) => {
         role = parseInt(response.data);
         console.log(role)
-
+        localStorage.role = role.toString();
         localStorage.setItem("role", role.toString())
 
         if (role === 0) {
@@ -42,7 +42,7 @@ export function Login() {
         }
         if (role === 1) {
           //admin
-          navigate("/visconpage")
+          navigate("/userpage")
         }
         if (role === 2 || role === 3 || role === 4) {
           //client

@@ -23,7 +23,7 @@ export function Homepage() {
       }
       if (role === 1) {
         //admin
-        navigate("/visconpage")
+        navigate("/userpage")
       }
       if (role === 2 || role === 3 || role === 4) {
         //client
