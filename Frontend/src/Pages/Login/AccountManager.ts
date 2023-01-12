@@ -4,28 +4,38 @@ import { useNavigate } from 'react-router-dom';
 
 import { GetRoleEP } from '../../BackendManager/endpoints';
 
-export function getRole(): number {
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
+var claimtypes = require('claimtypes');
 
-  if (token == null) {
-    return 0;
-  }
+export function parseJwt (token: string) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
 
-  if (role != null) {
-    return parseInt(role);
-  }
+  return JSON.parse(jsonPayload);
+}
 
-  GetRoleEP({
-    jwt: token
-  }).then((response: AxiosResponse<any>) => {
-    var role: number = parseInt(response.data);
-    console.log('request send');
-    localStorage.setItem("role", role.toString());
-    return role;
-  }).catch(error => {
-    console.error(error)
-    return 0;
-  })
-  return 0;
+export function getRole(data: string): number {
+  const token = parseJwt(data)
+  const value = Object(token)["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+  return parseInt(value);
+}
+
+export function getName(data: string): string {
+  const token = parseJwt(data)
+  const value = Object(token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]
+  return value;
+}
+
+export function getEmail(data: string): string {
+  const token = parseJwt(data)
+  const value = Object(token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"]
+  return value;
+}
+
+export function getPhone(data: string): string {
+  const token = parseJwt(data)
+  const value = Object(token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone"]
+  return value;
 }

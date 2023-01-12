@@ -47,33 +47,6 @@ namespace Backend.Controllers {
     }
 
     [HttpPost]
-    [Route("getrole")]
-    public async Task<IActionResult> GetRole(GetRoleDto data) {
-      try {
-        System.Console.WriteLine("Role requested");
-
-        if (VerifyToken(data.jwt, out Guid id)) {
-
-          using (var context = new MyContext()) {
-
-            var user = await context.users.Where(p => p.id == id).FirstOrDefaultAsync();
-            if (user == null) {
-              return BadRequest("You don't exist in our systems...");
-            }
-
-            return Ok(user.role.ToString());
-          }
-        }
-        else {
-          return Unauthorized("Invalid token");
-        }
-      }
-      catch(Exception ex) {
-        return BadRequest(ex.Message);
-      }
-    }
-
-    [HttpPost]
     [Route("signup")]
     public async Task<IActionResult> Signup(SignupDto data) {
       try {
@@ -176,6 +149,9 @@ namespace Backend.Controllers {
 
       List<Claim> claims = new List<Claim> {
         new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
+        new Claim(ClaimTypes.Name, user.name),
+        new Claim(ClaimTypes.Email, user.email),
+        new Claim(ClaimTypes.MobilePhone, user.phone),
         new Claim(ClaimTypes.Role, user.role.ToString())
       };
 

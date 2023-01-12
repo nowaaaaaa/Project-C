@@ -13,7 +13,12 @@ export function Homepage() {
   const handleClick = () => {
     navigate("/login");
   }
-  const role = getRole();
+
+  var role = 0;
+  var token = localStorage.getItem("token")
+  if (token != null) {
+    role = getRole(token);
+  }
 
   useEffect(() => {
     if (role != null) {

@@ -27,30 +27,20 @@ export function Login() {
     }).then(response => {
       localStorage.setItem("token", response.data)
 
-      var role = 0;
-      GetRoleEP({
-        jwt: response.data
-      }).then((response: AxiosResponse<any>) => {
-        role = parseInt(response.data);
-        console.log(role)
+      var role = getRole(response.data);
 
-        localStorage.setItem("role", role.toString())
-
-        if (role === 0) {
-          //not logged in
-          navigate("/")
-        }
-        if (role === 1) {
-          //admin
-          navigate("/visconpage")
-        }
-        if (role === 2 || role === 3 || role === 4) {
-          //client
-          navigate("/userpage")
-        }
-      }).catch(error => {
-        console.error(error)
-      })
+      if (role === 0) {
+        //not logged in
+        navigate("/")
+      }
+      if (role === 1) {
+        //admin
+        navigate("/visconpage")
+      }
+      if (role === 2 || role === 3 || role === 4) {
+        //client
+        navigate("/userpage")
+      }
     }).catch(error => {
       console.error(error)
     })

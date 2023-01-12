@@ -15,11 +15,14 @@ var role:number = 0;
 export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
   const navigate = useNavigate();
   location = useLocation().pathname;
-  role = getRole();
+  var token = localStorage.getItem("token")
+  if (token != null) {
+    role = getRole(token);
+  }
   
   const logout = () => {
     localStorage.removeItem("token")
-    localStorage.removeItem("role")
+    role = 0;
     navigate("/login")
   }
   
