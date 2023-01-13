@@ -43,3 +43,15 @@ export function getCompanyId(data: string): string {
   const value = Object(token)["CompanyId"]
   return value;
 }
+
+export function getMachines(data: string): string {
+  const token = parseJwt(data)
+  const value = Object(token)["Machines"]
+  return value;
+}
+
+export function getAckProblems(data: string): string {
+  const token = parseJwt(data)
+  const value = Object(token)["AckProblems"]
+  return value;
+}

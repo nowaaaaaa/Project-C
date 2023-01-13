@@ -34,4 +34,12 @@ namespace Backend {
   public class GetCompanyNameDto {
     public string companyId { get; set; }
   }
+
+  public class GetMachinesDto {
+    public string companyId { get; set; }
+  }
+
+  public class GetAckProblemsDto {
+    public string machineTypeId { get; set; }
+  }
 }
