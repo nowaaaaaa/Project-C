@@ -80,6 +80,16 @@ export function Login() {
   //   navigate("/userpage");
   // }
 
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  }
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  }
+ 
   return (
     <body className="homepage-body">
       < Navbar />
@@ -112,7 +122,12 @@ export function Login() {
 
         </form>
         {showWrong_ && <div className='py-1 text-red-500'>{message_}</div>}
-        <button className='py-1 text-cyan-800 dark:text-cyan-400'>Forgot password?</button>
+        <div className='py-1 cursor-default text-cyan-800 dark:text-cyan-400' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Forgot password?</div>
+        {isHovering && 
+          <div className='bg-slate-300 dark:bg-slate-600 rounded-lg'>
+            <p className='px-2 py-1 text-cyan-800 dark:text-cyan-400'>In order to change your password please contact your system administrators</p>
+          </div>
+        }
 
       </div>
       < Footer />
