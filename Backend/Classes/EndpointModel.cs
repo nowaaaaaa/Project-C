@@ -32,6 +32,6 @@ namespace Backend {
   }
   
   public class GetCompanyNameDto {
-    public string companyId { get; set; }
+    public string companyId { get; set; } = string.Empty;
   }
 }

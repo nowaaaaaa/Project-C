@@ -29,7 +29,7 @@ export function Userpage() {
   }).then(response => {
     
     setCompanyName(response.data)
-    
+
   }).catch(error => {
     console.error(error)
   })
