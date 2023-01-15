@@ -4,6 +4,7 @@ import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
 import { axios } from '../../Components/Axios/Axios';
+import { getMachines, getAckProblems } from '../../Pages/Login/AccountManager';
 import {Guid} from 'guid-typescript';
 
 //vvvvvvvvv==] Dummy Data [==vvvvvvvvv//

@@ -59,7 +59,7 @@ namespace Backend.EF {
         [Key]
         public Guid id { get; set; }
         public MachineType type { get; set; } = null!;
-        public Guid MachineTypeId { get; set; }
+        public Guid machineTypeId { get; set; }
         public string problem { get; set; } = null!;
         public string solution { get; set; } = null!;
     }
