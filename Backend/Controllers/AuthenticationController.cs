@@ -30,7 +30,7 @@ namespace Backend.Controllers {
           
           var user = await context.users.Where(p => p.email == data.email).FirstOrDefaultAsync();
           if (user == null) {
-            return BadRequest("User nor found");
+            return BadRequest("User not found");
           }
 
           if(!VerifyPasswordHash(data.password, user.passwordHash, user.passwordSalt)) {

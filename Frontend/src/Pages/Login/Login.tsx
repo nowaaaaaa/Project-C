@@ -17,36 +17,44 @@ export function Login() {
   const [email_, setEmail] = useState<string>('')
   const [password_, setPassword] = useState<string>('')
   const [showWrong_, setShowWrong] = useState<boolean>(false)
+  const [message_, setMessage] = useState<string>('')
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (email_ === '' && password_ === '') {
+      setShowWrong(false)
+    }
+    else {
+      LoginEP({
+        email: email_,
+        password: password_
+      }).then(response => {
+        localStorage.setItem("token", response.data)
 
-    LoginEP({
-      email: email_,
-      password: password_
-    }).then(response => {
-      localStorage.setItem("token", response.data)
+        var role = getRole(response.data);
 
-      var role = getRole(response.data);
-
-      if (role === 0) {
-        //not logged in
-        navigate("/")
-      }
-      if (role === 1 || role === 2 || role === 3 || role === 4) {
-        //client
-        navigate("/userpage")
-      }
-    }).catch(error => {
-      if (error.response.state === 404) {
-        setShowWrong(true)
-      } 
-      else {
-        setShowWrong(false)
-      }
-      console.error(error)
-    })
+        if (role === 0) {
+          //not logged in
+          navigate("/")
+        }
+        if (role === 1 || role === 2 || role === 3 || role === 4) {
+          //client
+          navigate("/userpage")
+        }
+      }).catch(error => {
+        var errMessage: string = error.response.data;
+        console.log(errMessage)
+        if (errMessage === 'User not found' || errMessage === 'Wrong password') {
+          setShowWrong(true)
+          setMessage(errMessage)
+          console.log(message_)
+        } 
+        else {
+          setShowWrong(false)
+        }
+      })
+    }
   }
 
   // const token = localStorage.getItem("token");
@@ -103,7 +111,7 @@ export function Login() {
           <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700' type="submit">Sign In</button>
 
         </form>
-        {showWrong_ && <div className='py-1 text-red-500'>Wrong password or email</div>}
+        {showWrong_ && <div className='py-1 text-red-500'>{message_}</div>}
         <button className='py-1 text-cyan-800 dark:text-cyan-400'>Forgot password?</button>
 
       </div>
