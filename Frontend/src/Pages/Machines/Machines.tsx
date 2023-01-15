@@ -26,53 +26,53 @@ const machType2 : MachineType = {
 const problem1: ackProblem = {
   problem: Translate("The shuttle is stuck."),
   solution: Translate("Move items on the shuttle cable."),
-  machineTypeID: machType1.id
+  machineTypeId: machType1.id
 }
 
 const problem2: ackProblem = {
   problem: Translate("The lift is stuck."),
   solution: Translate("Move items on the lift cable."),
-  machineTypeID: machType2.id
+  machineTypeId: machType2.id
 }
 
 const problem3: ackProblem = {
   problem: Translate("Lift cable is broken"),
   solution: Translate("Install new cable"),
-  machineTypeID: machType2.id
+  machineTypeId: machType2.id
 }
 
 const machinenumber1: Machine = {
-  typeID: machType1.id,
+  typeId: machType1.id,
   name: "Lift5A",
   problems: [],
   type: machType1
 }
 const machinenumber2: Machine = {
-  typeID: machType1.id,
+  typeId: machType1.id,
   name: "Lift1",
   problems: [],
   type: machType1
 }
 const machinenumber3: Machine = {
-  typeID: machType1.id,
+  typeId: machType1.id,
   name: "Shuttle1",
   problems: [],
   type: machType1
 }
 const machinenumber4: Machine = {
-  typeID: machType1.id,
+  typeId: machType1.id,
   name: "Shuttle2",
   problems: [],
   type: machType1
 }
 const machinenumber5: Machine = {
-  typeID: machType2.id,
+  typeId: machType2.id,
   name: "Band1A",
   problems: [],
   type: machType2
 }
 const machinenumber6: Machine = {
-  typeID: machType2.id,
+  typeId: machType2.id,
   name: "Band1B",
   problems: [],
   type: machType2
@@ -119,7 +119,7 @@ export function Machines() {
     console.error(error)
   })
   for (var i = 0; i < machinesList.length; i++) {
-    getAckProblems(machinesList[i].typeID.toString()).then(response => {
+    getAckProblems(machinesList[i].typeId.toString()).then(response => {
       ackProblemsList.push(response.data);
     }).catch(error => {
       console.error(error)

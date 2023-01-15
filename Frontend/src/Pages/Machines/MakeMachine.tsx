@@ -7,9 +7,9 @@ export type Machine = {
   id?: Guid,
   name: string,
   type: MachineType,
-  typeID: Guid,
+  typeId: Guid,
   company?: string,
-  companyID?: Guid,
+  companyId?: Guid,
   problems?: ackProblem[];
 }
 
@@ -22,7 +22,7 @@ export type MachineType = {
 export type ackProblem = {
   id?: Guid,
   machType?: MachineType,
-  machineTypeID: Guid,
+  machineTypeId: Guid,
   problem: string,
   solution: string;
 }
@@ -31,7 +31,7 @@ export function takeProblems(mach: Machine, prob: ackProblem[]) {
   const needList : ackProblem[] = [];
 
   prob.forEach((problem) => {
-    if (problem.machineTypeID === mach.typeID) {
+    if (problem.machineTypeId === mach.typeId) {
       needList.push(problem);
     }
   });
@@ -70,7 +70,7 @@ export function listMachines(machines: Machine[]) {
       <div className='max-h-[69vh] overflow-y-scroll scrollbar scrollbar-thumb-slate-400'>
         {machines.map((mach) => 
         <>
-          <MakeMachine name={mach.name} type={mach.type} problems={mach.problems} typeID={mach.typeID}/>
+          <MakeMachine name={mach.name} type={mach.type} problems={mach.problems} typeId={mach.typeId}/>
         </>
         )}
       </div>
