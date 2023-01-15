@@ -4,7 +4,8 @@ import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
 import { axios } from '../../Components/Axios/Axios';
-import { getMachines, getAckProblems } from '../../Pages/Login/AccountManager';
+import { getMachines, getAckProblems, getCompanyId } from '../../Pages/Login/AccountManager';
+import { GetMachinesEP, GetAckProblemsEP } from '../../BackendManager/endpoints'
 import {Guid} from 'guid-typescript';
 
 //vvvvvvvvv==] Dummy Data [==vvvvvvvvv//
@@ -77,7 +78,8 @@ const machinenumber6: Machine = {
   type: machType2
 }
 
-//var machinesList: Machine[] = (Database shit) => in export function {listMachines(machinesList)}
+var machinesList: Machine[] = [];
+var ackProblemsList: ackProblem[] = [];
 
 const probs : ackProblem[] = [problem1, problem2, problem3];
 
@@ -89,10 +91,11 @@ machTestList.forEach( (mach) => {
   takeProblems(mach, probs);
 })
 
+
 function Search (keyword: string) {
   if (keyword === "") return machTestList;
   let res: Machine[] = [];
-  machTestList.forEach(m => {
+  machinesList.forEach(m => {
     if (m.name.toLowerCase().search(keyword) !== -1 || m.type.name.toLowerCase().search(keyword) !== -1) res.push(m);
   });
   return res;
@@ -103,6 +106,26 @@ export function Machines() {
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setKeyword(event.currentTarget.value.toLowerCase());
   };
+  var token = localStorage.getItem("token")
+  var companyId = "";
+  if (token != null) {
+    companyId = getCompanyId(token);
+  }
+  GetMachinesEP({
+    companyId: companyId
+  }).then(response => {
+    machinesList = response.data;
+  }).catch(error => {
+    console.error(error)
+  })
+  for (var i = 0; i < machinesList.length; i++) {
+    getAckProblems(machinesList[i].typeID.toString()).then(response => {
+      ackProblemsList.push(response.data);
+    }).catch(error => {
+      console.error(error)
+    })
+  }
+
 
   return (
     <>
