@@ -19,6 +19,12 @@ type LoginDto = {
   email: string,
   password: string
 }
+type GetMachinesDto = {
+  companyId: string
+}
+type GetAckProblemsDto = {
+  machineTypeId: string
+}
 
 // axios get endpoints
 export function GetInfoEP() {
@@ -35,4 +41,12 @@ export function GetRoleEP(data: GetRoleDto) {
 
 export function GetCompanyIdEP(data: GetCompanyIdDto) {
   return axiosInstance.post('/Company/getCompanyName', data);
+}
+
+export function GetMachinesEP(data: GetMachinesDto) {
+  return axiosInstance.post('/Company/getMachines', data);
+}
+
+export function GetAckProblemsEP(data: GetAckProblemsDto) {
+  return axiosInstance.post('/Company/getAckProblems', data);
 }
