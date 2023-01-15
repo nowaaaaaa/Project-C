@@ -36,10 +36,10 @@ namespace Backend {
   }
 
   public class GetMachinesDto {
-    public string companyId { get; set; }
+    public string companyId { get; set; } = string.Empty;
   }
 
   public class GetAckProblemsDto {
-    public string machineTypeId { get; set; }
+    public string machineTypeId { get; set; } = string.Empty;
   }
 }

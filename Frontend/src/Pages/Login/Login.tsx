@@ -16,6 +16,7 @@ import { getPositionOfLineAndCharacter } from 'typescript';
 export function Login() {
   const [email_, setEmail] = useState<string>('')
   const [password_, setPassword] = useState<string>('')
+  const [showWrong_, setShowWrong] = useState<boolean>(false)
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -38,6 +39,12 @@ export function Login() {
         navigate("/userpage")
       }
     }).catch(error => {
+      if (error.response.state === 404) {
+        setShowWrong(true)
+      } 
+      else {
+        setShowWrong(false)
+      }
       console.error(error)
     })
   }
@@ -96,6 +103,7 @@ export function Login() {
           <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700' type="submit">Sign In</button>
 
         </form>
+        {showWrong_ && <div className='py-1 text-red-500'>Wrong password or email</div>}
         <button className='py-1 text-cyan-800 dark:text-cyan-400'>Forgot password?</button>
 
       </div>

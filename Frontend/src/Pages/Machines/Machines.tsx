@@ -4,7 +4,8 @@ import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
 import { axios } from '../../Components/Axios/Axios';
-import { getMachines, getAckProblems } from '../../Pages/Login/AccountManager';
+import { getCompanyId } from '../../Pages/Login/AccountManager';
+import { GetMachinesEP, GetAckProblemsEP } from '../../BackendManager/endpoints';
 import {Guid} from 'guid-typescript';
 
 //vvvvvvvvv==] Dummy Data [==vvvvvvvvv//
@@ -77,7 +78,24 @@ const machinenumber6: Machine = {
   type: machType2
 }
 
-//var machinesList: Machine[] = (Database shit) => in export function {listMachines(machinesList)}
+var dbMachineList: Machine[] = [];
+var companyId = "";
+var token = localStorage.getItem("token")
+if (token != null) {
+  companyId = getCompanyId(token);
+  
+}
+console.log(companyId)
+GetMachinesEP({
+  companyId: companyId
+}).then(response => {
+  
+  dbMachineList = response.data
+  console.log(dbMachineList)
+
+}).catch(error => {
+  console.error(error)
+})
 
 const probs : ackProblem[] = [problem1, problem2, problem3];
 

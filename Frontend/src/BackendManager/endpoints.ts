@@ -44,9 +44,9 @@ export function GetCompanyIdEP(data: GetCompanyIdDto) {
 }
 
 export function GetMachinesEP(data: GetMachinesDto) {
-  return axiosInstance.post('/Company/getMachines', data);
+  return axiosInstance.post('/Machines/getMachines', data);
 }
 
 export function GetAckProblemsEP(data: GetAckProblemsDto) {
-  return axiosInstance.post('/Company/getAckProblems', data);
+  return axiosInstance.post('/Machines/getAckProblems', data);
 }
