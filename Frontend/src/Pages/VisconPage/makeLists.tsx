@@ -5,20 +5,18 @@ import { Guid } from 'guid-typescript'
 export type Ticket = {
     id: Guid
     submitter: string
-    problem?: string[]
-    should: string
-    tried: string
     phone: string 
     state: "OPEN" | "ACTIVE" | "CLOSED"
+    details: TicketDetails[]
 }
 
 export type TicketDetails = {
     id: Guid,
-    ticket: Ticket,
+    ticket?: Ticket,
     ticketId: Guid,
     problem: string,
-    expected: string,
-    solution: string
+    tried: string,
+    should: string
 }
 
 //Properties that a ticket should have to be moved between lists
@@ -30,10 +28,11 @@ nextList: Ticket[]
 setNextList: (list: Ticket[]) => void
 }
 
+//Fills Ticket with problems last should be most recent
 export function fillProblems(tickets: TicketDetails[], tick: Ticket) {
     tickets.forEach((ticket) => {
         if (ticket.ticketId === tick.id) {
-            tick.problem?.push(ticket.problem);
+            tick.details.push(ticket);
         }
     })
 }
@@ -45,15 +44,15 @@ return <li id="origin">
         <p className='reporterName font-lora bg-slate-300 dark:bg-slate-600 text-center'>{props.ticket.submitter}</p>
         <div className='reportText pl-2 pb-3'>
         <p>Problem:</p>
-        <p className='reportText pl-2'>{props.ticket.problem}</p>
+        <p className='reportText pl-2'>{props.ticket.details.at(-1)?.problem}</p>
         </div>
         <div className='reportText pl-2 pb-3'>
         <p>Machine should be doing:</p>
-        <p className='reportText pl-2'>{props.ticket.should}</p>
+        <p className='reportText pl-2'>{props.ticket.details.at(-1)?.should}</p>
         </div>
         <div className='reportText pl-2 pb-3'>
         <p>Reporter has tried to:</p>
-        <p className='reportText pl-2'>{props.ticket.tried}</p>
+        <p className='reportText pl-2'>{props.ticket.details.at(-1)?.tried}</p>
         </div>
         <div className='reportText pl-2'>
         <p>Reporter's phone number:</p>

@@ -2,19 +2,46 @@ import React, { useState } from 'react';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
-import { Ticket, TicketList } from './makeLists';
+import { Ticket, TicketList, TicketDetails, fillProblems } from './makeLists';
+import { Guid } from 'guid-typescript';
+
+var guids: Guid[] = [
+  Guid.create(),
+  Guid.create(),
+  Guid.create(),
+  Guid.create(),
+  Guid.create(),
+]
+
+var detailList: TicketDetails[] = [
+  {id: guids[0], ticketId: guids[0], problem: 'My items should move', tried: 'Move items', should: 'Move items'},
+  {id: guids[1], ticketId: guids[1], problem: 'My items should move', tried: 'Move items', should: 'Move items'},
+  {id: guids[2], ticketId: guids[2], problem: 'My items should move', tried: 'Move items', should: 'Move items'},
+  {id: guids[3], ticketId: guids[3], problem: 'My items should move', tried: 'Move items', should: 'Move items'},
+  {id: guids[4], ticketId: guids[4], problem: 'My items should move', tried: 'Move items', should: 'Move items'},
+  {id: guids[0], ticketId: guids[0], problem: 'Problem1', tried: 'tried1', should: 'tried2'},
+  {id: guids[1], ticketId: guids[1], problem: 'Problem2', tried: 'tried2', should: 'tried2'},
+  {id: guids[2], ticketId: guids[2], problem: 'Problem3', tried: 'tried3', should: 'tried2'},
+  {id: guids[3], ticketId: guids[3], problem: 'Problem4', tried: 'tried4', should: 'tried2'},
+  {id: guids[4], ticketId: guids[4], problem: 'Problem5', tried: 'tried5', should: 'tried2'},
+]
 
 var fullList: Ticket[] = [
-  { reporter: "1", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "OPEN"},
-  { reporter: "2", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321", state: "OPEN"},
-  { reporter: "3", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837", state: "OPEN"},
-  { reporter: "4", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "ACTIVE"},
-  { reporter: "5", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321", state: "ACTIVE"},
-  { reporter: "6", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837", state: "ACTIVE"},
-  { reporter: "7", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "CLOSED"},
-  { reporter: "8", problem: "My machine broke while trying to load my eggs", should: "It should have moved the eggs to the shuttle", tried: "I tried to move the basket", phone: "06 87654321", state: "CLOSED"},
-  { reporter: "9", problem: "My machine broke while trying to load my tomatoes", should: "It should have moved the tomatoes to the shuttle", tried: "I tried to move the basket", phone: "06 0192837", state: "CLOSED"},
-  { reporter: "10", problem: "My machine broke while trying to load my apples", should: "It should have moved the apples to the shuttle", tried: "I tried to move the basket", phone: "06 12345678", state: "ACTIVE"},
+  {id: guids[0], submitter: 'Open1', state: 'OPEN', phone: '06 12345678', details: []},
+  {id: guids[1], submitter: 'Open2', state: 'OPEN', phone: '06 12345678', details: []},
+  {id: guids[2], submitter: 'Open3', state: 'OPEN', phone: '06 12345678', details: []},
+  {id: guids[3], submitter: 'Open4', state: 'OPEN', phone: '06 12345678', details: []},
+  {id: guids[4], submitter: 'Open5', state: 'OPEN', phone: '06 12345678', details: []},
+  {id: guids[0], submitter: 'Active1', state: 'ACTIVE', phone: '06 12345678', details: []},
+  {id: guids[1], submitter: 'Active2', state: 'ACTIVE', phone: '06 12345678', details: []},
+  {id: guids[2], submitter: 'Active3', state: 'ACTIVE', phone: '06 12345678', details: []},
+  {id: guids[3], submitter: 'Active4', state: 'ACTIVE', phone: '06 12345678', details: []},
+  {id: guids[4], submitter: 'Active5', state: 'ACTIVE', phone: '06 12345678', details: []},
+  {id: guids[0], submitter: 'Closed1', state: 'CLOSED', phone: '06 12345678', details: []},
+  {id: guids[1], submitter: 'Closed2', state: 'CLOSED', phone: '06 12345678', details: []},
+  {id: guids[2], submitter: 'Closed3', state: 'CLOSED', phone: '06 12345678', details: []},
+  {id: guids[3], submitter: 'Closed4', state: 'CLOSED', phone: '06 12345678', details: []},
+  {id: guids[4], submitter: 'Closed5', state: 'CLOSED', phone: '06 12345678', details: []},
 ]
 
 export function VisconPage() {
@@ -26,6 +53,7 @@ export function VisconPage() {
 
   if (tickets.length === 0 && activeTickets.length === 0 && closedTickets.length === 0) {
     fullList.map((tick) => {
+      fillProblems(detailList, tick)
       if (tick.state === "OPEN") {
         tickets.push(tick)
       } else if (tick.state === "ACTIVE") {
