@@ -79,7 +79,38 @@ const machinenumber6: Machine = {
 }
 
 var machinesList: Machine[] = [];
+<<<<<<< Updated upstream
 var ackProblemsList: ackProblem[] = [];
+=======
+var companyId = "";
+var token = localStorage.getItem("token")
+if (token != null) {
+  companyId = getCompanyId(token);
+  
+}
+console.log(companyId)
+GetMachinesEP({
+  companyId: companyId
+}).then(response => {
+  
+  machinesList = response.data
+  console.log(machinesList)
+
+}).catch(error => {
+  console.error(error)
+})
+
+GetAckProblemsEP({
+  machineTypeId: machType1.id
+}).then(response => {
+  
+  machinesList = response.data
+  console.log(machinesList)
+
+}).catch(error => {
+  console.error(error)
+})
+>>>>>>> Stashed changes
 
 const probs : ackProblem[] = [problem1, problem2, problem3];
 
