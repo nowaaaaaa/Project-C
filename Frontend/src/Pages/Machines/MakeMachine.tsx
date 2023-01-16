@@ -10,7 +10,7 @@ export type Machine = {
   typeId: Guid,
   company?: string,
   companyId?: Guid,
-  problems?: ackProblem[];
+  problems?: AckProblem[];
 }
 
 export type MachineType = {
@@ -19,16 +19,16 @@ export type MachineType = {
   drawingNr?: string;
 }
 
-export type ackProblem = {
+export type AckProblem = {
   id?: Guid,
-  machType?: MachineType,
+  machineType?: MachineType,
   machineTypeId: Guid,
   problem: string,
   solution: string;
 }
 
-export function takeProblems(mach: Machine, prob: ackProblem[]) {
-  const needList : ackProblem[] = [];
+export function takeProblems(mach: Machine, prob: AckProblem[]) {
+  const needList : AckProblem[] = [];
 
   prob.forEach((problem) => {
     if (problem.machineTypeId === mach.typeId) {
