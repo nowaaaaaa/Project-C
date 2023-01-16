@@ -1,5 +1,5 @@
 import './Machines.css';
-import { Machine, ackProblem, listMachines, MachineType, takeProblems } from './MakeMachine'
+import { Machine, AckProblem, listMachines, MachineType, takeProblems } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
@@ -13,72 +13,74 @@ import {Guid} from 'guid-typescript';
 const guid1: Guid = Guid.create();
 const guid2: Guid = Guid.create();
 
-const machType1 : MachineType = {
+const machineType1 : MachineType = {
   name: "Lift",
   id: guid1
 }
 
-const machType2 : MachineType = {
+const machineType2 : MachineType = {
   name: "Shuttle",
   id: guid2
 }
 
-const problem1: ackProblem = {
+const problem1: AckProblem = {
   problem: Translate("The shuttle is stuck."),
   solution: Translate("Move items on the shuttle cable."),
-  machineTypeID: machType1.id
+  machineTypeId: machineType1.id
 }
 
-const problem2: ackProblem = {
+const problem2: AckProblem = {
   problem: Translate("The lift is stuck."),
   solution: Translate("Move items on the lift cable."),
-  machineTypeID: machType2.id
+  machineTypeId: machineType2.id
 }
 
-const problem3: ackProblem = {
+const problem3: AckProblem = {
   problem: Translate("Lift cable is broken"),
   solution: Translate("Install new cable"),
-  machineTypeID: machType2.id
+  machineTypeId: machineType2.id
 }
 
 const machinenumber1: Machine = {
-  typeID: machType1.id,
+  typeId: machineType1.id,
   name: "Lift5A",
   problems: [],
-  type: machType1
+  type: machineType1
 }
 const machinenumber2: Machine = {
-  typeID: machType1.id,
+  typeId: machineType1.id,
   name: "Lift1",
   problems: [],
-  type: machType1
+  type: machineType1
 }
 const machinenumber3: Machine = {
-  typeID: machType1.id,
+  typeId: machineType1.id,
   name: "Shuttle1",
   problems: [],
-  type: machType1
+  type: machineType1
 }
 const machinenumber4: Machine = {
-  typeID: machType1.id,
+  typeId: machineType1.id,
   name: "Shuttle2",
   problems: [],
-  type: machType1
+  type: machineType1
 }
 const machinenumber5: Machine = {
-  typeID: machType2.id,
+  typeId: machineType2.id,
   name: "Band1A",
   problems: [],
-  type: machType2
+  type: machineType2
 }
 const machinenumber6: Machine = {
-  typeID: machType2.id,
+  typeId: machineType2.id,
   name: "Band1B",
   problems: [],
-  type: machType2
+  type: machineType2
 }
 
-var dbMachineList: Machine[] = [];
+
+var machinesList: Machine[] = [];
+var ackProblems: AckProblem[] = [];
 var companyId = "";
 var token = localStorage.getItem("token")
 if (token != null) {
@@ -89,15 +91,29 @@ console.log(companyId)
 GetMachinesEP({
   companyId: companyId
 }).then(response => {
-  
-  dbMachineList = response.data
-  console.log(dbMachineList)
+  machinesList = response.data
+    console.log(machinesList)
 
 }).catch(error => {
   console.error(error)
 })
+var machineTypeIds: string[] = [];
+for (var i = 0; i < machinesList.length; i++) {
+  if (machineTypeIds.find(m => m === machinesList[i].typeId.toString())) continue;	
+  machineTypeIds.push(machinesList[i].typeId.toString());
+  GetAckProblemsEP({
+    machineTypeId: machinesList[i].typeId.toString()
+  }).then(response => {
+    for (var j = 0; j < response.data.length; j++) {
+      ackProblems.push(response.data[j]);
+    }
+    console.log(ackProblems)
+  }).catch(error => {
+    console.error(error)
+  })
+}
 
-const probs : ackProblem[] = [problem1, problem2, problem3];
+const probs : AckProblem[] = [problem1, problem2, problem3];
 
 const machTestList: Machine[] = [machinenumber1, machinenumber2, machinenumber3, machinenumber4, machinenumber5, machinenumber6];
 
@@ -108,9 +124,9 @@ machTestList.forEach( (mach) => {
 })
 
 function Search (keyword: string) {
-  if (keyword === "") return machTestList;
+  if (keyword === "") return machinesList;
   let res: Machine[] = [];
-  machTestList.forEach(m => {
+  machinesList.forEach(m => {
     if (m.name.toLowerCase().search(keyword) !== -1 || m.type.name.toLowerCase().search(keyword) !== -1) res.push(m);
   });
   return res;
