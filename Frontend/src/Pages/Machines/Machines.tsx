@@ -98,8 +98,10 @@ GetMachinesEP({
   console.error(error)
 })
 var machineTypeIds: string[] = [];
+console.log(machinesList.length)
 for (var i = 0; i < machinesList.length; i++) {
-  if (machineTypeIds.find(m => m === machinesList[i].typeId.toString())) continue;	
+  console.log("hi")
+  if (machineTypeIds.find(m => m === machinesList[i].typeId.toString()) !== undefined) continue;	
   machineTypeIds.push(machinesList[i].typeId.toString());
   GetAckProblemsEP({
     machineTypeId: machinesList[i].typeId.toString()

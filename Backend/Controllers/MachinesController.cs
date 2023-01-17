@@ -14,7 +14,7 @@ namespace Backend.Controllers {
         public async Task<IActionResult> GetMachines(GetMachinesDto data) {
             try {
                 using (var context = new MyContext()) {
-                    List<Machine> machines = await context.machines.Where(p => p.companyId == Guid.Parse(data.companyId)).ToListAsync();
+                    List<Machine> machines = await context.machines.Where(p => p.companyId == Guid.Parse(data.companyId)).OrderBy(p => p.name).ToListAsync();
                     /*if (company == null) {
                         return BadRequest("Company not found");
                     }*/
