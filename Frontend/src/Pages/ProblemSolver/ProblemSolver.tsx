@@ -10,7 +10,7 @@ import { swalA, swalB, swalC } from './SwalFunctions';
 
 export function ProblemSolver() {
   const navigate = useNavigate();
-  const login = () => navigate('../login');
+  const login = () => navigate('/userPage');
 
   //hier backend shit vv
   const sendData = () => console.log(problem, expected, tried)

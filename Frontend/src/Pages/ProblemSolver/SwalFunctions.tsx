@@ -30,7 +30,7 @@ export function swalB(prob: string, exp: string) {
   }
   var text = ''
   if (prob === '' && exp === '') {
-    text = Translate('Problem and expected result fields left empty')
+    text = Translate('Problem and expected behaviour fields left empty')
   }
   else if (prob === '') {
     text = Translate('Problem field left empty')
