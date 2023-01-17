@@ -16,7 +16,8 @@ export type TicketDetails = {
     ticketId: Guid,
     problem: string,
     tried: string,
-    should: string
+    should: string,
+    solution?: string
 }
 
 //Properties that a ticket should have to be moved between lists

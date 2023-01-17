@@ -5,6 +5,7 @@ import { ProblemSolver } from './Pages/ProblemSolver/ProblemSolver';
 import { Userpage } from './Pages/Userpage/Userpage';
 import { VisconPage } from './Pages/VisconPage/VisconPage';
 import { UserCreation } from './Pages/UserCreation/UserCreation';
+import { ViewTickets } from './Pages/ViewTickets/ViewTickets';
 
 export const routes = [
     //global
@@ -15,5 +16,6 @@ export const routes = [
     { path: '/userpage', name:'userpage', component: <Userpage />},
     { path: '/problemSolver', name:'problemSolver', component: <ProblemSolver />},
     { path: '/visconPage', name:'visconPage', component: <VisconPage />},
-    { path: '/userCreation', name:'userCreation', component: <UserCreation />}
+    { path: '/userCreation', name:'userCreation', component: <UserCreation />},
+    { path: '/viewTickets', name:'viewTickets', component: <ViewTickets />}
 ]

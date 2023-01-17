@@ -3,7 +3,6 @@ import { Machine, AckProblem, listMachines, MachineType, takeProblems } from './
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';
-import { axios } from '../../Components/Axios/Axios';
 import { getCompanyId } from '../../Pages/Login/AccountManager';
 import { GetMachinesEP, GetAckProblemsEP } from '../../BackendManager/endpoints';
 import {Guid} from 'guid-typescript';
