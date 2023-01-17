@@ -71,6 +71,8 @@ namespace Backend.EF {
         public Guid submitterId { get; set; }
         public User? handler { get; set; }
         public Guid? handlerId { get; set; }
+        public Machine machine { get; set; } = null!;
+        public Guid machineId { get; set; }
         public DateTime submitDate { get; set; }
         public bool solved { get; set; }
         public DateTime? solveDate { get; set; }
@@ -84,5 +86,6 @@ namespace Backend.EF {
         public string problem { get; set; } = null!;
         public string expected { get; set; } = null!;
         public string? solution { get; set; }
+        public DateTime lastUpdated { get; set; }
     }
 }
