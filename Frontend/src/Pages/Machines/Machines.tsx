@@ -92,27 +92,27 @@ GetMachinesEP({
 }).then(response => {
   machinesList = response.data
     console.log(machinesList)
-
+    console.log(machinesList.length)
+    for (var i = 0; i < machinesList.length; i++) {
+      console.log("hi")
+      if (machineTypeIds.find(m => m === machinesList[i].typeId.toString()) !== undefined) continue;	
+      machineTypeIds.push(machinesList[i].typeId.toString());
+      GetAckProblemsEP({
+        machineTypeId: machinesList[i].typeId.toString()
+      }).then(response => {
+        for (var j = 0; j < response.data.length; j++) {
+          ackProblems.push(response.data[j]);
+        }
+      }).catch(error => {
+        console.error(error)
+      })
+    }
+    console.log(ackProblems)
 }).catch(error => {
   console.error(error)
 })
 var machineTypeIds: string[] = [];
-console.log(machinesList.length)
-for (var i = 0; i < machinesList.length; i++) {
-  console.log("hi")
-  if (machineTypeIds.find(m => m === machinesList[i].typeId.toString()) !== undefined) continue;	
-  machineTypeIds.push(machinesList[i].typeId.toString());
-  GetAckProblemsEP({
-    machineTypeId: machinesList[i].typeId.toString()
-  }).then(response => {
-    for (var j = 0; j < response.data.length; j++) {
-      ackProblems.push(response.data[j]);
-    }
-    console.log(ackProblems)
-  }).catch(error => {
-    console.error(error)
-  })
-}
+
 
 const probs : AckProblem[] = [problem1, problem2, problem3];
 
@@ -120,9 +120,7 @@ const machTestList: Machine[] = [machinenumber1, machinenumber2, machinenumber3,
 
 //^^^^^^^^^^==] Dummy Data [==^^^^^^^^^^^//
 
-machTestList.forEach( (mach) => {
-  takeProblems(mach, probs);
-})
+
 
 function Search (keyword: string) {
   if (keyword === "") return machinesList;
@@ -135,6 +133,9 @@ function Search (keyword: string) {
 
 export function Machines() {
   const [keyword, setKeyword] = useState('');
+  machinesList.forEach( (mach) => {
+    takeProblems(mach, ackProblems);
+  })
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setKeyword(event.currentTarget.value.toLowerCase());
   };

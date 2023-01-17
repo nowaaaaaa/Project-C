@@ -29,8 +29,9 @@ export type AckProblem = {
 
 export function takeProblems(mach: Machine, prob: AckProblem[]) {
   const needList : AckProblem[] = [];
-
+  console.log(mach.typeId)
   prob.forEach((problem) => {
+    console.log(`${problem.machineTypeId} problem`)
     if (problem.machineTypeId === mach.typeId) {
       needList.push(problem);
     }
@@ -50,8 +51,8 @@ export function MakeMachine(mach: Machine) {
         {isActive && <>{mach.problems?.map((problem) => 
             <>
             <div className='border-b border-slate-700 ease-in-out duration-150'>
-              <h2 className='text-left ml-4'>{problem.problem}</h2>
-              <p className='ml-10 text-left'>{problem.solution}</p>
+              <h2 className='text-left ml-4'>{Translate(problem.problem)}</h2>
+              <p className='ml-10 text-left'>{Translate(problem.solution)}</p>
             </div>
             </>
         )}

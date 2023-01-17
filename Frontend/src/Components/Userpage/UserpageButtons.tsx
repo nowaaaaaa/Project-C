@@ -34,7 +34,6 @@ export function UserpageButtons() {
       buttons.push([`${Translate('View Tickets')}`, viscon, `${Translate('There are')} 3 ${Translate('unclaimed tickets')}.`, 'https://ictzaak.nl/wp-content/uploads/2019/06/Helpdesk-ICTzaak-Blogpage.png'])
     break;
   }
-  console.log(buttons.length);
   const root = document.getElementsByTagName("html")[0];
 
   return (
