@@ -2,7 +2,7 @@ import './Machines.css';
 import { Machine, AckProblem, listMachines, MachineType, takeProblems } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getCompanyId } from '../../Pages/Login/AccountManager';
 import { GetMachinesEP, GetAckProblemsEP } from '../../BackendManager/endpoints';
 import {Guid} from 'guid-typescript';

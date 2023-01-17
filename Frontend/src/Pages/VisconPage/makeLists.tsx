@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Guid } from 'guid-typescript'
+import { Translate } from '../../Components/Languages/Translator';
 
 export type Ticket = {
     id: Guid
@@ -44,19 +45,19 @@ return <li id="origin">
     <div className='bg-sky-100 dark:bg-gray-700'>
         <p className='reporterName font-lora bg-slate-300 dark:bg-slate-600 text-center'>{props.ticket.submitter}</p>
         <div className='reportText pl-2 pb-3'>
-        <p>Problem:</p>
+        <p>{Translate("Problem:")}</p>
         <p className='reportText pl-2'>{props.ticket.details.at(-1)?.problem}</p>
         </div>
         <div className='reportText pl-2 pb-3'>
-        <p>Machine should be doing:</p>
+        <p>{Translate("Machine should be doing:")}</p>
         <p className='reportText pl-2'>{props.ticket.details.at(-1)?.should}</p>
         </div>
         <div className='reportText pl-2 pb-3'>
-        <p>Reporter has tried to:</p>
+        <p>{Translate("Reporter has tried to:")}</p>
         <p className='reportText pl-2'>{props.ticket.details.at(-1)?.tried}</p>
         </div>
         <div className='reportText pl-2'>
-        <p>Reporter's phone number:</p>
+        <p>{Translate("Reporter's phone number:")}</p>
         <p className='reportText pl-2'>{props.ticket.phone}</p>
         </div>
         <p className='text-center pb-2 mb-3'>
@@ -64,7 +65,7 @@ return <li id="origin">
                 props.setNextList([...props.nextList, props.ticket])
                 props.setOriginalList(props.originalList.filter((t) => t !== props.ticket))
                 changeState(props.ticket)
-            }} className='pointer bg-slate-400 dark:bg-gray-600 px-4 rounded-3xl cursor-pointer'> {text(props.ticket)}</button>
+            }} className='pointer bg-slate-400 dark:bg-gray-600 px-4 rounded-3xl cursor-pointer'> {Translate(text(props.ticket))}</button>
         </p>
     </div>
     </li>
