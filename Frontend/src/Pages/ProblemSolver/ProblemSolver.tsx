@@ -1,55 +1,18 @@
 import React from 'react';
 import './ProblemSolver.css';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 import { Navbar } from '../../Components/Navbar/Navbar'
 import{ Footer } from '../../Components/Footer/Footer'
 import { useNavigate } from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import { useState } from 'react';
-
-const MySwal = withReactContent(Swal)
-
-function swalA() {
-  var color = ''
-  if (localStorage.theme === "light") {
-    var color = "#FFFFFF"
-  }
-  else {
-    var color = "#1e293b"
-  }
-  MySwal.fire({
-    title: <p className='dark:text-cyan-400'>{Translate('Checkbox left unchecked')}</p>,
-    icon: 'error',
-    confirmButtonText: 'Continue',
-    confirmButtonColor: '#2F80ED',
-    background: color,
-    width: '400px',
-    padding: '3em',
-  })}
-
-function swalB() {
-  var color = ''
-  if (localStorage.theme === "light") {
-    var color = "#FFFFFF"
-  }
-  else {
-    var color = "#1e293b"
-  }
-  MySwal.fire({
-    title: <p className='dark:text-cyan-400'>{Translate('Succesfully sent report')}</p>,
-    icon: 'success',
-    showConfirmButton: false,
-    background: color,
-    timer: 800
-  })}
-
-
+import { swalA, swalB, swalC } from './SwalFunctions';
 
 export function ProblemSolver() {
   const navigate = useNavigate();
   const login = () => navigate('../login');
+
+  //hier backend shit vv
   const sendData = () => console.log(problem, expected, tried)
 
   const [problem, setProblem] = useState<string>('')
@@ -97,13 +60,16 @@ export function ProblemSolver() {
             <button
             className='hover:rounded-2xl transition-all ease-in-out duration-200 rounded-xl bg-vBlue dark:bg-slate-500 md:text-xl text-md text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600 md:w-1/6 w-[35vw] md:h-[5vh] h-[4.5vh]'
             onClick={() => {
-              if (notStuck && machineOn) {
+              if (notStuck && machineOn && problem !== '' && expected !== '') {
                 sendData()
-                swalB()
+                swalA()
                 login()
               }
+              else if (problem === '' || expected === '') {
+                swalB(problem, expected)
+              }
               else {return (
-                swalA()
+                swalC()
               )}
               }
             }>
