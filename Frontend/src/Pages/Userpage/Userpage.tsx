@@ -15,43 +15,29 @@ var verified: boolean = true;
 
 export function Userpage() {
   const navigate = useNavigate();
-  
   var role = 0;
   var name = "";
   var companyId = "";
-  //var companyName = "test";
   const [companyName, setCompanyName] = useState<string>('')
   var token = localStorage.getItem("token")
   if (token != null) {
     role = getRole(token);
     name = getName(token);
     companyId = getCompanyId(token);
-
     GetCompanyIdEP({
       jwt: token,
       companyId: companyId
     }).then(response => {
-      
       setCompanyName(response.data)
-  
     }).catch(error => {
       var errMessage: string = error.response.data;
       console.log(errMessage)
-      if (errMessage === 'Invalid token') {
-        verified = false;
-      }
+      if (errMessage === 'Invalid token') verified = false;
     })
-  }
-  else {
-    verified = false;
-  }
-
+  } else verified = false;
   useEffect(() => {
-    if ( verified === false ) {
-      navigate('/')
-    }
+    if ( verified === false ) navigate('/')
   });
-
   const problem = () => navigate('../machines');
   return (
     <body className="userpage-body">
