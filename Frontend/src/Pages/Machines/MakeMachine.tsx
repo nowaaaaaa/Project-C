@@ -11,6 +11,7 @@ export type Machine = {
   company?: string,
   companyId?: Guid,
   problems?: AckProblem[];
+  machineTypeName: string;
 }
 
 export type MachineType = {
@@ -69,7 +70,7 @@ export function listMachines(machines: Machine[]) {
       <div className='max-h-[69vh] overflow-y-scroll scrollbar scrollbar-thumb-slate-400'>
         {machines.map((mach) => 
         <>
-          <MakeMachine name={mach.name} type={mach.type} problems={mach.problems} typeId={mach.typeId}/>
+          <MakeMachine name={mach.name} type={{id: mach.typeId, name: mach.machineTypeName}} problems={mach.problems} typeId={mach.typeId} machineTypeName={mach.machineTypeName} />
         </>
         )}
       </div>
