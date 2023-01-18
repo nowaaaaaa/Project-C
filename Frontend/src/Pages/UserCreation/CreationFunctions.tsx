@@ -40,7 +40,7 @@ export function successPopup(text: string) {
     icon: "success",
     showConfirmButton: false,
     background: color,
-    timer: 1000,
+    timer: 1100,
   });
 }
 
@@ -119,7 +119,8 @@ export function UserCreationForm() {
               popUp();
             } else {
               sendData();
-              successPopup("user");
+              var msg = "'" + name + "'"
+              successPopup(msg);
             }
           }}
         >
@@ -170,7 +171,8 @@ export function MachineCreationForm() {
               popUp();
             } else {
               sendData();
-              successPopup("machine");
+              var msg = "'" + name + "'"
+              successPopup(msg);
             }
           }}
         >
@@ -212,7 +214,8 @@ export function CompanyCreationForm() {
               popUp();
             } else {
               sendData();
-              successPopup("company");
+              var msg = "'" + name + "'"
+              successPopup(msg);
             }
           }}
         >

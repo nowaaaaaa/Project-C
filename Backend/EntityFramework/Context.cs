@@ -21,7 +21,7 @@ namespace Backend.EF {
         public DbSet<TicketDetails> ticketDetails { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseNpgsql("User ID = postgres; Password = 1; Host = localhost; port = 5432; Database = Viscon; Pooling = true").LogTo(Console.WriteLine, LogLevel.Information);
+            optionsBuilder.UseNpgsql("User ID = postgres; Password = admin; Host = localhost; port = 5432; Database = Viscon; Pooling = true").LogTo(Console.WriteLine, LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
