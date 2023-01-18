@@ -9,74 +9,78 @@ import {Guid} from 'guid-typescript';
 
 //vvvvvvvvv==] Dummy Data [==vvvvvvvvv//
 
-const guid1: Guid = Guid.create();
-const guid2: Guid = Guid.create();
+// const guid1: Guid = Guid.create();
+// const guid2: Guid = Guid.create();
 
-const machineType1 : MachineType = {
-  name: "Lift",
-  id: guid1
-}
+// const machineType1 : MachineType = {
+//   name: "Lift",
+//   id: guid1
+// }
 
-const machineType2 : MachineType = {
-  name: "Shuttle",
-  id: guid2
-}
+// const machineType2 : MachineType = {
+//   name: "Shuttle",
+//   id: guid2
+// }
 
-const problem1: AckProblem = {
-  problem: Translate("The shuttle is stuck."),
-  solution: Translate("Move items on the shuttle cable."),
-  machineTypeId: machineType1.id
-}
+// const problem1: AckProblem = {
+//   problem: Translate("The shuttle is stuck."),
+//   solution: Translate("Move items on the shuttle cable."),
+//   machineTypeId: machineType1.id
+// }
 
-const problem2: AckProblem = {
-  problem: Translate("The lift is stuck."),
-  solution: Translate("Move items on the lift cable."),
-  machineTypeId: machineType2.id
-}
+// const problem2: AckProblem = {
+//   problem: Translate("The lift is stuck."),
+//   solution: Translate("Move items on the lift cable."),
+//   machineTypeId: machineType2.id
+// }
 
-const problem3: AckProblem = {
-  problem: Translate("Lift cable is broken"),
-  solution: Translate("Install new cable"),
-  machineTypeId: machineType2.id
-}
+// const problem3: AckProblem = {
+//   problem: Translate("Lift cable is broken"),
+//   solution: Translate("Install new cable"),
+//   machineTypeId: machineType2.id
+// }
 
-const machinenumber1: Machine = {
-  typeId: machineType1.id,
-  name: "Lift5A",
-  problems: [],
-  type: machineType1
-}
-const machinenumber2: Machine = {
-  typeId: machineType1.id,
-  name: "Lift1",
-  problems: [],
-  type: machineType1
-}
-const machinenumber3: Machine = {
-  typeId: machineType1.id,
-  name: "Shuttle1",
-  problems: [],
-  type: machineType1
-}
-const machinenumber4: Machine = {
-  typeId: machineType1.id,
-  name: "Shuttle2",
-  problems: [],
-  type: machineType1
-}
-const machinenumber5: Machine = {
-  typeId: machineType2.id,
-  name: "Band1A",
-  problems: [],
-  type: machineType2
-}
-const machinenumber6: Machine = {
-  typeId: machineType2.id,
-  name: "Band1B",
-  problems: [],
-  type: machineType2
-}
+// const machinenumber1: Machine = {
+//   typeId: machineType1.id,
+//   name: "Lift5A",
+//   problems: [],
+//   type: machineType1
+// }
+// const machinenumber2: Machine = {
+//   typeId: machineType1.id,
+//   name: "Lift1",
+//   problems: [],
+//   type: machineType1
+// }
+// const machinenumber3: Machine = {
+//   typeId: machineType1.id,
+//   name: "Shuttle1",
+//   problems: [],
+//   type: machineType1
+// }
+// const machinenumber4: Machine = {
+//   typeId: machineType1.id,
+//   name: "Shuttle2",
+//   problems: [],
+//   type: machineType1
+// }
+// const machinenumber5: Machine = {
+//   typeId: machineType2.id,
+//   name: "Band1A",
+//   problems: [],
+//   type: machineType2
+// }
+// const machinenumber6: Machine = {
+//   typeId: machineType2.id,
+//   name: "Band1B",
+//   problems: [],
+//   type: machineType2
+// }
+//const probs : AckProblem[] = [problem1, problem2, problem3];
 
+// const machTestList: Machine[] = [machinenumber1, machinenumber2, machinenumber3, machinenumber4, machinenumber5, machinenumber6];
+
+// //^^^^^^^^^^==] Dummy Data [==^^^^^^^^^^^//
 
 var machinesList: Machine[] = [];
 var ackProblems: AckProblem[] = [];
@@ -108,20 +112,11 @@ GetMachinesEP({
 })
 var machineTypeIds: string[] = [];
 
-
-const probs : AckProblem[] = [problem1, problem2, problem3];
-
-const machTestList: Machine[] = [machinenumber1, machinenumber2, machinenumber3, machinenumber4, machinenumber5, machinenumber6];
-
-//^^^^^^^^^^==] Dummy Data [==^^^^^^^^^^^//
-
-
-
 function Search (keyword: string) {
   if (keyword === "") return machinesList;
   let res: Machine[] = [];
   machinesList.forEach(m => {
-    if (m.name.toLowerCase().search(keyword) !== -1// || m.type.name.toLowerCase().search(keyword) !== -1
+    if (m.name.toLowerCase().search(keyword) !== -1 || m.machineTypeName.toLowerCase().search(keyword) !== -1
     ) res.push(m);
   });
   return res;
