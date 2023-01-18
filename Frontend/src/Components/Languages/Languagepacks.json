@@ -75,7 +75,9 @@
         "Forgot password" : "Wachtwoord vergeten",	
         "Password" : "Wachtwoord",
         "User not found" : "Gebruiker niet gevonden",
-        "Wrong password" : "Wachtwoord is incorrect"
+        "Wrong password" : "Wachtwoord is incorrect",
+        "This machine has no acknowledged problems" : "Deze machine heeft geen veelvoorkomende problemen",
+        "Machines of" : "Machines van"
     },
     "de": {
         "Log In" : "Anmelden",
