@@ -58,6 +58,7 @@ namespace Backend.Controllers {
         using (var context = new MyContext()) {
 
           var company = await context.companies.Where(p => p.id == Guid.Parse(data.companyId)).FirstOrDefaultAsync();
+          System.Console.WriteLine(data.companyId);
           if (company == null) {
             return BadRequest("Company not found");
           }

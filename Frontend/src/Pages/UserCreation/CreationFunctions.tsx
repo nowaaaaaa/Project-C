@@ -3,6 +3,7 @@ import withReactContent from "sweetalert2-react-content";
 import { Translate } from "../../Components/Languages/Translator";
 import { useState, useEffect } from "react";
 import { getRole } from '../../Pages/Login/AccountManager';
+import { SignupEP } from "../../BackendManager/endpoints";
 
 const MySwal = withReactContent(Swal);
 
@@ -61,8 +62,28 @@ export function UserCreationForm() {
     currentRole = getRole(token);
   }
 
-  const sendData = () =>
-    console.log("User created:", name, email, phone, companyId, role, password);
+  const sendData = () => {
+    var token = localStorage.getItem("token")
+    if (token != null) {
+      SignupEP({
+        email: email,
+        name: name,
+        password: password,
+        phone: phone,
+        companyId: companyId,
+        role: +role
+      }).then(response => {
+        console.log("User created:", name, email, phone, companyId, role, password);
+
+      }).catch(error => {
+        var errMessage: string = error.response.data;
+        console.log(errMessage)
+        if (errMessage === 'Invalid token') {
+          console.log('Invalid token')
+        }
+      })
+    }
+  }
 
   return (
     <div className="grid pb-4 dark:text-cyan-400 text-cyan-800">
