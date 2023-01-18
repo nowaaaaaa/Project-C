@@ -25,6 +25,8 @@ export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
     role = 0;
     navigate("/login")
   }
+
+  const problem = () => navigate('../machines');
   
   // no user selected
   if (role === 0) {
@@ -78,7 +80,7 @@ export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
             <a href="/userpage" className="navbar-link text-cyan-800 dark:text-cyan-400 cursor-pointer">
             {Translate("Home")}
             </a>
-            <a href="/machines" className="navbar-link text-cyan-800 dark:text-cyan-400 cursor-pointer">
+            <a onClick={problem} className="navbar-link text-cyan-800 dark:text-cyan-400 cursor-pointer">
             {Translate("Machines")}
             </a>
             <a href="/problemSolver" className="navbar-link text-cyan-800 dark:text-cyan-400 cursor-pointer">
@@ -105,7 +107,7 @@ export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
             <a href="/userpage" className="sidebar-link text-black dark:text-white cursor-pointer">
             {Translate("Home")}
             </a>
-            <a href="/machines" className="sidebar-link text-black dark:text-white cursor-pointer">
+            <a onClick={problem} className="sidebar-link text-black dark:text-white cursor-pointer">
             {Translate("Machines")}
             </a>
             <a href="/problemSolver" className="sidebar-link text-black dark:text-white cursor-pointer">
