@@ -100,9 +100,9 @@ export function UserCreationForm() {
       <br />
       <label htmlFor="role">{Translate("User's Role:")}</label>
       <select id="role" onChange={(e) => setRole(e.target.value)} className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black">
-        {currentRole >= 1 && (<option value="2">Client</option>)}
-        {currentRole >= 2 && (<option value="3">Trained user</option>)}
-        {currentRole >= 2 && (<option value="4">Untrained user</option>)}
+        {currentRole <= 1 && (<option value="2">Client</option>)}
+        {currentRole <= 2 && (<option value="3">Trained user</option>)}
+        {currentRole <= 2 && (<option value="4">Untrained user</option>)}
       </select>
       <br />
       <label htmlFor="password">{Translate("User's Password:")}</label>
