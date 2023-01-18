@@ -65,13 +65,13 @@ export function UserCreationForm() {
     console.log("User created:", name, email, phone, company, role, password);
 
   return (
-    <div className="grid pb-4 dark:text-cyan-400">
+    <div className="grid pb-4 dark:text-cyan-400 text-cyan-800">
       <label htmlFor="name">{Translate("User's Name:")}</label>
       <input
         type="text"
         id="name"
-        onChange={(e) => setName(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        onChange={(e) => setName(e.target.value)}  // py-1 px-1.5 md:mb-3 focus:border-vBlue border-slate-300 border
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="email">{Translate("User's Email:")}</label>
@@ -79,7 +79,7 @@ export function UserCreationForm() {
         type="text"
         id="email"
         onChange={(e) => setEmail(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="phone">{Translate("User's Phone Number:")}</label>
@@ -87,7 +87,7 @@ export function UserCreationForm() {
         type="text"
         id="phone"
         onChange={(e) => setPhone(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="company">{Translate("User's Company:")}</label>
@@ -95,11 +95,11 @@ export function UserCreationForm() {
         type="text"
         id="company"
         onChange={(e) => setCompany(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="role">{Translate("User's Role:")}</label>
-      <select id="role" onChange={(e) => setRole(e.target.value)} className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black">
+      <select id="role" onChange={(e) => setRole(e.target.value)} className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2">
         {currentRole >= 1 && (<option value="2">Client</option>)}
         {currentRole >= 2 && (<option value="3">Trained user</option>)}
         {currentRole >= 2 && (<option value="4">Untrained user</option>)}
@@ -110,11 +110,11 @@ export function UserCreationForm() {
         type="password"
         id="password"
         onChange={(e) => setPassword(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <div>
         <button
-          className="self-start hover:rounded-2xl transition-all ease-in-out duration-200 rounded-xl bg-vBlue dark:bg-slate-500 md:text-xl text-sm text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600 md:w-[100px] w-[20vw] md:h-[4.5vh] h-[4vh] md:mt-8"
+          className="self-start hover:rounded-2xl transition-all ease-in-out duration-200 rounded-xl bg-vBlue dark:bg-slate-500 md:text-xl text-sm text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600 md:px-1.5 p-1 md:w-[110px] w-[20vw] mt-5"
           onClick={() => {
             if (
               name === "" ||
@@ -153,7 +153,7 @@ export function MachineCreationForm() {
         type="text"
         id="name"
         onChange={(e) => setName(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="type">Machine's Type:</label>
@@ -161,7 +161,7 @@ export function MachineCreationForm() {
         type="text"
         id="type"
         onChange={(e) => setType(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="company">Machine's Company:</label>
@@ -169,7 +169,7 @@ export function MachineCreationForm() {
         type="text"
         id="company"
         onChange={(e) => setCompany(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <div>
         <button
@@ -204,7 +204,7 @@ export function CompanyCreationForm() {
         type="text"
         id="name"
         onChange={(e) => setName(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
       <label htmlFor="address">Company's Address:</label>
@@ -212,7 +212,7 @@ export function CompanyCreationForm() {
         type="text"
         id="address"
         onChange={(e) => setAddress(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
+        className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <div>
         <button

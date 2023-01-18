@@ -11,8 +11,8 @@ export function UserCreation() {
   return (
     <body className="usercreation-body h-screen">
       <Navbar />
-      <div className="usercreation-container bg-white dark:bg-slate-800 grid place-items-center dark:text-cyan-400">
-        <h1 className="text-3xl pb-1 pt-4 border-b border-black dark:border-cyan-600">
+      <div className="usercreation-container bg-white dark:bg-slate-800 grid place-items-center dark:text-cyan-400 text-cyan-800">
+        <h1 className="text-3xl pb-1 pt-4 border-b border-cyan-800 dark:border-cyan-600">
           {Translate("Create a user")}
         </h1>
         <div className="grid md:grid-cols-2 place-items-center max-w-[800px] w-[80vw] bg-slate-100 dark:bg-slate-700 my-5 pt-2">
