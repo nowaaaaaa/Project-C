@@ -57,24 +57,22 @@ namespace Backend.Controllers {
 
         using (var context = new MyContext()) {
 
-          var company = await context.companies.Where(p => p.name == data.companyName).FirstOrDefaultAsync();
+          var company = await context.companies.Where(p => p.id == Guid.Parse(data.companyId)).FirstOrDefaultAsync();
           if (company == null) {
             return BadRequest("Company not found");
           }
-
           var user = new User();
           user.id = Guid.NewGuid();
           user.name = data.name;
           user.email = data.email;
           user.phone = data.phone;
+          user.company = company;
           user.companyId = company.id;
           user.role = data.role;
           user.passwordHash = passwordHash;
           user.passwordSalt = passwordSalt;
-
           context.users.Add(user);
           context.SaveChanges();
-
           return Ok(user);
         }
       }

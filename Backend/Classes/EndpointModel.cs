@@ -9,7 +9,7 @@ namespace Backend {
     public string name { get; set; } = string.Empty;
     public string password { get; set; } = string.Empty;
     public string phone { get; set; } = string.Empty;
-    public string companyName { get; set; } = string.Empty;
+    public string companyId { get; set; } = string.Empty;
     public int role { get; set; } = 0;
   }
 
