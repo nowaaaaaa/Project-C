@@ -29,6 +29,15 @@ type GetAckProblemsDto = {
   machineTypeId: string
 }
 
+type SignupDto = {
+  email: string,
+  name: string,
+  password: string,
+  phone: string,
+  companyId: string,
+  role: string
+}
+
 // axios get endpoints
 export function GetInfoEP() {
   return axios.get(mainURL + '/weatherforecast');
@@ -52,4 +61,8 @@ export function GetMachinesEP(data: GetMachinesDto) {
 
 export function GetAckProblemsEP(data: GetAckProblemsDto) {
   return axiosInstance.post('/Machines/getAckProblems', data);
+}
+
+export function SignupEP(data: SignupDto) {
+  return axiosInstance.post('/Authentication/signup', data);
 }
