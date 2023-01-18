@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import { getRole, getName, getCompanyId } from '../../Pages/Login/AccountManager';
@@ -11,7 +11,11 @@ import { Navbar } from '../../Components/Navbar/Navbar'
 import{ Footer } from '../../Components/Footer/Footer'
 import{ UserpageButtons } from '../../Components/Userpage/UserpageButtons';
 
+var verified: boolean = true;
+
 export function Userpage() {
+  const navigate = useNavigate();
+  
   var role = 0;
   var name = "";
   var companyId = "";
@@ -22,20 +26,32 @@ export function Userpage() {
     role = getRole(token);
     name = getName(token);
     companyId = getCompanyId(token);
+
+    GetCompanyIdEP({
+      jwt: token,
+      companyId: companyId
+    }).then(response => {
+      
+      setCompanyName(response.data)
+  
+    }).catch(error => {
+      var errMessage: string = error.response.data;
+      console.log(errMessage)
+      if (errMessage === 'Invalid token') {
+        verified = false;
+      }
+    })
+  }
+  else {
+    verified = false;
   }
 
-  GetCompanyIdEP({
-    companyId: companyId
-  }).then(response => {
-    
-    setCompanyName(response.data)
+  useEffect(() => {
+    if ( verified === false ) {
+      navigate('/')
+    }
+  });
 
-  }).catch(error => {
-    console.error(error)
-  })
-
-
-  const navigate = useNavigate();
   const problem = () => navigate('../machines');
   return (
     <body className="userpage-body">

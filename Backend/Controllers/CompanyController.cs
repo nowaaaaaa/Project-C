@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Backend.EF;
 
+using static Backend.Controllers.AuthenticationController;
+
 namespace Backend.Controllers
 {
     [ApiController]
@@ -15,12 +17,17 @@ namespace Backend.Controllers
         [Route("getCompanyName")]
         public async Task<IActionResult> GetCompanyName(GetCompanyNameDto data) {
             try {
-                using (var context = new MyContext()) {
-                    var company = await context.companies.Where(p => p.id == Guid.Parse(data.companyId)).FirstOrDefaultAsync();
-                    if (company == null) {
-                        return BadRequest("Company not found");
+                if (VerifyToken(data.jwt, out Guid id)) {
+                    using (var context = new MyContext()) {
+                        var company = await context.companies.Where(p => p.id == Guid.Parse(data.companyId)).FirstOrDefaultAsync();
+                        if (company == null) {
+                            return BadRequest("Company not found");
+                        }
+                        return Ok(company.name);
                     }
-                    return Ok(company.name);
+                }
+                else {
+                return Unauthorized("Invalid token");
                 }
             }
             catch(Exception ex) {

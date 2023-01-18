@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { GetRoleEP } from '../../BackendManager/endpoints';
 
-export function parseJwt (token: string) {
+export function parseJwt(token: string) {
   var base64Url = token.split('.')[1];
   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {

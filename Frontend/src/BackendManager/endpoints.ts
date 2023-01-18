@@ -13,6 +13,7 @@ type GetRoleDto = {
   jwt: string
 }
 type GetCompanyIdDto = {
+  jwt: string,
   companyId: string
 }
 type LoginDto = {
@@ -20,9 +21,11 @@ type LoginDto = {
   password: string
 }
 type GetMachinesDto = {
+  jwt: string,
   companyId: string
 }
 type GetAckProblemsDto = {
+  jwt: string,
   machineTypeId: string
 }
 

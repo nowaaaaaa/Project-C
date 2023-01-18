@@ -2,7 +2,8 @@ import './Machines.css';
 import { Machine, AckProblem, listMachines, MachineType, takeProblems } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCompanyId } from '../../Pages/Login/AccountManager';
 import { GetMachinesEP, GetAckProblemsEP } from '../../BackendManager/endpoints';
 import {Guid} from 'guid-typescript';
@@ -82,35 +83,53 @@ import {Guid} from 'guid-typescript';
 
 // //^^^^^^^^^^==] Dummy Data [==^^^^^^^^^^^//
 
+var verified: boolean = true;
+
 var machinesList: Machine[] = [];
 var ackProblems: AckProblem[] = [];
 var companyId = "";
 var token = localStorage.getItem("token")
 if (token != null) {
   companyId = getCompanyId(token);
-  
-}
-GetMachinesEP({
-  companyId: companyId
-}).then(response => {
-  machinesList = response.data
-    for (var i = 0; i < machinesList.length; i++) {
-      if (machineTypeIds.find(m => m === machinesList[i].typeId.toString()) !== undefined) continue;	
-      machineTypeIds.push(machinesList[i].typeId.toString());
-      GetAckProblemsEP({
-        machineTypeId: machinesList[i].typeId.toString()
-      }).then(response => {
-        for (var j = 0; j < response.data.length; j++) {
-          ackProblems.push(response.data[j]);
+
+  GetMachinesEP({
+    jwt: token,
+    companyId: companyId
+  }).then(response => {
+    machinesList = response.data
+      for (var i = 0; i < machinesList.length; i++) {
+        if (machineTypeIds.find(m => m === machinesList[i].typeId.toString()) !== undefined) continue;	
+        machineTypeIds.push(machinesList[i].typeId.toString());
+
+        if (token != null) {
+          GetAckProblemsEP({
+            jwt: token,
+            machineTypeId: machinesList[i].typeId.toString()
+          }).then(response => {
+            for (var j = 0; j < response.data.length; j++) {
+              ackProblems.push(response.data[j]);
+            }
+          }).catch(error => {
+            var errMessage: string = error.response.data;
+            console.log(errMessage)
+            if (errMessage === 'Invalid token') {
+              verified = false;
+            }
+          })
         }
-      }).catch(error => {
-        console.error(error)
-      })
+      }
+  }).catch(error => {
+    var errMessage: string = error.response.data;
+    console.log(errMessage)
+    if (errMessage === 'Invalid token') {
+      verified = false;
     }
-}).catch(error => {
-  console.error(error)
-})
-var machineTypeIds: string[] = [];
+  })
+  var machineTypeIds: string[] = [];
+}
+else {
+  verified = false;
+}
 
 function Search (keyword: string) {
   if (keyword === "") return machinesList;
@@ -123,6 +142,14 @@ function Search (keyword: string) {
 }
 
 export function Machines() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if ( verified === false ) {
+      navigate('/')
+    }
+  });
+  
   const [keyword, setKeyword] = useState('');
   machinesList.forEach( (mach) => {
     takeProblems(mach, ackProblems);

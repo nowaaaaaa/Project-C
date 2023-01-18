@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Backend.EF;
 using System.Reflection;
+using Backend.Controllers;
+
+using static Backend.Controllers.AuthenticationController;
 
 namespace Backend.Controllers {
     [ApiController]
@@ -14,7 +19,8 @@ namespace Backend.Controllers {
         [Route("getMachines")]
         public async Task<IActionResult> GetMachines(GetMachinesDto data) {
             try {
-                using (var context = new MyContext()) {
+                if (VerifyToken(data.jwt, out Guid id)) {
+                    using (var context = new MyContext()) {
                     List<Machine> machines = await context.machines.Where(p => p.companyId == Guid.Parse(data.companyId)).OrderBy(p => p.name).ToListAsync();
                     List<MachineToSend> machinesTS = new List<MachineToSend>();
                     string? temp;
@@ -27,6 +33,10 @@ namespace Backend.Controllers {
                     }*/
                     
                     return Ok(machinesTS);
+                    }
+                }
+                else {
+                return Unauthorized("Invalid token");
                 }
             }
             catch(Exception ex) {
@@ -37,13 +47,18 @@ namespace Backend.Controllers {
         [Route("getAckProblems")]
         public async Task<IActionResult> GetAckProblems(GetAckProblemsDto data) {
             try {
-                using (var context = new MyContext()) {
-                    List<AckProblem> ackProblems = await context.ackProblems.Where(p => p.machineTypeId == Guid.Parse(data.machineTypeId)).ToListAsync();
-                    /*if (company == null) {
-                        return BadRequest("Company not found");
-                    }*/
-                    
-                    return Ok(ackProblems);
+                if (VerifyToken(data.jwt, out Guid id)) {
+                    using (var context = new MyContext()) {
+                        List<AckProblem> ackProblems = await context.ackProblems.Where(p => p.machineTypeId == Guid.Parse(data.machineTypeId)).ToListAsync();
+                        /*if (company == null) {
+                            return BadRequest("Company not found");
+                        }*/
+                        
+                        return Ok(ackProblems);
+                    }
+                }
+                else {
+                return Unauthorized("Invalid token");
                 }
             }
             catch(Exception ex) {

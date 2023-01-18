@@ -4,10 +4,6 @@ namespace Backend {
     public string password { get; set; } = string.Empty;
   }
 
-  public class LogoutDto {
-    public string jwt { get; set; } = string.Empty;
-  }
-
   public class SignupDto {
     public string email { get; set; } = string.Empty;
     public string name { get; set; } = string.Empty;
@@ -32,14 +28,17 @@ namespace Backend {
   }
   
   public class GetCompanyNameDto {
+    public string jwt { get; set; } = string.Empty;
     public string companyId { get; set; } = string.Empty;
   }
 
   public class GetMachinesDto {
+    public string jwt { get; set; } = string.Empty;
     public string companyId { get; set; } = string.Empty;
   }
 
   public class GetAckProblemsDto {
+    public string jwt { get; set; } = string.Empty;
     public string machineTypeId { get; set; } = string.Empty;
   }
 }

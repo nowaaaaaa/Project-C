@@ -171,7 +171,7 @@ namespace Backend.Controllers {
       return jwt;
     }
 
-    private bool VerifyToken(string token, out Guid id) {
+    public static bool VerifyToken(string token, out Guid id) {
       id = Guid.Empty;
 
       var handler = new JwtSecurityTokenHandler();

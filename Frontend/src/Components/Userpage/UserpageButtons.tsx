@@ -4,14 +4,18 @@ import { Translate } from '../../Components/Languages/Translator';
 import { getRole } from '../../Pages/Login/AccountManager';
 
 export function UserpageButtons() {
+  const navigate = useNavigate();
+
   var role = 0;
   var token = localStorage.getItem("token")
   if (token != null) {
     role = getRole(token);
   }
+  else {
+    return <></>;
+  }
 
   let buttons: [string, () => void, string, string][] = [];
-  const navigate = useNavigate();
   const employees = () => navigate('../userCreation');
   const tickets = () => navigate('../visconPage');
   const companies = () => navigate('../employees');
