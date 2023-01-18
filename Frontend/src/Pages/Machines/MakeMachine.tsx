@@ -29,9 +29,7 @@ export type AckProblem = {
 
 export function takeProblems(mach: Machine, prob: AckProblem[]) {
   const needList : AckProblem[] = [];
-  console.log(mach.typeId)
   prob.forEach((problem) => {
-    console.log(`${problem.machineTypeId} problem`)
     if (problem.machineTypeId === mach.typeId) {
       needList.push(problem);
     }

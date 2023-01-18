@@ -70,7 +70,12 @@
         "Claim": "Claimen",
         "Close": "Sluiten",
         "Remove": "Verwijderen",
-        "Continue": "Doorgaan"
+        "Continue": "Doorgaan",
+        "In order to change your password, please contact your system administrators" : "Neem contact op met uw systeembeheerder, om uw wachtwoord te veranderen",
+        "Forgot password" : "Wachtwoord vergeten",	
+        "Password" : "Wachtwoord",
+        "User not found" : "Gebruiker niet gevonden",
+        "Wrong password" : "Wachtwoord is incorrect"
     },
     "de": {
         "Log In" : "Anmelden",

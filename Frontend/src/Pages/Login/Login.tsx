@@ -12,6 +12,7 @@ import { getRole } from './AccountManager';
 import { Navbar } from '../../Components/Navbar/Navbar'
 import{ Footer } from '../../Components/Footer/Footer'
 import { getPositionOfLineAndCharacter } from 'typescript';
+import { Translate } from '../../Components/Languages/Translator';
 
 export function Login() {
   const [email_, setEmail] = useState<string>('')
@@ -47,7 +48,7 @@ export function Login() {
         console.log(errMessage)
         if (errMessage === 'User not found' || errMessage === 'Wrong password') {
           setShowWrong(true)
-          setMessage(errMessage)
+          setMessage(Translate(errMessage))
           console.log(message_)
         } 
         else {
@@ -106,26 +107,26 @@ export function Login() {
           <input
             className='dark:placeholder:text-slate-400 bg-slate-200 dark:bg-slate-500 dark:text-slate-300'
             type='text'
-            placeholder='Email'
+            placeholder={Translate('Email')}
             value={email_}
             onChange={e => setEmail(e.target.value)}
           />
           <input
             className='dark:placeholder:text-slate-400 bg-slate-200 dark:bg-slate-500 dark:text-slate-300'
             type='password'
-            placeholder='Password'
+            placeholder={Translate('Password')}
             value={password_}
             onChange={e => setPassword(e.target.value)}
           />
 
-          <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700' type="submit">Sign In</button>
+          <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700' type="submit">{Translate('Sign In')}</button>
 
         </form>
         {showWrong_ && <div className='py-1 text-red-500'>{message_}</div>}
-        <div className='py-1 cursor-default text-cyan-800 dark:text-cyan-400' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Forgot password?</div>
+        <div className='py-1 cursor-default text-cyan-800 dark:text-cyan-400' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>{Translate('Forgot password')}?</div>
         {isHovering && 
           <div className='bg-slate-300 dark:bg-slate-600 rounded-lg'>
-            <p className='px-2 py-1 text-cyan-800 dark:text-cyan-400'>In order to change your password please contact your system administrators</p>
+            <p className='px-2 py-1 text-cyan-800 dark:text-cyan-400'>{Translate('In order to change your password, please contact your system administrators')}.</p>
           </div>
         }
 

@@ -86,15 +86,11 @@ if (token != null) {
   companyId = getCompanyId(token);
   
 }
-console.log(companyId)
 GetMachinesEP({
   companyId: companyId
 }).then(response => {
   machinesList = response.data
-    console.log(machinesList)
-    console.log(machinesList.length)
     for (var i = 0; i < machinesList.length; i++) {
-      console.log("hi")
       if (machineTypeIds.find(m => m === machinesList[i].typeId.toString()) !== undefined) continue;	
       machineTypeIds.push(machinesList[i].typeId.toString());
       GetAckProblemsEP({
@@ -107,7 +103,6 @@ GetMachinesEP({
         console.error(error)
       })
     }
-    console.log(ackProblems)
 }).catch(error => {
   console.error(error)
 })
@@ -126,7 +121,8 @@ function Search (keyword: string) {
   if (keyword === "") return machinesList;
   let res: Machine[] = [];
   machinesList.forEach(m => {
-    if (m.name.toLowerCase().search(keyword) !== -1 || m.type.name.toLowerCase().search(keyword) !== -1) res.push(m);
+    if (m.name.toLowerCase().search(keyword) !== -1// || m.type.name.toLowerCase().search(keyword) !== -1
+    ) res.push(m);
   });
   return res;
 }
@@ -151,7 +147,7 @@ export function Machines() {
             <div className="relative grow">
               <input type="search" id="default-search" onChange={handleChange} className="outline-0 block w-full p-2 text-sm border text-cyan-800 dark:text-slate-300 border-gray-300 rounded-lg bg-gray-50 focus:border-vBlue dark:bg-slate-600 dark:border-slate-500 dark:placeholder-slate-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={Translate("Search for machines") + "..."} required></input>
             </div>
-            <button type="submit" className="focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-3 py-1 hover:rounded-xl transition-all ease-in-out duration-200 bg-vBlue dark:bg-slate-500 text-lg text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600">Search</button>
+            <button type="submit" className="focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-3 py-1 hover:rounded-xl transition-all ease-in-out duration-200 bg-vBlue dark:bg-slate-500 text-lg text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600">{Translate("Search")}</button>
           </form>
           {/* Search bar */}
             {listMachines(Search(keyword))}
