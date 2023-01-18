@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import {Guid} from 'guid-typescript';
+import { getRole } from '../../Pages/Login/AccountManager';
 
 export type Machine = {
   id: Guid,
@@ -46,10 +47,14 @@ export function MakeMachine(mach: Machine) {
     if (mach.id != null) {
       id = mach.id.toString()
     }
-
     localStorage.setItem("machineId", id)
     navigate('/problemSolver')
   };
+  var currentRole = 0;
+  var token = localStorage.getItem("token")
+  if (token != null) {
+    currentRole = getRole(token);
+  }
   const [isActive, setIsActive] = useState(false);
   return (
     <div className='py-1 '>
@@ -66,7 +71,9 @@ export function MakeMachine(mach: Machine) {
         {isActive && mach.problems?.length === 0 && (
               <h2 className='text-center ml-4'>{Translate("This machine has no acknowledged problems")}.</h2>
         )}
-        <div className='flex'><button onClick={solver} className='bg-red-800 self-auto mx-auto p-0.5 px-1.5 rounded-md hover:rounded-lg ease-in-out duration-150 text-white text-sm my-2'>{Translate("Still not resolved")}?</button></div>
+        {currentRole < 4 && (
+          <div className='flex'><button onClick={solver} className='bg-red-800 self-auto mx-auto p-0.5 px-1.5 rounded-md hover:rounded-lg ease-in-out duration-150 text-white text-sm my-2'>{Translate("Still not resolved")}?</button></div>
+        )}
         </>}
       </div>
     </div>
