@@ -15,7 +15,7 @@ export function popUp() {
     color = "#1e293b";
   }
   MySwal.fire({
-    title: <p className="dark:text-cyan-400">Input left empty</p>,
+    title: <p className="dark:text-cyan-400">{Translate("Input left empty")}</p>,
     icon: "warning",
     confirmButtonText: buttonText,
     confirmButtonColor: "#2F80ED",
@@ -63,7 +63,7 @@ export function UserCreationForm() {
 
   return (
     <div className="grid pb-4 dark:text-cyan-400">
-      <label htmlFor="name">User's Name:</label>
+      <label htmlFor="name">{Translate("User's Name:")}</label>
       <input
         type="text"
         id="name"
@@ -71,7 +71,7 @@ export function UserCreationForm() {
         className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
       />
       <br />
-      <label htmlFor="email">User's Email:</label>
+      <label htmlFor="email">{Translate("User's Email:")}</label>
       <input
         type="text"
         id="email"
@@ -79,7 +79,7 @@ export function UserCreationForm() {
         className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
       />
       <br />
-      <label htmlFor="phone">User's Phone Number:</label>
+      <label htmlFor="phone">{Translate("User's Phone Number:")}</label>
       <input
         type="text"
         id="phone"
@@ -87,7 +87,7 @@ export function UserCreationForm() {
         className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
       />
       <br />
-      <label htmlFor="company">User's Company:</label>
+      <label htmlFor="company">{Translate("User's Company:")}</label>
       <input
         type="text"
         id="company"
@@ -95,14 +95,16 @@ export function UserCreationForm() {
         className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
       />
       <br />
-      <label htmlFor="role">User's Role:</label>
+      <label htmlFor="role">{Translate("User's Role:")}</label>
       <select id="role" onChange={(e) => setRole(e.target.value)} className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black">
         {currentRole === 1 && (<option value="2">Client</option>)}
         {currentRole === 2 && (<option value="3">Trained user</option>)}
         {currentRole === 2 && (<option value="4">Untrained user</option>)}
+        <option value="5">adf</option>
+        <option value="6">af</option>
       </select>
       <br />
-      <label htmlFor="password">User's Password:</label>
+      <label htmlFor="password">{Translate("User's Password:")}</label>
       <input
         type="password"
         id="password"
@@ -129,7 +131,7 @@ export function UserCreationForm() {
             }
           }}
         >
-          Create
+          {Translate("Create")}
         </button>
       </div>
     </div>

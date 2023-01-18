@@ -75,7 +75,17 @@
         "Forgot password" : "Wachtwoord vergeten",	
         "Password" : "Wachtwoord",
         "User not found" : "Gebruiker niet gevonden",
-        "Wrong password" : "Wachtwoord is incorrect"
+        "Wrong password" : "Wachtwoord is incorrect",
+        "Create a user" : "Maak een gebruiker aan",
+        "User's Name:" : "Gebruikers Naam:",
+        "User's Email:" : "Gebruikers Email:",
+        "User's Phone Number:" : "Gebruikers Telefoonnummer:",
+        "User's Company:": "Gebruikers Bedrijf:",
+        "User's Role:": "Gebruikers Rol:",
+        "User's Password:": "Gebruikers Wachtwoord:",
+        "Create": "Aanmaken",
+        "Succesfully created ": "Succesvol aangemaakt: ",
+        "Input left empty": "Leeggelaten veld"
     },
     "de": {
         "Log In" : "Anmelden",
