@@ -30,7 +30,7 @@ export function UserpageButtons() {
       buttons.push([`${Translate('View Tickets')}`, tickets, `${Translate('Your company has issued')} 3 ${Translate('new tickets')}.`, 'https://ictzaak.nl/wp-content/uploads/2019/06/Helpdesk-ICTzaak-Blogpage.png'])
     break;
     case 1:
-      buttons.push([`${Translate('Manage Companies')}`, companies, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, 'https://www.thebalancemoney.com/thmb/1eNZeoFI_ON4BpTQXdHMihOtMQ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Employees-3117af3d30fa438bb6dd3ad4141a8b4c.jpg']);
+      buttons.push([`${Translate('Manage Companies')}`, employees, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, 'https://www.thebalancemoney.com/thmb/1eNZeoFI_ON4BpTQXdHMihOtMQ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Employees-3117af3d30fa438bb6dd3ad4141a8b4c.jpg']);
       buttons.push([`${Translate('View Tickets')}`, viscon, `${Translate('There are')} 3 ${Translate('unclaimed tickets')}.`, 'https://ictzaak.nl/wp-content/uploads/2019/06/Helpdesk-ICTzaak-Blogpage.png'])
     break;
   }

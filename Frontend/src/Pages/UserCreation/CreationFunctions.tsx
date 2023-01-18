@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Translate } from "../../Components/Languages/Translator";
 import { useState } from "react";
+import { getRole } from '../../Pages/Login/AccountManager';
 
 const MySwal = withReactContent(Swal);
 
@@ -51,6 +52,11 @@ export function UserCreationForm() {
   const [company, setCompany] = useState<string>("");
   const [role, setRole] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  var currentRole = 0;
+  var token = localStorage.getItem("token")
+  if (token != null) {
+    currentRole = getRole(token);
+  }
 
   const sendData = () =>
     console.log("User created:", name, email, phone, company, role, password);
@@ -90,12 +96,11 @@ export function UserCreationForm() {
       />
       <br />
       <label htmlFor="role">User's Role:</label>
-      <input
-        type="text"
-        id="role"
-        onChange={(e) => setRole(e.target.value)}
-        className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black"
-      />
+      <select id="role" onChange={(e) => setRole(e.target.value)} className="dark:bg-slate-500 rounded-sm dark:focus:outline-slate-300 dark:focus:bg-slate-300 px-2 text-black">
+        {currentRole === 1 && (<option value="2">Client</option>)}
+        {currentRole === 2 && (<option value="3">Trained user</option>)}
+        {currentRole === 2 && (<option value="4">Untrained user</option>)}
+      </select>
       <br />
       <label htmlFor="password">User's Password:</label>
       <input
