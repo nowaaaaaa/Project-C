@@ -34,12 +34,12 @@ export function ProblemSolver() {
           login()
 
         }).catch(error => {
-        var errMessage: string = error.response.data;
-        console.log(errMessage)
-        if (errMessage === 'Invalid token') {
-          navigate('/')
-      }
-    })
+          var errMessage: string = error.response.data;
+          console.log(errMessage)
+          if (errMessage === 'Invalid token') {
+            navigate('/')
+          }
+        })
       }
       else {
         navigate('../machines')

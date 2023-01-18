@@ -46,7 +46,7 @@ type SignupDto = {
   password: string,
   phone: string,
   companyId: string,
-  role: string
+  role: number
 }
 
 // axios get endpoints
