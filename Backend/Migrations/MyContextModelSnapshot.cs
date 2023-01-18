@@ -168,6 +168,10 @@ namespace Backend.Migrations
                     b.Property<Guid>("ticketId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("tried")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("id");
 
                     b.HasIndex("ticketId");

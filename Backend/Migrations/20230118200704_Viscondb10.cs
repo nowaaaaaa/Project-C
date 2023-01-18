@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations
 {
-    public partial class ready : Migration
+    public partial class Viscondb10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,7 +72,7 @@ namespace Backend.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    MachineTypeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    machineTypeId = table.Column<Guid>(type: "uuid", nullable: false),
                     problem = table.Column<string>(type: "text", nullable: false),
                     solution = table.Column<string>(type: "text", nullable: false)
                 },
@@ -80,8 +80,8 @@ namespace Backend.Migrations
                 {
                     table.PrimaryKey("PK_ackProblems", x => x.id);
                     table.ForeignKey(
-                        name: "FK_ackProblems_machineTypes_MachineTypeId",
-                        column: x => x.MachineTypeId,
+                        name: "FK_ackProblems_machineTypes_machineTypeId",
+                        column: x => x.machineTypeId,
                         principalSchema: "EF",
                         principalTable: "machineTypes",
                         principalColumn: "id",
@@ -125,6 +125,7 @@ namespace Backend.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     submitterId = table.Column<Guid>(type: "uuid", nullable: false),
                     handlerId = table.Column<Guid>(type: "uuid", nullable: true),
+                    machineId = table.Column<Guid>(type: "uuid", nullable: false),
                     submitDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     solved = table.Column<bool>(type: "boolean", nullable: false),
                     solveDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
@@ -132,6 +133,13 @@ namespace Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tickets", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_tickets_machines_machineId",
+                        column: x => x.machineId,
+                        principalSchema: "EF",
+                        principalTable: "machines",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tickets_users_handlerId",
                         column: x => x.handlerId,
@@ -156,7 +164,9 @@ namespace Backend.Migrations
                     ticketId = table.Column<Guid>(type: "uuid", nullable: false),
                     problem = table.Column<string>(type: "text", nullable: false),
                     expected = table.Column<string>(type: "text", nullable: false),
-                    solution = table.Column<string>(type: "text", nullable: true)
+                    tried = table.Column<string>(type: "text", nullable: false),
+                    solution = table.Column<string>(type: "text", nullable: true),
+                    lastUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,10 +181,10 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ackProblems_MachineTypeId",
+                name: "IX_ackProblems_machineTypeId",
                 schema: "EF",
                 table: "ackProblems",
-                column: "MachineTypeId");
+                column: "machineTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_machines_companyId",
@@ -201,6 +211,12 @@ namespace Backend.Migrations
                 column: "handlerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_tickets_machineId",
+                schema: "EF",
+                table: "tickets",
+                column: "machineId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tickets_submitterId",
                 schema: "EF",
                 table: "tickets",
@@ -220,15 +236,7 @@ namespace Backend.Migrations
                 schema: "EF");
 
             migrationBuilder.DropTable(
-                name: "machines",
-                schema: "EF");
-
-            migrationBuilder.DropTable(
                 name: "ticketDetails",
-                schema: "EF");
-
-            migrationBuilder.DropTable(
-                name: "machineTypes",
                 schema: "EF");
 
             migrationBuilder.DropTable(
@@ -236,7 +244,15 @@ namespace Backend.Migrations
                 schema: "EF");
 
             migrationBuilder.DropTable(
+                name: "machines",
+                schema: "EF");
+
+            migrationBuilder.DropTable(
                 name: "users",
+                schema: "EF");
+
+            migrationBuilder.DropTable(
+                name: "machineTypes",
                 schema: "EF");
 
             migrationBuilder.DropTable(

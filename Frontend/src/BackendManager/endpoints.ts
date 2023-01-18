@@ -1,3 +1,4 @@
+import { assertExportNamespaceSpecifier } from '@babel/types';
 import axios from 'axios';
 
 const mainURL = 'http://localhost:5001';
@@ -27,6 +28,16 @@ type GetMachinesDto = {
 type GetAckProblemsDto = {
   jwt: string,
   machineTypeId: string
+}
+type CreateTicketDto = {
+  jwt: string,
+  machineId: string,
+  problem: string,
+  expected: string,
+  tried: string
+}
+type GetTicketsDto = {
+  jwt: string
 }
 
 type SignupDto = {
@@ -65,4 +76,12 @@ export function GetAckProblemsEP(data: GetAckProblemsDto) {
 
 export function SignupEP(data: SignupDto) {
   return axiosInstance.post('/Authentication/signup', data);
+}
+
+export function CreateTicketEP(data: CreateTicketDto) {
+  return axiosInstance.post('/Ticket/createTicket', data);
+}
+
+export function GetTicketsEP(data: GetTicketsDto) {
+  return axiosInstance.post('/Ticket/getTickets', data);
 }

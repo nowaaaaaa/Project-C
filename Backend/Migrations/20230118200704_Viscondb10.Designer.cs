@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20230111213427_ready")]
-    partial class ready
+    [Migration("20230118200704_Viscondb10")]
+    partial class Viscondb10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,7 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("MachineTypeId")
+                    b.Property<Guid>("machineTypeId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("problem")
@@ -44,7 +44,7 @@ namespace Backend.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("MachineTypeId");
+                    b.HasIndex("machineTypeId");
 
                     b.ToTable("ackProblems", "EF");
                 });
@@ -121,6 +121,9 @@ namespace Backend.Migrations
                     b.Property<Guid?>("handlerId")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("machineId")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime?>("solveDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -137,6 +140,8 @@ namespace Backend.Migrations
 
                     b.HasIndex("handlerId");
 
+                    b.HasIndex("machineId");
+
                     b.HasIndex("submitterId");
 
                     b.ToTable("tickets", "EF");
@@ -152,6 +157,9 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("lastUpdated")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("problem")
                         .IsRequired()
                         .HasColumnType("text");
@@ -161,6 +169,10 @@ namespace Backend.Migrations
 
                     b.Property<Guid>("ticketId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("tried")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("id");
 
@@ -212,7 +224,7 @@ namespace Backend.Migrations
                 {
                     b.HasOne("Backend.EF.MachineType", "type")
                         .WithMany()
-                        .HasForeignKey("MachineTypeId")
+                        .HasForeignKey("machineTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -244,6 +256,12 @@ namespace Backend.Migrations
                         .WithMany()
                         .HasForeignKey("handlerId");
 
+                    b.HasOne("Backend.EF.Machine", "machine")
+                        .WithMany()
+                        .HasForeignKey("machineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Backend.EF.User", "submitter")
                         .WithMany()
                         .HasForeignKey("submitterId")
@@ -251,6 +269,8 @@ namespace Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("handler");
+
+                    b.Navigation("machine");
 
                     b.Navigation("submitter");
                 });

@@ -4,7 +4,7 @@ import { Translate } from '../../Components/Languages/Translator';
 import {Guid} from 'guid-typescript';
 
 export type Machine = {
-  id?: Guid,
+  id: Guid,
   name: string,
   type: MachineType,
   typeId: Guid,
@@ -41,7 +41,15 @@ export function takeProblems(mach: Machine, prob: AckProblem[]) {
 
 export function MakeMachine(mach: Machine) {
   const navigate = useNavigate();
-  const solver = () => {navigate('/problemSolver')};
+  const solver = () => {
+    var id: string = 'empty';
+    if (mach.id != null) {
+      id = mach.id.toString()
+    }
+
+    localStorage.setItem("machineId", id)
+    navigate('/problemSolver')
+  };
   const [isActive, setIsActive] = useState(false);
   return (
     <div className='py-1 '>
@@ -71,7 +79,7 @@ export function listMachines(machines: Machine[]) {
       <div className='max-h-[69vh] overflow-y-scroll scrollbar scrollbar-thumb-slate-400'>
         {machines.map((mach) => 
         <>
-          <MakeMachine name={mach.name} type={{id: mach.typeId, name: mach.machineTypeName}} problems={mach.problems} typeId={mach.typeId} machineTypeName={mach.machineTypeName} />
+          <MakeMachine id={mach.id} name={mach.name} type={{id: mach.typeId, name: mach.machineTypeName}} problems={mach.problems} typeId={mach.typeId} machineTypeName={mach.machineTypeName} />
         </>
         )}
       </div>

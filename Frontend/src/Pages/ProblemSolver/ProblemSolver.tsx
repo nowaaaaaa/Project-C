@@ -8,12 +8,47 @@ import { Translate } from '../../Components/Languages/Translator';
 import { useState } from 'react';
 import { swalA, swalB, swalC } from './SwalFunctions';
 
+import { CreateTicketEP } from '../../BackendManager/endpoints'
+
 export function ProblemSolver() {
   const navigate = useNavigate();
   const login = () => navigate('/userPage');
 
   //hier backend shit vv
-  const sendData = () => console.log(problem, expected, tried)
+  const sendData = () => {
+    var token = localStorage.getItem("token")
+    if (token != null) {
+      var machineId = localStorage.getItem("machineId")
+      if (machineId != null) {
+        CreateTicketEP({
+          jwt: token,
+          machineId: machineId,
+          problem: problem,
+          expected: expected,
+          tried: tried
+        }).then(response => {
+
+          console.log(response.data)
+
+          swalA()
+          login()
+
+        }).catch(error => {
+        var errMessage: string = error.response.data;
+        console.log(errMessage)
+        if (errMessage === 'Invalid token') {
+          navigate('/')
+      }
+    })
+      }
+      else {
+        navigate('../machines')
+      }
+    }
+    else {
+      navigate('/')
+    }
+  }
 
   const [problem, setProblem] = useState<string>('')
   const [expected, setExpected] = useState<string>('')
@@ -62,8 +97,6 @@ export function ProblemSolver() {
             onClick={() => {
               if (notStuck && machineOn && problem !== '' && expected !== '') {
                 sendData()
-                swalA()
-                login()
               }
               else if (problem === '' || expected === '') {
                 swalB(problem, expected)

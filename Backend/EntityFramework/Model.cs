@@ -85,6 +85,7 @@ namespace Backend.EF {
         public Guid ticketId { get; set; }
         public string problem { get; set; } = null!;
         public string expected { get; set; } = null!;
+        public string tried { get; set; } = null!;
         public string? solution { get; set; }
         public DateTime lastUpdated { get; set; }
     }
