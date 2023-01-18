@@ -49,7 +49,7 @@ export function UserCreationForm() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [company, setCompany] = useState<string>("");
+  const [companyId, setCompanyId] = useState<string>("");
   const [role, setRole] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -62,7 +62,7 @@ export function UserCreationForm() {
   }
 
   const sendData = () =>
-    console.log("User created:", name, email, phone, company, role, password);
+    console.log("User created:", name, email, phone, companyId, role, password);
 
   return (
     <div className="grid pb-4 dark:text-cyan-400 text-cyan-800">
@@ -90,11 +90,11 @@ export function UserCreationForm() {
         className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
-      <label htmlFor="company">{Translate("User's Company:")}</label>
+      <label htmlFor="company">{Translate("User's Company Id:")}</label>
       <input
         type="text"
         id="company"
-        onChange={(e) => setCompany(e.target.value)}
+        onChange={(e) => setCompanyId(e.target.value)}
         className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />
@@ -120,7 +120,7 @@ export function UserCreationForm() {
               name === "" ||
               email === "" ||
               phone === "" ||
-              company === "" ||
+              companyId === "" ||
               role === "" ||
               password === ""
             ) {
@@ -142,9 +142,9 @@ export function UserCreationForm() {
 export function MachineCreationForm() {
   const [name, setName] = useState<string>("");
   const [type, setType] = useState<string>("");
-  const [company, setCompany] = useState<string>("");
+  const [companyId, setCompanyId] = useState<string>("");
 
-  const sendData = () => console.log("Machine created:", name, type, company);
+  const sendData = () => console.log("Machine created:", name, type, companyId);
 
   return (
     <div className="grid pb-4 dark:text-cyan-400">
@@ -168,14 +168,14 @@ export function MachineCreationForm() {
       <input
         type="text"
         id="company"
-        onChange={(e) => setCompany(e.target.value)}
+        onChange={(e) => setCompanyId(e.target.value)}
         className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <div>
         <button
           className="self-start hover:rounded-2xl transition-all ease-in-out duration-200 rounded-xl bg-vBlue dark:bg-slate-500 md:text-xl text-sm text-white dark:text-cyan-400 hover:bg-vBlueHover dark:hover:bg-slate-600 md:w-[100px] w-[20vw] md:h-[4.5vh] h-[4vh] md:mt-8"
           onClick={() => {
-            if (name === "" || type === "" || company === "") {
+            if (name === "" || type === "" || companyId === "") {
               popUp();
             } else {
               sendData();
