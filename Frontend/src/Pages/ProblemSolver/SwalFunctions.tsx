@@ -22,6 +22,7 @@ export function swalA() {
 
 export function swalB(prob: string, exp: string) {
   var color = ''
+  var buttonText = Translate('Continue')
   if (localStorage.theme === "light") {
     color = "#FFFFFF"
   }
@@ -41,7 +42,7 @@ export function swalB(prob: string, exp: string) {
   MySwal.fire({
     title: <p className='dark:text-cyan-400'>{text}</p>,
     icon: 'error',
-    confirmButtonText: 'Continue',
+    confirmButtonText: buttonText,
     confirmButtonColor: '#2F80ED',
     background: color,
     width: '400px',
@@ -51,6 +52,7 @@ export function swalB(prob: string, exp: string) {
 
 export function swalC() {
   var color = ''
+  var buttonText = Translate('Continue')
   if (localStorage.theme === "light") {
     color = "#FFFFFF"
   }
@@ -60,7 +62,7 @@ export function swalC() {
   MySwal.fire({
     title: <p className='dark:text-cyan-400'>{Translate('Checkbox left unchecked')}</p>,
     icon: 'error',
-    confirmButtonText: 'Continue',
+    confirmButtonText: buttonText,
     confirmButtonColor: '#2F80ED',
     background: color,
     width: '400px',
