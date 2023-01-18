@@ -95,7 +95,7 @@ export function Machines() {
   };
   return (
     <>
-      <div className='bg-white dark:bg-slate-800 min-h-screen'>
+      <div className='bg-white dark:bg-slate-800 min-h-screen text-cyan-800 dark:text-cyan-400'>
       < Navbar />
         <div className='grid grid-cols-1 place-content-start h-max'>
           {/* Search bar */}

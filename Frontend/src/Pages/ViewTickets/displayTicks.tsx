@@ -10,7 +10,7 @@ export function displayTicks(ticks: Ticket[]) {
             solution = "Ticket not solved yet";
         }
         return (
-        <div className='bg-sky-100 dark:bg-gray-700 w-full md:w-3/5 my-4 mx-auto dark:text-cyan-400'>
+        <div className='bg-sky-100 dark:bg-gray-700 w-full md:w-3/5 my-4 mx-auto dark:text-cyan-400 text-cyan-800'>
             <p className='reporterName bg-slate-300 dark:bg-slate-600 text-center'>Machine Name</p>
             <div className='reportText pl-2 pb-3'>
                 <p>{Translate("Reported Problem:")}</p>
