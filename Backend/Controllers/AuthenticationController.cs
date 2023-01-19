@@ -82,6 +82,21 @@ namespace Backend.Controllers {
       }
     }
 
+    [HttpPost]
+    [Route("findUser")]
+    public async Task<IActionResult> FindUser(FindUSerDto data) {
+      try {
+        using (var context = new MyContext()) {
+          var user = await context.users.Where(p => p.id == Guid.Parse(data.userId)).FirstOrDefaultAsync();
+
+          return Ok(user);
+        }
+      }
+      catch(Exception ex) {
+        return BadRequest(ex.Message);
+      }
+    }
+
     [HttpPut]
     [Route("password")]
     public async Task<IActionResult> Password(PasswordDto data) {

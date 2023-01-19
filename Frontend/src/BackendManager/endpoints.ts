@@ -39,7 +39,6 @@ type CreateTicketDto = {
 type GetTicketsDto = {
   jwt: string
 }
-
 type SignupDto = {
   email: string,
   name: string,
@@ -47,6 +46,9 @@ type SignupDto = {
   phone: string,
   companyId: string,
   role: number
+}
+type FindUserDto = {
+  userId: string
 }
 
 // axios get endpoints
@@ -84,4 +86,8 @@ export function CreateTicketEP(data: CreateTicketDto) {
 
 export function GetTicketsEP(data: GetTicketsDto) {
   return axiosInstance.post('/Ticket/getTickets', data);
+}
+
+export function FindUserEP(data: FindUserDto) {
+  return axiosInstance.post('/Authentication/findUser', data)
 }

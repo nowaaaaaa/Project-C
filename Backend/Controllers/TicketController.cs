@@ -66,8 +66,17 @@ namespace Backend.Controllers {
             if (user == null) return BadRequest("User not found");
             var company = await context.companies.Where(p => p.id == user.companyId).FirstOrDefaultAsync();
             if (company == null) return BadRequest("Company not found");
-            var tickets = await context.tickets.Where(p => p.submitter.companyId == company.id).ToListAsync();
-            var ticketDetails = await context.ticketDetails.Where(p => p.ticket.submitter.companyId == company.id).ToListAsync();
+
+            List<Ticket> tickets;
+            List<TicketDetails> ticketDetails;
+            if (company.name != "Viscon Group") {
+              tickets = await context.tickets.Where(p => p.submitter.companyId == company.id).ToListAsync();
+              ticketDetails = await context.ticketDetails.Where(p => p.ticket.submitter.companyId == company.id).ToListAsync();
+            }
+            else {
+              tickets = await context.tickets.ToListAsync();
+              ticketDetails = await context.ticketDetails.ToListAsync();
+            }
 
             return Ok(new Tuple<List<Ticket>, List<TicketDetails>>(tickets, ticketDetails));
           }

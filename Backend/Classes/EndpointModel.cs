@@ -13,6 +13,10 @@ namespace Backend {
     public int role { get; set; } = 0;
   }
 
+  public class FindUSerDto {
+    public string userId { get; set; } = string.Empty;
+  }
+
   public class PasswordDto {
     public string jwt { get; set; } = string.Empty;
     public string newPassword {get; set; } = string.Empty;
