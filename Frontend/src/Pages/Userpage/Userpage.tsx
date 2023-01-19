@@ -15,13 +15,12 @@ var verified: boolean = true;
 
 export function Userpage() {
   const navigate = useNavigate();
-  var role = 0;
+  const problem = () => navigate('../machines');
   var name = "";
   var companyId = "";
   const [companyName, setCompanyName] = useState<string>('')
   var token = localStorage.getItem("token")
   if (token != null) {
-    role = getRole(token);
     name = getName(token);
     companyId = getCompanyId(token);
     GetCompanyIdEP({
@@ -38,7 +37,6 @@ export function Userpage() {
   useEffect(() => {
     if ( verified === false ) navigate('/')
   });
-  const problem = () => navigate('../machines');
   return (
     <body className="userpage-body">
       < Navbar />

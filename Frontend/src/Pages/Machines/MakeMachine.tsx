@@ -106,7 +106,6 @@ export function listMachines(machines: Machine[]) {
     <>
       <div className="max-h-[69vh] overflow-y-scroll scrollbar scrollbar-thumb-slate-400">
         {machines.map((mach) => (
-          <>
             <MakeMachine
               id={mach.id}
               name={mach.name}
@@ -115,10 +114,9 @@ export function listMachines(machines: Machine[]) {
               typeId={mach.typeId}
               machineTypeName={mach.machineTypeName}
             />
-          </>
         ))}
       </div>
-      <MakeOther />
+      <MakeOther/>
     </>
   );
 }
@@ -134,24 +132,15 @@ export function MakeOther() {
     <div className="flex justify-self-center justify-evenly md:w-3/5 w-full gap-2">
       <div className="py-1 grow">
         <div className="bg-slate-200 dark:bg-slate-600 text-slate-800 dark:text-cyan-400">
-          <h1
-            className="header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none"
-            onClick={() => setIsActive(!isActive)}
-          >
+          <h1 className="header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none"
+            onClick={() => setIsActive(!isActive)}>
             {Translate("Other")}
           </h1>
-          {isActive && (
-            <>
-              {() => (
-                <>
+          {isActive && (<>{() => (
                   <div className="border-b border-slate-700 ease-in-out duration-150"></div>
-                </>
               )}
               <div className="flex">
-                <button
-                  onClick={solver}
-                  className="bg-red-800 self-auto mx-auto p-0.5 px-1.5 hover:rounded-sm ease-in-out duration-150 text-white text-sm"
-                >
+                <button onClick={solver} className="bg-red-800 self-auto mx-auto p-0.5 px-1.5 hover:rounded-sm ease-in-out duration-150 text-white text-sm">
                   {Translate("Report the problem")}
                 </button>
               </div>
@@ -161,24 +150,15 @@ export function MakeOther() {
       </div>
       <div className="py-1 grow">
         <div className="bg-slate-200 dark:bg-slate-600 text-slate-800 dark:text-cyan-400">
-          <h1
-            className="header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none"
-            onClick={() => setIsActive1(!isActive1)}
-          >
+          <h1 className="header text-xl text-center bg-slate-300 dark:bg-slate-600 cursor-pointer hover:bg-sky-200 dark:hover:bg-sky-800 ease-in-out duration-150 select-none"
+            onClick={() => setIsActive1(!isActive1)}>
             {Translate("Software")}
           </h1>
-          {isActive1 && (
-            <>
-              {() => (
-                <>
+          {isActive1 && (<>{() => (
                   <div className="border-b border-slate-700 ease-in-out duration-150"></div>
-                </>
               )}
               <div className="flex">
-                <button
-                  onClick={solver}
-                  className="bg-red-800 self-auto mx-auto p-0.5 px-1.5 hover:rounded-sm ease-in-out duration-150 text-white text-sm"
-                >
+                <button onClick={solver} className="bg-red-800 self-auto mx-auto p-0.5 px-1.5 hover:rounded-sm ease-in-out duration-150 text-white text-sm">
                   {Translate("Report the problem")}
                 </button>
               </div>

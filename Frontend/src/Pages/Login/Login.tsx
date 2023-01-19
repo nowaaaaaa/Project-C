@@ -57,40 +57,10 @@ export function Login() {
       })
     }
   }
-
-  // const token = localStorage.getItem("token");
-  // const role = getRole();
-  // useEffect(() => {
-  //   if (role != null) {
-  //     if (token != null) {
-  //       //not logged in
-  //       navigate("/")
-  //     }
-  //     if (role === 1) {
-  //       //admin
-  //       navigate("/visconpage")
-  //     }
-  //     if (role === 2 || role === 3 || role === 4) {
-  //       //client
-  //       navigate("/userpage")
-  //     }
-  //   }
-  // })
-
-  // const Userpage = () => {
-  //   navigate("/userpage");
-  // }
-
   const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => setIsHovering(true);
+  const handleMouseOut = () => setIsHovering(false);
 
-  const handleMouseOver = () => {
-    setIsHovering(true);
-  }
-
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  }
- 
   return (
     <body className="homepage-body">
       < Navbar />
@@ -99,7 +69,6 @@ export function Login() {
           <img className="block dark:hidden" src="viscon-group-logo-light.png" draggable="false" alt='Viscon Group logo'/>
           <img className="dark:block hidden" src="viscon-group-logo-dark.png" draggable="false" alt='Viscon Group logo'/>
         </div>
-        {/* <h1 className="text-6xl mb-10 text-cyan-800 dark:text-cyan-400">Service Application</h1> */}
         <form
           className='login-form bg-slate-300 dark:bg-slate-600'
           onSubmit={handleSubmit}
@@ -118,9 +87,7 @@ export function Login() {
             value={password_}
             onChange={e => setPassword(e.target.value)}
           />
-
           <button className='text-cyan-800 dark:text-cyan-400 transition-all ease-in-out duration-200 hover:bg-slate-400 dark:hover:bg-slate-700' type="submit">{Translate('Sign In')}</button>
-
         </form>
         {showWrong_ && <div className='py-1 text-red-500'>{message_}</div>}
         <div className='py-1 cursor-default text-cyan-800 dark:text-cyan-400' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>{Translate('Forgot password')}?</div>
@@ -129,7 +96,6 @@ export function Login() {
             <p className='px-2 py-1 text-cyan-800 dark:text-cyan-400'>{Translate('In order to change your password, please contact your system administrators')}.</p>
           </div>
         }
-
       </div>
       < Footer />
     </body>

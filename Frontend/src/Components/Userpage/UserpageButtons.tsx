@@ -7,7 +7,6 @@ import supportPic from './Support.png';
 
 export function UserpageButtons() {
   const navigate = useNavigate();
-
   var role = 0;
   var token = localStorage.getItem("token")
   if (token != null) {
@@ -20,15 +19,13 @@ export function UserpageButtons() {
   let buttons: [string, () => void, string, string][] = [];
   const employees = () => navigate('../userCreation');
   const tickets = () => navigate('../viewTickets');
-  const companies = () => navigate('../employees');
+  const companies = () => navigate('../userCreation');
   const viscon = () => navigate('../visconPage');
   switch (role) {
     case 4:
-      // buttons.push([`${Translate('Manage Employees')}`, employees, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, employeesPic]);
       buttons.push([`${Translate('View Tickets')}`, tickets, `${Translate('Your company has issued')} 3 ${Translate('new tickets')}.`, supportPic])
     break;
     case 3:
-      // buttons.push([`${Translate('Manage Employees')}`, employees, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, employeesPic]);
       buttons.push([`${Translate('View Tickets')}`, tickets, `${Translate('Your company has issued')} 3 ${Translate('new tickets')}.`, supportPic])
     break;
     case 2:
@@ -36,11 +33,10 @@ export function UserpageButtons() {
       buttons.push([`${Translate('View Tickets')}`, tickets, `${Translate('Your company has issued')} 3 ${Translate('new tickets')}.`, supportPic])
     break;
     case 1:
-      buttons.push([`${Translate('Manage Companies')}`, employees, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, employeesPic]);
+      buttons.push([`${Translate('Manage Companies')}`, companies, `${Translate("You have")} ${Translate("no")} ${Translate("new notifications")}.`, employeesPic]);
       buttons.push([`${Translate('View Tickets')}`, viscon, `${Translate('There are')} 3 ${Translate('unclaimed tickets')}.`, supportPic])
     break;
   }
-  const root = document.getElementsByTagName("html")[0];
 
   return (
     <>
@@ -50,7 +46,6 @@ export function UserpageButtons() {
           <img className='md:w-1/3 w-1/2'src={buttons[0][3]}></img> 
           <div className='md:w-1/3 md:mb-0 mb-4 w-full md:text-2xl text-sm text-cyan-800 dark:text-cyan-400'>{buttons[0][2]}</div>
         </button>
-        
         {buttons.length === 2 && (
         <button className="flex items-center h-1/4 md:flex-nowrap flex-wrap" onClick={buttons[1][1]}>
           <img className='block mb-4 md:hidden w-1/2'src={buttons[1][3]}></img> 
