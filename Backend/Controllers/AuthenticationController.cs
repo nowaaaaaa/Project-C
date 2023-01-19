@@ -12,12 +12,8 @@ namespace Backend.Controllers {
   [Route("[controller]")]
   public class AuthenticationController : ControllerBase {
     private readonly IConfiguration _configuration;
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public AuthenticationController(IConfiguration configuration, ILogger<WeatherForecastController> logger)
-    {
+    public AuthenticationController(IConfiguration configuration) {
       _configuration = configuration;
-      _logger = logger;
     }
 
     [HttpPost]
