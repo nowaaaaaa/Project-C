@@ -13,11 +13,11 @@ export function UserpageButtons() {
   }
   else return <></>;
 
-  let buttons: [string, () => void, string, string][] = [];
   const employees = () => navigate('../userCreation');
   const tickets = () => navigate('../viewTickets');
   const companies = () => navigate('../userCreation');
   const viscon = () => navigate('../visconPage');
+  let buttons: [string, () => void, string, string][] = [];
   switch (role) {
     case 4:
       buttons.push([`${Translate('View Tickets')}`, tickets, `${Translate('Your company has issued')} 3 ${Translate('new tickets')}.`, supportPic])

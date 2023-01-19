@@ -1,5 +1,5 @@
 import './Machines.css';
-import { Machine, AckProblem, listMachines, MachineType, takeProblems } from './MakeMachine'
+import { Machine, AckProblem, listMachines, takeProblems } from './MakeMachine'
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { Translate } from '../../Components/Languages/Translator';
 import { useState, useEffect } from 'react';

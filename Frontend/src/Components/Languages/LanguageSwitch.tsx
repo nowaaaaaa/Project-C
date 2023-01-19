@@ -1,13 +1,8 @@
-import React, {useState} from 'react';
-//Component
 export function LanguageSwitch() {
-  const root = document.getElementsByTagName("html")[0];
-
   const toggleLanguage = (str: string) => {
     localStorage.lang = str;
     window.location.reload()
   }
-  
   return (
     <>
       <div className="relative group">
@@ -23,15 +18,6 @@ export function LanguageSwitch() {
               <li>
               <button className='' onClick={() => toggleLanguage("nl")}>NL</button>
               </li>
-              {/*<li>
-              <button className='' onClick={() => toggleLanguage("pl")}>PL</button>
-              </li>
-              <li>
-              <button className='' onClick={() => toggleLanguage("de")}>DE</button>
-              </li>
-              <li>
-              <button className='' onClick={() => toggleLanguage("cn")}>CN</button>
-  </li>*/}
             </ul>
           </div>
       </div>
