@@ -91,7 +91,7 @@ export function UserCreationForm() {
       <input
         type="text"
         id="name"
-        onChange={(e) => setName(e.target.value)}  // py-1 px-1.5 md:mb-3 focus:border-vBlue border-slate-300 border
+        onChange={(e) => setName(e.target.value)}
         className="bg-slate-200 dark:bg-slate-600 dark:text-slate-300 rounded-sm dark:focus:border-slate-400 dark:border-slate-500 border-slate-300 focus:border-slate-400 border outline-none px-2"
       />
       <br />

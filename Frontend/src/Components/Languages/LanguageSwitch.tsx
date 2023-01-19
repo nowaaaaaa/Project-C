@@ -14,9 +14,8 @@ export function LanguageSwitch() {
       <button className="text-cyan-800 dark:text-cyan-400 flex flex-row items-center px-4 py-4 mt-2 font-bold text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 md:text-[18px] text-2xl">
           <span>{localStorage.lang}</span>
       </button>
-      <div className="absolute z-10 hidden bg-grey-200 group-hover:block">
-          
-          <div className="px-2 pt-2 pb-4 bg-slate-200 dark:bg-slate-600 shadow-lg">
+      <div className="absolute hidden group-hover:block">
+          <div className="p-2 rounded-xl bg-slate-200 dark:bg-slate-500 shadow-lg dark:text-gray-100">
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <li>
               <button className='' onClick={() => toggleLanguage("en")}>EN</button>
@@ -24,13 +23,13 @@ export function LanguageSwitch() {
               <li>
               <button className='' onClick={() => toggleLanguage("nl")}>NL</button>
               </li>
-              <li>
+              {/*<li>
               <button className='' onClick={() => toggleLanguage("pl")}>PL</button>
               </li>
               <li>
               <button className='' onClick={() => toggleLanguage("de")}>DE</button>
               </li>
-              {/*<li>
+              <li>
               <button className='' onClick={() => toggleLanguage("cn")}>CN</button>
   </li>*/}
             </ul>
