@@ -2,7 +2,6 @@ import React from 'react';
 import './ProblemSolver.css';
 
 import { Navbar } from '../../Components/Navbar/Navbar'
-import{ Footer } from '../../Components/Footer/Footer'
 import { useNavigate } from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import { useState } from 'react';
@@ -14,7 +13,6 @@ export function ProblemSolver() {
   const navigate = useNavigate();
   const login = () => navigate('/userPage');
 
-  //hier backend shit vv
   const sendData = () => {
     var token = localStorage.getItem("token")
     if (token != null) {
@@ -109,7 +107,6 @@ export function ProblemSolver() {
               {Translate("Send report")}</button>
           </div>
       </div>
-      <Footer />
     </body>
   );
 }
