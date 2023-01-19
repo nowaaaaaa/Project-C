@@ -9,7 +9,7 @@ import '../../App.css';
 //Component
 import { Navbar } from '../../Components/Navbar/Navbar'
 import{ Footer } from '../../Components/Footer/Footer'
-import{ UserpageButtons } from '../../Components/Userpage/UserpageButtons';
+import{ UserpageButtons } from './UserpageButtons';
 
 var verified: boolean = true;
 

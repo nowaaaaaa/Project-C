@@ -67,8 +67,8 @@ namespace Backend.EF {
             for (int i = 1; i <= 2; i++) tempList.Add(new Machine() { id = Guid.NewGuid(), name = "Voorstapelaar rechts " + i, type = this.machineTypes.Skip(6).First(), typeId = this.machineTypes.Skip(6).First().id, company = harmBV, companyId = harmBV.id });
             harmBV.machines = tempList;
             this.machines.AddRange(tempList);
-            this.companies.Add(harmBV);
             this.companies.Add(new Company() { id = Guid.NewGuid(), name = "Viscon Group", address = "Mijlweg 18, 's-Gravendeel", machines = new List<Machine>()});
+            this.companies.Add(harmBV);
             this.SaveChanges();
             CreatePasswordHash("harm", out byte[] passHash, out byte[] passSalt);
             this.users.Add(new User() { id = Guid.NewGuid(), name = "Harm de Boer", email = "deboer@harmbv.nl", passwordHash = passHash, passwordSalt = passSalt, role = (int)RoleTypes.CLIENT , company = harmBV, companyId = harmBV.id, phone = "0612345678"});
