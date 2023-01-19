@@ -42,17 +42,17 @@ export function fillProblems(tickets: TicketDetails[], tick: Ticket) {
 //Ticket component that is used to display the valuable information of a ticket
 const TicketComponent : React.FC<TicketProps> = (props) => {
 return <li id="origin">
-    <div className='bg-sky-100 dark:bg-gray-700'>
-        <p className='reporterName font-lora bg-slate-300 dark:bg-slate-600 text-center'>{props.ticket.submitter}</p>
-        <div className='reportText pl-2 pb-3'>
+    <div className='bg-slate-100 dark:bg-gray-700'>
+        <p className='reporterName bg-slate-400 dark:bg-gray-800 text-center'>{props.ticket.submitter}</p>
+        <div className='reportText pl-2 pb-2'>
         <p>{Translate("Problem:")}</p>
         <p className='reportText pl-2'>{props.ticket.details.at(-1)?.problem}</p>
         </div>
-        <div className='reportText pl-2 pb-3'>
+        <div className='reportText pl-2 pb-2'>
         <p>{Translate("Machine should be doing:")}</p>
         <p className='reportText pl-2'>{props.ticket.details.at(-1)?.should}</p>
         </div>
-        <div className='reportText pl-2 pb-3'>
+        <div className='reportText pl-2 pb-2'>
         <p>{Translate("Reporter has tried to:")}</p>
         <p className='reportText pl-2'>{props.ticket.details.at(-1)?.tried}</p>
         </div>
@@ -78,7 +78,7 @@ return (
     <div className='dark:text-cyan-400'>
     <div className='cursor-pointer text-center select-none' onClick={() => setIsActive(!isActive)}>
         <h1 className='inline-block text-center'>{props.title}</h1>
-        {!isActive && <h1 className='inline-block text-end bg-red-500 rounded-xl px-2 ml-5'>{props.tickets.length}</h1>}
+        <h1 className='inline-block text-end bg-red-500 text-gray-100 rounded-xl px-2 mb-1 ml-5'>{props.tickets.length}</h1>
     </div>
     {isActive && 
         <ul>
