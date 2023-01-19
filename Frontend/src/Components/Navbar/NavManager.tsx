@@ -71,7 +71,7 @@ export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
   }
 
   // werknemer
-  if (role === 2 || role === 3) {
+  if (role === 2) {
     // navbar
     if (bar === 'n') {
       return (
@@ -125,7 +125,7 @@ export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
   }
 
     // werknemer
-    if (role === 4) {
+    if (role === 4 || role === 3) {
       // navbar
       if (bar === 'n') {
         return (
@@ -184,6 +184,9 @@ export function NavbarContent({bar, toggleMode} : {bar:any, toggleMode:any}) {
             </a>
             <a href="/visconPage" className="navbar-link text-cyan-800 dark:text-cyan-400 cursor-pointer">
             {Translate("Issues")}
+            </a>
+            <a href="/userCreation" className="navbar-link text-cyan-800 dark:text-cyan-400 cursor-pointer">
+            {Translate("Add User")}
             </a>
           </div>
           <div className="navbar-button">

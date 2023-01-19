@@ -19,7 +19,7 @@ export function UserpageButtons() {
 
   let buttons: [string, () => void, string, string][] = [];
   const employees = () => navigate('../userCreation');
-  const tickets = () => navigate('../visconPage');
+  const tickets = () => navigate('../viewTickets');
   const companies = () => navigate('../employees');
   const viscon = () => navigate('../visconPage');
   switch (role) {
