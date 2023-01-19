@@ -78,13 +78,11 @@ function Search (keyword: string) {
 
 export function Machines() {
   const navigate = useNavigate();
-
   useEffect(() => {
     if ( verified === false ) {
       navigate('/')
     }
   });
-  
   const [keyword, setKeyword] = useState('');
   machinesList.forEach( (mach) => {
     takeProblems(mach, ackProblems);

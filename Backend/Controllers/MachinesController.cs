@@ -1,14 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Backend.EF;
-using System.Reflection;
-using Backend.Controllers;
-
 using static Backend.Controllers.AuthenticationController;
 
 namespace Backend.Controllers {
@@ -36,19 +26,17 @@ namespace Backend.Controllers {
             try {
                 if (VerifyToken(data.jwt, out Guid id)) {
                     using (var context = new MyContext()) {
-                    List<Machine> machines = await context.machines.Where(p => p.companyId == Guid.Parse(data.companyId)).OrderBy(p => p.name).ToListAsync();
-                    List<MachineToSend> machinesTS = new List<MachineToSend>();
-                    string? temp;
-                    foreach (var m in machines) {
-                        temp =  await context.machineTypes.Where(p => p.id == m.typeId).Select(p => p.name).FirstOrDefaultAsync();
-                        machinesTS.Add(new MachineToSend(m, temp!));
-                    }
-                    return Ok(machinesTS);
+                        List<Machine> machines = await context.machines.Where(p => p.companyId == Guid.Parse(data.companyId)).OrderBy(p => p.name).ToListAsync();
+                        List<MachineToSend> machinesTS = new List<MachineToSend>();
+                        string? temp;
+                        foreach (var m in machines) {
+                            temp =  await context.machineTypes.Where(p => p.id == m.typeId).Select(p => p.name).FirstOrDefaultAsync();
+                            machinesTS.Add(new MachineToSend(m, temp!));
+                        }
+                        return Ok(machinesTS);
                     }
                 }
-                else {
-                return Unauthorized("Invalid token");
-                }
+                else return Unauthorized("Invalid token");
             }
             catch(Exception ex) {
                 return BadRequest(ex.Message);

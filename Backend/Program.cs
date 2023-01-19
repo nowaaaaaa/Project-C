@@ -1,7 +1,5 @@
 global using Backend.EF;
 global using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using System;
 
 namespace Backend {
     class Program {

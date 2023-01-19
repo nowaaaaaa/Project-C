@@ -1,11 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 //dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.9
 //dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 6.0.5
 //dotnet ef Migrations add *name*

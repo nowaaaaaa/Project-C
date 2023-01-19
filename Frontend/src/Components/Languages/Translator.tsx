@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import langPack from './Languagepacks.json';
 
 interface Dictionary {
