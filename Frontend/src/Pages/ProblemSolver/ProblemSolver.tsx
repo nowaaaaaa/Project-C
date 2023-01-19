@@ -1,12 +1,9 @@
-import React from 'react';
 import './ProblemSolver.css';
-
 import { Navbar } from '../../Components/Navbar/Navbar'
 import { useNavigate } from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import { useState } from 'react';
 import { swalA, swalB, swalC } from './SwalFunctions';
-
 import { CreateTicketEP } from '../../BackendManager/endpoints'
 
 export function ProblemSolver() {

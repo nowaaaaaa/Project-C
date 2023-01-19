@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import '../../App.css';
 
 import { LoginEP } from '../../BackendManager/endpoints'
-import { GetRoleEP } from '../../BackendManager/endpoints';
 import { getRole } from './AccountManager';
 
 //Component
 import { Navbar } from '../../Components/Navbar/Navbar'
 import{ Footer } from '../../Components/Footer/Footer'
-import { getPositionOfLineAndCharacter } from 'typescript';
 import { Translate } from '../../Components/Languages/Translator';
 
 export function Login() {

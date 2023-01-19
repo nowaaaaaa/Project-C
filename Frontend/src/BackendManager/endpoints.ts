@@ -1,4 +1,3 @@
-import { assertExportNamespaceSpecifier } from '@babel/types';
 import axios from 'axios';
 
 const mainURL = 'http://localhost:5001';

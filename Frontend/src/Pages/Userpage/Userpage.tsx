@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
-import { getRole, getName, getCompanyId } from '../../Pages/Login/AccountManager';
+import { getName, getCompanyId } from '../../Pages/Login/AccountManager';
 import { GetCompanyIdEP } from '../../BackendManager/endpoints'
 import './Userpage.css';
 import '../../App.css';

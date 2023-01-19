@@ -74,7 +74,6 @@ export function UserCreationForm() {
         role: +role
       }).then(response => {
         console.log("User created:", name, email, phone, companyId, role, password);
-
       }).catch(error => {
         var errMessage: string = error.response.data;
         console.log(errMessage)

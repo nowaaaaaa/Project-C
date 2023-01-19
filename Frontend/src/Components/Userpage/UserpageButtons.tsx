@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Translate } from '../../Components/Languages/Translator';
 import { getRole } from '../../Pages/Login/AccountManager';
@@ -12,9 +11,7 @@ export function UserpageButtons() {
   if (token != null) {
     role = getRole(token);
   }
-  else {
-    return <></>;
-  }
+  else return <></>;
 
   let buttons: [string, () => void, string, string][] = [];
   const employees = () => navigate('../userCreation');

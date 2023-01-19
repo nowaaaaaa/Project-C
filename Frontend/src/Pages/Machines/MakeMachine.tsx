@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Translate } from "../../Components/Languages/Translator";
 import { Guid } from "guid-typescript";
 import { getRole } from "../../Pages/Login/AccountManager";

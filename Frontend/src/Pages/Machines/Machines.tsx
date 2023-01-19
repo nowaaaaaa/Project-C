@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCompanyId } from '../../Pages/Login/AccountManager';
 import { GetMachinesEP, GetAckProblemsEP, GetCompanyIdEP } from '../../BackendManager/endpoints';
-import {Guid} from 'guid-typescript';
 
 var verified: boolean = true;
 var machinesList: Machine[] = [];
