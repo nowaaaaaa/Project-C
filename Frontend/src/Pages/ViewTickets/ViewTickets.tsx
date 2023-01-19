@@ -104,12 +104,19 @@ if (token != null) {
         if (value.handlerId != null) state = "ACTIVE"
         if (value.solved === true) state = "CLOSED"
 
+        var details: TicketDetails = ticketDetailsList[0];
+        ticketDetailsList.forEach(function (value2: TicketDetails) {
+          if (value2.ticketId === value.id) {
+            details = value2
+          }
+        });
+
         var addition: Ticket = {
           id: value.id,
           submitter: name,
           state: state,
           phone: phone,
-          details: []
+          details: [details]
         }
 
         ticketList.push(addition)
